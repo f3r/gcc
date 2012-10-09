@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009082037) do
+ActiveRecord::Schema.define(:version => 20121009091436) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -152,6 +152,9 @@ ActiveRecord::Schema.define(:version => 20121009082037) do
     t.integer "position"
     t.string  "slug"
     t.integer "geoname_id"
+    t.text    "meta_description"
+    t.text    "meta_keywords"
+    t.text    "footer_seo_text"
   end
 
   add_index "cities", ["country"], :name => "index_cities_on_country"
@@ -171,9 +174,9 @@ ActiveRecord::Schema.define(:version => 20121009082037) do
   create_table "cmspage_menu_sections", :force => true do |t|
     t.integer  "cmspage_id"
     t.integer  "menu_section_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.integer  "position",        :default => 0
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.integer  "position",        :limit => 2, :default => 0
   end
 
   create_table "cmspage_versions", :force => true do |t|
@@ -199,9 +202,9 @@ ActiveRecord::Schema.define(:version => 20121009082037) do
   create_table "cmspages_menu_sections", :id => false, :force => true do |t|
     t.integer  "cmspage_id"
     t.integer  "menu_section_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.integer  "position",        :default => 0
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.integer  "position",        :limit => 2, :default => 0
   end
 
   create_table "comments", :force => true do |t|
@@ -592,6 +595,7 @@ ActiveRecord::Schema.define(:version => 20121009082037) do
     t.integer  "city_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "price_unit"
   end
 
   create_table "product_amenities", :force => true do |t|
@@ -852,8 +856,10 @@ ActiveRecord::Schema.define(:version => 20121009082037) do
     t.integer  "controls_user_id"
     t.boolean  "disabled",                                 :default => false
     t.string   "original_avatar_file_name"
+    t.boolean  "approved",                                 :default => false,  :null => false
   end
 
+  add_index "users", ["approved"], :name => "index_users_on_approved"
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

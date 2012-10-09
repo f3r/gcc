@@ -3,8 +3,8 @@ class User
     extend ActiveSupport::Concern
 
     included do
-      attr_accessor   :oauth_provider, :oauth_uid, :oauth_token, :oauth_secret, :avatar_url
-      attr_accessible :oauth_provider, :oauth_uid, :oauth_token, :oauth_secret, :avatar_url
+      attr_accessor   :oauth_provider, :oauth_uid, :oauth_token, :oauth_secret, :avatar_url, :facebook_fan_page
+      attr_accessible :oauth_provider, :oauth_uid, :oauth_token, :oauth_secret, :avatar_url, :facebook_fan_page
       after_save :store_authentication, :if => :oauth_token?
     end
 

@@ -1,0 +1,25 @@
+- if @user && @user.errors.any?
+  %div{:class => 'alert alert-error'}
+    = error_messages_for @user
+
+.credentials-box.registration.row
+  - @user ||= User.new
+  .span5
+    %legend= "Request an invite"
+    = form_for(@user, :url => user_registration_path, :html => {:id => 'registerForm'}, :class => 'form-vertical')  do |f|
+      = f.text_field :first_name, :placeholder => "DJ Name", :class => "span4 validate[required]"
+      = f.text_field :email, :placeholder => "Email Address", :class => "span4 validate[required,custom[email]]"
+      = f.password_field :password, :placeholder => "Password", :class => "span4 validate[required,custom[onlyLetterNumber]]"
+      = f.hidden_field :signup_role, :value => 'agent'
+      .input-prepend
+        %span.add-on{:style => "color: black; width: 123px"}
+          http://facebook.com/
+        = f.text_field :facebook_fan_page, :placeholder => "Page Name", :style => 'width: 154px'
+      = f.submit 'Submit', :class => 'btn btn-primary span4'
+  .span5.legendBox
+    %legend= 'And Invited You Will be'
+
+:javascript
+  $(document).ready(function(){
+    $("#registerForm").validationEngine('attach');
+  });

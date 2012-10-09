@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
   scope :consumer, where("role = 'user'")
   scope :agent,    where("role = 'agent'")
   scope :admin,    where("role = 'admin' or role = 'superadmin'")
+  scope :pending_approval, where("not approved")
 
   # Creates a new user with a random password automatically
   def self.auto_signup(name, email, role = 'user', message = nil)
@@ -164,19 +165,40 @@ class User < ActiveRecord::Base
   # Overrides active_for_authentication? from Devise::Models::Activatable for disabling from admin
   # by verifying whether a user is disabled
   def active_for_authentication?
-    super && !disabled?
+    super && !disabled? && approved?
   end
 
   # Overwrites invalid_message from Devise::Models::Authenticatable to define
   # the correct reason for blocking the sign in.
   def inactive_message
-    disabled? ? :disabled : super
+    if !approved?
+      :not_approved
+    elsif disabled?
+      :disabled
+    else
+      super
+    end
   end
 
   # Disables the user
   def disable
     self.disabled = true
     self.save
+  end
+
+  def approve!
+    self.approved = true
+    self.save!
+  end
+
+  def status
+    if self.disabled
+      :disabled
+    elsif !self.approved
+      :pending
+    else
+      :active
+    end
   end
 
   ## Disables the user and unpublishes things
@@ -191,7 +213,7 @@ class User < ActiveRecord::Base
 private
 
   def send_on_create_welcome_instructions
-    RegistrationMailer.welcome_instructions(self).deliver unless skip_welcome
+    RegistrationMailer.welcome_instructions(self).deliver unless skip_welcome || !self.approved
   end
 
   # checks if avatar_url is set and updates the avatar if avatar_url is an image

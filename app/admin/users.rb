@@ -12,6 +12,7 @@ ActiveAdmin.register User do
       # So I am just delaying the scope creation, until the index page is requested
       active_admin_config.scopes.clear
       active_admin_config.scope :all, :default => true
+      active_admin_config.scope "Pending approval", :pending_approval
       active_admin_config.scope I18n.t('users.role_user'), :consumer
       active_admin_config.scope I18n.t('users.role_agent'), :agent
       active_admin_config.scope I18n.t('users.role_admin'), :admin
@@ -24,7 +25,7 @@ ActiveAdmin.register User do
         attr_accessor :send_invitation
         attr_accessor :invitation_text
       end
-      
+
       if !session[:preview_user].present?
         # Transport some extra data in the form
         @user.invitation_text = I18n.t('mailers.auto_welcome.content')
@@ -37,7 +38,7 @@ ActiveAdmin.register User do
       end
       new!
     end
-    
+
     def create
       @user = User.new
       @user.class_eval do
@@ -49,8 +50,8 @@ ActiveAdmin.register User do
 
       @user.send_invitation = params[:user][:send_invitation]
       @user.invitation_text = params[:user][:invitation_text]
-      
-      if @user.send_invitation == '1' 
+
+      if @user.send_invitation == '1'
         @user_query = Rack::Utils.build_query(params[:user])
         @mail_template = UserMailer.auto_welcome(@user, @user.invitation_text)
         render(:action => "show_email_preview", :layout => "active_admin")
@@ -82,6 +83,7 @@ ActiveAdmin.register User do
     column :email
     column :full_name
     column(:role)         {|user| status_tag(I18n.t("users.role_#{user.role}"), user.role) }
+    column(:status)       {|user| status_tag(user.status.to_s)}
     column :created_at
     column :last_sign_in_at
     column ("Set_Password") { |user| reminder_status(user.has_reset_password)}
@@ -99,7 +101,7 @@ ActiveAdmin.register User do
       }
     end
   end
-  
+
   form do |f|
     f.inputs do
       [:first_name, :last_name, :email].each do |field|
@@ -120,20 +122,20 @@ ActiveAdmin.register User do
       f.buttons
     end
   end
-  
+
   collection_action :show_email_preview, :method => :post do
     user_params = Rack::Utils.parse_query(params[:user][:user_query])
     @user = User.new
     @user.attributes = user_params
-     
+
     @user.class_eval do
       attr_accessor :send_invitation
       attr_accessor :invitation_text
     end
-     
+
     @user.send_invitation = user_params["send_invitation"]
     @user.invitation_text = user_params["invitation_text"]
-      
+
     if params[:commit].present? && params[:commit] == I18n.t('users.invitation_preview.back_to_edit')
       session[:preview_user] = params[:user][:user_query]
       redirect_to new_admin_user_path
@@ -148,7 +150,19 @@ ActiveAdmin.register User do
       end
     end
   end
-  
+
+  #Approve User
+  action_item :only => :show do
+    link_to('Approve User', approve_admin_user_path(user), :method => :put,
+            :confirm => "Are you sure you want to approve this user?") if !user.approved?
+  end
+
+  member_action :approve, :method => :put do
+    resource.approve!
+    RegistrationMailer.welcome_instructions(resource).deliver
+    redirect_to({:action => :show}, :notice => "The user has been approved")
+  end
+
   #Disable User
   action_item :only => :show do
     link_to('Disable User', disable_admin_user_path(user), :method => :put,
@@ -156,8 +170,7 @@ ActiveAdmin.register User do
   end
 
   member_action :disable, :method => :put do
-    user = User.find(params[:id])
-    user.disable_and_unpublish_listings
+    resource.disable_and_unpublish_listings
     redirect_to({:action => :show}, :notice => "The user has been disabled")
   end
 
@@ -168,7 +181,7 @@ ActiveAdmin.register User do
   end
 
   member_action :take_control, :method => :post do
-    target_user = User.find(params[:id])
+    target_user = resource
     if target_user
       current_admin_user.take_control(target_user)
       sign_in_and_redirect current_admin_user.user
@@ -184,8 +197,7 @@ ActiveAdmin.register User do
   end
 
   member_action :send_reset_password_reminder, :method => :post do
-    user = User.find(params[:id])
-    UserMailer.password_reset_reminder(user).deliver if user
+    UserMailer.password_reset_reminder(user).resource if resource
     redirect_to({:action => :show}, :notice => "Sent password reset reminder.")
   end
 

@@ -4,13 +4,14 @@
     = render 'shared/meta'
 
   %body
-    = render 'shared/header'
-    = render 'shared/contact'
-    .container
-      .content
-        .row
-          %section.span10.offset1
-            = flash_messages
-            = yield
+    .site_wrapper
+      = render 'shared/header'
+      = render 'shared/contact'
+      .container
+        .content
+          .row
+            %section.span10.offset1
+              = flash_messages
+              = yield
 
-      = render 'shared/footer'
+        = render 'shared/footer'

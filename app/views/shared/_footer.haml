@@ -9,42 +9,5 @@
     .seo.center
       = raw(SiteConfig.before_body_tag_end)
 
-- unless logged_in?
-  - unless controller_name.eql?('users') && (action_name.eql?('new') || action_name.eql?('connect'))
-    #popup-registration.modal.hide{:style => 'margin-left: -362px; width: 725px'}
-      .modal-body.registration
-        = link_to 'x', '#', :class => 'close', :style => 'margin-right: 15px;', 'data-dismiss' => 'modal'
-        = render :template => 'registrations/new'
-
-    - if params[:trigger_signup]
-      :javascript
-        $('#popup-registration').modal();
-
-  :javascript
-    $(function() {
-      $(".trigger_signup").live('click',function() {
-        $.ajax({
-          type: 'PUT',
-          url: '/set_ref.json',
-          data: {
-            ref : $(this).attr('data-ref')
-          }
-        });
-        $('#popup-registration').modal();
-        return false;
-      });
-    });
-
-:javascript
-  $(function(){
-    var hash = window.location.hash;
-    if(hash.length) {
-      var forms = $('form');
-      $.each(forms, function(index,form){
-        $(form).attr('action', $(form).attr('action') + hash);
-      });
-    }
-  });
-
 - if SiteConfig.show_powered?
   = render 'shared/powered'

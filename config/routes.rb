@@ -25,6 +25,10 @@ HeyPalFrontEnd::Application.routes.draw do
                                :sign_up => 'signup',
                                :sign_out => 'logout' }
 
+  devise_scope :user do
+    match "/users/signup/dj" => 'registrations#new_dj', :as => 'new_dj_registration'
+  end
+
   resources :listings do
     member do
       put   :publish

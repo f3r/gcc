@@ -105,10 +105,12 @@ function getAmenityCheckBoxes(select_id) {
 
 $(document).ready(function() {
   $("#registerForm").submit(function(e) {
-    var isChecked = $('#terms_and_conditions').is(':checked');
-    if(!isChecked) {
-      alert("Please check 'I accept the terms and conditions' to continue");
-      e.preventDefault();
+    if($('#terms_and_conditions').length){
+      var isChecked = $('#terms_and_conditions').is(':checked');
+      if(!isChecked) {
+        alert("Please check 'I accept the terms and conditions' to continue");
+        e.preventDefault();
+      }
     }
   });
 
