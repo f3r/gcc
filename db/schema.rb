@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121005085515) do
+ActiveRecord::Schema.define(:version => 20121009082037) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -622,8 +622,8 @@ ActiveRecord::Schema.define(:version => 20121005085515) do
     t.integer  "price_per_month_usd"
     t.integer  "price_sale"
     t.integer  "price_sale_usd"
-    t.datetime "created_at",                                                         :null => false
-    t.datetime "updated_at",                                                         :null => false
+    t.datetime "created_at",                                                            :null => false
+    t.datetime "updated_at",                                                            :null => false
     t.integer  "category_id"
     t.integer  "price_per_day"
     t.integer  "price_per_day_usd"
@@ -631,6 +631,7 @@ ActiveRecord::Schema.define(:version => 20121005085515) do
     t.text     "custom_values"
     t.integer  "completed_steps",                                     :default => 0
     t.integer  "points"
+    t.boolean  "pro_dj",                                              :default => true
   end
 
   create_table "properties", :force => true do |t|

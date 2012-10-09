@@ -9,4 +9,6 @@
           %p= resource.description
       .row-fluid
         .span12
+          - if resource.pro_dj
+            .pro_dj.pro_dj_profile
           = render :partial => 'shared/social_icons', :locals => { :resource => resource }

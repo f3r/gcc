@@ -43,3 +43,6 @@
         -if resource.product.has_review?
           .reviews
             = stars(resource.product.review_avg)
+            
+        - if resource.pro_dj
+          .pro_dj
