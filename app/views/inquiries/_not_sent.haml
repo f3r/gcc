@@ -1,0 +1,6 @@
+- content_for(:modal_header) do
+  %h3= t("error")
+- if @user.errors.any?
+  %p= t("inquiries.existing_account_please_login")
+- else
+  %p= t("inquiries.inquiry_error")

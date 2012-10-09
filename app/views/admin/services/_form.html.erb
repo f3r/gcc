@@ -1,0 +1,14 @@
+<%= semantic_form_for [:admin, @service] do |f| %>
+	<%= render :partial => '/admin/products/baseform', :locals => { :f => f} %>
+	<%= f.inputs "More info" do %>
+		<%= f.input :education_status %>
+		<%= f.input :last_institute %>
+		<%= f.input :seeking %>
+		<%= f.input :language_1_cd %>
+		<%= f.input :language_2_cd %>
+		<%= f.input :language_3_cd %>
+	<%end%>
+	<%= f.actions do %>
+      <%= f.action :submit %>
+    <% end %>
+<%end%>

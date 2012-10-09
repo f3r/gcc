@@ -1,0 +1,34 @@
+#details-questions.tab-pane
+  - if !logged_in?
+    .row
+      .span11{:style => "text-align:center"}
+        %a.btn.btn-large.btn-primary{:href => login_path_with_ref}= t("places.questions.ask_question")
+  - else
+    - unless current_user?(@owner)
+      .row
+        .span11{:style => "text-align:center"}
+          %a#open-ask-btn.btn.btn-large.btn-primary= t("places.questions.ask_question")
+
+    .row
+      #ask-form.hide
+        .span10.offset1
+          = form_for :comment, :url => product_questions_path(@resource.product), :html => {:method => :post, :remote => true, :id => 'comment-form', :class => "form-inline"} do |f|
+            .row
+              .span1{:style=>"margin-right: 10px"}= avatar_image(current_user)
+              = f.text_area :comment, :rows => 3, :class => "span9", :style => "height:54px; width:689px; max-width:689px !important; min-width:689px !important"
+            .row{:style => "margin-top:20px"}
+              .span2.offset1
+                = #f.check_box "pm"
+                = #.help-inline= t(:pm)
+              .span2.offset8
+                = button_tag t("cancel"), :id => 'ask-cancel', :class => 'btn'
+                = button_tag t("submit"), :id => 'ask-btn',    :class => "btn btn-primary"
+
+  %br
+  - if @resource.q_and_a.present?
+    .row
+      %section.item-questions
+        = render :collection => @resource.q_and_a.questions, :partial => '/questions/comment'
+
+  :javascript
+    PlaceComments.initialize();

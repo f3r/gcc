@@ -1,0 +1,8 @@
+<%= page_replace_html("#num_search_results", :text => search_results_count(@results)) %>
+<%= page_replace_html("#search_results", :partial => 'search/search_results') %>
+<%= page_replace_html("#search_filters", :partial => 'search/filters') %>
+<% if logged_in? && @alert %>
+<%= page_replace_html("#save_search", :partial => 'alerts/save_search_form') %>
+<% end %>
+<%= "GMaps.clearMarkers();GMaps.createMarkers(#{map_markers_json(@results)},true)".html_safe %>
+

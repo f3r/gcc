@@ -1,0 +1,4 @@
+<h2><%= t("mailers.salutation", :name => @user.first_name) %></h2>
+<p><%= t("mailers.transaction_approve_renter.intro") %></p>
+<% inquiry_center_link = link_to t("mailers.inquiry_center"), message_url(@inquiry.conversation) %>
+<p><%= t("mailers.transaction_approve_renter.content", :inquiry_center_link => inquiry_center_link).html_safe %></p>

@@ -1,0 +1,21 @@
+- editable ||= false
+%section.span2
+  = image_tag(large_avatar(user), :width => 200)
+
+  - if editable
+    = link_to t("users.change_photo"), "#avatar-modal", { "data-toggle" => "modal", "data-backdrop"=>"static", :class => "change_avatar"}
+    = render "profiles/avatar_modal", :user => user
+
+  %h2.name
+    = user.anonymized_name
+  %p.address
+    - if false && !user['address'].nil?
+      = "#{user['address']['city']}, #{user['address']['country']}"
+  %p
+    - if user.agent?
+      = image_tag "agent_button.png"
+
+    = render "users/linked_accounts", :user => user
+
+    - if current_user?(user)
+      = render "profiles/connect_accounts"

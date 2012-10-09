@@ -1,0 +1,18 @@
+<% if @recaptcha_error %>
+  Recaptcha.reload()
+  $('#contact_request').modal('show');
+  $("#contact_button").button('reset')
+  $('#contact_request').trigger('shown');
+  $('.recaptcha_error').html("Invalid Text");
+<% else %>
+  $('.alert-message').remove();
+  $('#contact_request').modal('hide');
+  <% if !@contact.persisted? %>
+    <%= open_modal :contact_not_sent, 'contacts/not_sent' %>
+    $('.product_info').before('<div class="alert alert-error" data-alert="alert"><a href="#" class="close" data-dismiss="alert">×</a><%= t("contact_requests.contact_request_error") %></div>');
+  <% else %>
+    document.forms[0].reset(); 
+	$("#contact_button").button('reset')
+    <%= open_modal :contact_sent, 'contacts/sent' %>
+  <% end %>
+<% end %>

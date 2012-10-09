@@ -1,0 +1,78 @@
+.panel-wrapper.well.form-horizontal
+  %fieldset.form-inline
+    .span3.offset5
+      .input.required
+        = f.label :currency, t("places.currency"), :style => "width:auto;margin-right:10px;"
+        = f.select :currency_id, currencies_options, {}, :class => 'validate[required]'
+  %fieldset
+    / .input
+    /   = f.label :price_per_week, t("places.price_per_week")
+    /   %span.currency-sign= @resource.currency.label
+    /   = f.text_field :price_per_week, :class => "validate[custom[number],min[1]] span2 autosave_pricing"
+    /   %span#estimated_amount_weekly
+    = render 'products/price_fields', :f => f
+  - if false
+    %h3=t("places.wizard.additional_costs_title")
+    %fieldset
+      .control-group
+        = f.label :price_final_cleanup, t("places.final_cleanup"), :class => 'control-label'
+        .controls
+          .input-prepend
+            %span.add-on.currency-sign= @resource.currency.label
+            = f.text_field :price_final_cleanup, :class => "span2 autosave"
+            = link_to '?', '#', :class => 'popover-link', :rel => "popover", "data-original-title" => t("places.final_cleanup"), "data-content" => t("places.wizard.pricing.final_cleanup_hint")
+      .control-group
+        = f.label :price_security_deposit, t("places.security_deposit"), :class => 'control-label'
+        .controls
+          .input-prepend
+            %span.add-on.currency-sign= @resource.currency.label
+            = f.text_field :price_security_deposit, :class => "span2 autosave"
+            / = link_to '?', '#', :class => 'tooltip-link', :title => t("places.wizard.pricing.security_deposit_hint")
+    %h3= t("places.wizard.terms_title")
+
+    %fieldset
+      .control-group
+        = f.label :check_in_after, t("places.check_in_after"), :class => 'control-label'
+        .controls
+          = f.select :check_in_after, time_array, {}, :class => "span2 autosave"
+      .control-group
+        = f.label :check_out_before,  t("places.check_out_before"), :class => 'control-label'
+        .controls
+          = f.select :check_out_before, time_array, {}, :class => "span2 autosave"
+
+      .control-group
+        = f.label :minimum_stay_days, t("places.minimum_stay"), :class => 'control-label'
+        .controls
+          = f.text_field :minimum_stay, :class => "span2 validate[required] autosave_pricing", :disabled => @resource.minimum_stay == 0
+          = f.select :stay_unit, [[t("weeks"), 'weeks'], [t("months"), 'months']], {}, :class => 'stay_unit_sync stay_unit_sync_1 validate[required] autosave_pricing'
+          %label.checkbox.inline.no_minimum_stay
+            = check_box_tag "no_minimum_stay", 1, @resource.minimum_stay == 0
+            = t("places.no_minimum")
+      .control-group
+        = f.label :maximum_stay_days, t("places.maximum_stay"), :class => 'control-label'
+        .controls
+          = f.text_field :maximum_stay, :class => "span2 validate[required] autosave_pricing", :disabled => @resource.maximum_stay == 0
+          = f.select :stay_unit, [[t("weeks"), 'weeks'], [t("months"), 'months']], {}, :class => 'stay_unit_sync stay_unit_sync_2 validate[required] autosave_pricing'
+          %label.checkbox.inline.no_maximum_stay
+            = check_box_tag "no_maximum_stay", 1, @resource.maximum_stay == 0
+            = t("places.no_maximum")
+      .control-group.required
+        = f.label :cancellation_policy, t("places.cancellation_policy"), :class => 'control-label'
+        .controls
+          = f.select :cancellation_policy, cancellation_policies_select, {}, :class => 'validate[required] autosave'
+          = link_to '?', '#', :class => 'popover-link', :rel => "popover", "data-original-title" => t("places.cancellation_policy"),
+            "data-content" => "#{t("places.wizard.pricing.head_cancellation")}<br><br><b>#{t("places.cancellation_policies.flexible")}</b>: #{t("places.wizard.pricing.flexible_cancellation")}<br><br><b>#{t("places.cancellation_policies.strict")}</b>: #{t("places.wizard.pricing.strict_cancellation")}<br><br>#{t("places.wizard.pricing.see_our")} <a href='#' data-controls-modal='cancellation_policy_text' data-backdrop='static'>#{t("places.cancellation_policy")}</a> #{t("places.wizard.pricing.for_more_info")}."
+  .control-group
+    = f.label :house_rules, t("places.house_rules"), :class => 'control-label'
+    .controls
+      = f.text_area :house_rules, :class => "span5 autosave", :rows => 5
+
+  = render :partial => 'products/properties/wizard_tabs/cancellation_policy'
+
+:javascript
+  $('#place_currency').val("#{@resource.currency}");
+  $(".currency-sign, .currency-sign-id").html('#{@resource.currency.label}');
+  $("#listing_currency_id").change(function () {
+    selected_currency = $('#listing_currency_id option:selected').html();
+    $(".currency-sign").html(selected_currency);
+  });

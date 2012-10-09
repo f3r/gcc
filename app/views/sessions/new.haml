@@ -1,0 +1,20 @@
+.credentials-box.login.row-fluid
+  %br
+  .section.span6.bored
+    %h2= t("users.registration.login_to_site")
+    %br
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .input
+        = f.text_field :email,  :placeholder => t("users.email_address")
+      .input
+        = f.password_field :password, :placeholder => t("users.password")
+
+      = f.submit t("users.registration.login"), :class =>'btn float-right'
+
+    %br
+    .alternative
+      = link_to t("users.registration.forgot_password"), new_user_password_path
+    .alternative
+      = link_to t("users.registration.signup_for_an_account"), new_user_registration_path
+
+  = render 'registrations/connect_with'

@@ -1,0 +1,8 @@
+- content_for(:title) { "#{@city.name}"}
+
+%ul{"data-role"=>"listview", "data-inset"=>"true", "data-filter"=>"true"}
+  - @results.each do |listing|
+    %li
+      %a{:href => "/mobile/info/#{listing.id}"}
+        %h3= listing.title
+        %p= "#{product_price(listing)}".html_safe

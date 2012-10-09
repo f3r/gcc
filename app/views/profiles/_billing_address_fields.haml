@@ -1,0 +1,19 @@
+= f.fields_for :address_attributes, current_user.address do |af|
+  .text
+    .control-group
+      = af.label :street, "#{t(:street)}*", :class => 'control-label'
+      .controls
+        = icon_tooltip(:private)
+        = af.text_field :street, :class => "validate[required]"
+
+    .control-group
+      = af.label :city_id, "#{t(:city)}*", :class => 'control-label'
+      .controls
+        = icon_tooltip(:public)
+        = af.select :city_id, cities_options, {:include_blank => true}, { :class => "validate[required]", :style => "width: 220px;" }
+
+    .control-group
+      = af.label :zip, "#{t(:zip)}*", :class => 'control-label'
+      .controls
+        = icon_tooltip(:private)
+        = af.text_field :zip, :class => "validate[required]"

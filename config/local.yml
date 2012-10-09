@@ -1,0 +1,38 @@
+defaults: &defaults
+  SITE_URL:             http://localhost:3000
+  PRODUCT_CLASS_NAME:   Service
+
+  # Database and CDN
+  S3_ACCESS_KEY_ID:     AKIAJOJEIAZ6LOVHDFDA
+  S3_SECRET_ACCESS_KEY: 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
+  # Social Networks
+  FB_APP_ID:            289917857692700
+  FB_APP_SECRET:        e21346334029581a59ea6d0ddcfb7dfe
+  # DJSITE config (no twitter signup)
+  # TW_APP_ID:            HYFCbVk0FUoxg3f3bi3lA
+  # TW_APP_SECRET:        YpzH8iTJU5BXmid3cm3i1I9xC57qmQM5Z0kWqpkHA
+  # Security
+  SECRET_TOKEN:         4fafcf33a55a5b7d6cd2be869e9f450b65ea004e421c05b459ebb2643e7a6b3201d5f1e2da0ce7310102c7d48368b0d100087f73545fd14aff0de8050f818a61
+  PEPPER_TOKEN:         Z8TxukxAnyxxjRgs6jSB3Y3v4AzHjFvPFxpaENsJCnrkDUuYgTcaWywccE3CA8Gdgs6jSB3Y3v4AzHjFvPFxpaENsJCnrkDUWywccE3CA8Gdgs6jSB3YAnyxxjRgs6jS
+  # External Services
+  RECAPTCHA_PUB_KEY:    6Lcuo9ASAAAAAGx1sEf6qvddoPnTnvZ9QjSXAuNR
+  RECAPTCHA_PVT_KEY:    6Lcuo9ASAAAAAOYdrtLjPruEU0ZmferG5C_aTCEK
+  RAKISMET_KEY:         bcba68e5b091
+  RAKISMET_URL:         http://localhost:3000
+  PAYPAL_ACCOUNT:       nico_1334303615_biz@heypal.com
+  PAYPAL_MODE:          'test'
+  PAYPAL_API_USERNAME:  vinu+p_1342437795_biz_api1.xminds.com
+  PAYPAL_API_PASS:      1342437832
+  PAYPAL_API_SIGN:      AfFVH5KGuTqC6Ah83zaYyBQ9xWPpAwZADVB.UWIDY7lf4hCQbGvZq.CC
+
+  COOKIE_STORE_KEY:     _TSE_Session
+
+development:
+  <<: *defaults
+  S3_BUCKET:            squarestays-img-dev
+
+test:
+  <<: *defaults
+  PRODUCT_CLASS_NAME:   Service
+  STORAGE:              filesystem
+  S3_BUCKET:            squarestays-img-test

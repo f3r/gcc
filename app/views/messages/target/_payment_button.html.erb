@@ -1,0 +1,25 @@
+<% inquiry = target; transaction = inquiry.transaction # TODO: Replace %>
+<% amount = transaction.total_amount %>
+<% # TODO: calculate ammount for services%>
+<% payment_service_for transaction.code, PAYPAL_ACCOUNT, :amount => amount.to_f, :currency => amount.currency.iso_code, :service => :paypal, :html => { :id => 'payment_form' } do |service|
+  service.customer :first_name => current_user.first_name,
+      :last_name => current_user.last_name,
+      :email => current_user.email
+
+  service.item_name t(:payment_fee_desc, :title => inquiry.title)
+
+  service.customer :first_name => current_user['first_name'],
+                   :last_name => current_user['last_name']
+
+  service.invoice transaction.code
+
+  # PayPal will POST a callback here when the payment is done
+  service.notify_url paypal_callback_url
+  # PayPal will take your user here with a POST after he pays
+  service.return_url paypal_callback_url
+
+  # PayPal will redirect your user here if he cancels the payment
+  service.cancel_return_url root_url %>
+
+  <%= link_to_function t("workflow.readypay_guest_button", :amount => transaction.total_amount_display).html_safe, "$('#payment_form').submit()", {:class => "btn btn-primary btn-large" } %>
+<% end %>

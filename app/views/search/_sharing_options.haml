@@ -1,0 +1,13 @@
+- content_for(:modal_header) do
+  %h3=t("favorites.messages.successfully_added_to_your_favorites")
+
+%h4=t("favorites.share_this_place_with_your_friends")
+.sharing_options
+  %span.st_facebook_large{:displayText=>'Facebook', :st_url => "#{seo_product_url(place)}", :st_title => place.title, :st_summary => place.description}
+  %span.st_twitter_large{:displayText=>'Tweet', :st_url => "#{seo_product_url(place)}", :st_title => place.title, :st_summary => place.description}
+  %span.st_googleplus_large{:displayText=>'Google +1', :st_url => "#{seo_product_url(place)}", :st_title => place.title, :st_summary => place.description}
+  %span.st_stumbleupon_large{:displayText=>'StumbleUpon', :st_url => "#{seo_product_url(place)}", :st_title => place.title, :st_summary => place.description}
+  %span.st_tumblr_large{:displayText=>'Tumblr', :st_url => "#{seo_product_url(place)}", :st_title => place.title, :st_summary => place.description}
+
+- content_for(:modal_footer) do
+  %button.btn.btn-primary{:onclick => "$('.modal').modal('hide'); return false;"}= t("favorites.no_thanks")

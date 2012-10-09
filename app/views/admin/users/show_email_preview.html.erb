@@ -1,0 +1,8 @@
+<div class="invitation_mail_preview">
+  <%= raw @mail_template.body if @mail_template.present?%>
+  <%= form_for @user, :url => show_email_preview_admin_users_path do |f| %>
+    <%= f.hidden_field :user_query, :value => @user_query %>
+    <%= f.submit "#{t("users.invitation_preview.send_email_and_create_user")}" %>
+    <%= f.submit "#{t("users.invitation_preview.back_to_edit")}" %>
+  <%end%>
+</div>

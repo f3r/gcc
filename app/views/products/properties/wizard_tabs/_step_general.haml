@@ -1,0 +1,38 @@
+.panel-wrapper
+  %fieldset.well.form-horizontal
+    %h3= t("products.wizard.description_title")
+    .control-group.required
+      = f.label :title, t("places.title"), :class => 'control-label'
+      .controls
+        = f.text_field :title, :class => "input-xlarge validate[required] autosave"
+    .control-group.required
+      = f.label :category_id, t("places.type"), :class => 'control-label'
+      .controls
+        = f.collection_select :category_id, Category.all, :id, :name, {}, :class => 'validate[required] autosave'
+
+    .control-group
+      = f.label :description, t("places.description"), :class => 'control-label'
+      .controls
+        = f.text_area :description, :class => "span8 autosave", :rows => 5, :style => "width: 440px;"
+    .control-group.required
+      = f.label :max_guests, t("places.max_guests"), :class => 'control-label'
+      .controls
+        = f.text_field :max_guests, :class => "validate[required,custom[integer],min[0]] span1 autosave"
+    .control-group
+      = f.label :num_bedrooms, t("places.num_bedrooms"), :class => 'control-label'
+      .controls
+        = f.text_field :num_bedrooms, :class => "validate[custom[integer],min[0]] span1 autosave"
+    .control-group
+      = f.label :num_beds, t("places.num_beds"), :class => 'control-label'
+      .controls
+        = f.text_field :num_beds, :class => "validate[custom[integer],min[0]] span1 autosave"
+    .control-group
+      = f.label :num_bathrooms, t("places.num_bathrooms"), :class => 'control-label'
+      .controls
+        = f.text_field :num_bathrooms, :class => "validate[custom[integer],min[0]] span1 autosave"
+
+    .control-group.required
+      = f.label :size, t("places.size"), :class => 'control-label'
+      .controls
+        = f.text_field :size, :class => "validate[required,custom[number],min[0]] span2 autosave"
+        = f.select :size_unit, [[t("square_meters_short"), "meters"], [t("square_feet_short"), "feet"]], {}, :class => "validate[required] span2 autosave"

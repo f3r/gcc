@@ -1,0 +1,68 @@
+#== Errors codes
+# Error code - Message
+
+[100] has already been taken
+[101] can't be blank
+[102] too short
+[103] is invalid
+[104] doesn't match
+[105] invalid access token
+[106] not found
+[107] unconfirmed
+[108] unauthenticated
+[109] invalid: 'Invalid email or password.'
+[110] must sign up
+[111] invalid oauth request
+[112] This user doesn't have a linked Facebook account
+[113] invalid date
+[114] Amazon API error
+[115] no results
+[116] duplicate
+[117] invalid oauth token
+[118] must be a number
+[119] date must be future, after today
+[120] end date must be after initial date
+[121] interval overlaps with existing interval for the place
+[122] unmatching parent resource and child resource
+[123] not enough pictures
+[124] description is too short
+[125] no availability
+[126] no price
+[127] no currency
+[128] no security deposit
+[129] invalid unit
+[130] not activated
+[131] invalid json
+[132] invalid city (not on the cities table)
+[133] not allowed to do that
+[134] doesn't have access to resource
+[135] Invalid currency
+[136] occupied
+[137] invalid place request, check availability
+[138] already cancelled
+[139] date must be on the past
+[140] must be greater than
+[141] minimum stay not met
+[142] over maximum stay
+[143] publish: no amenities
+[144] publish: no address
+[145] publish: no zip code
+[146] publish: no size
+[147] already favorited
+[148] not a favorite
+
+#== Notifications
+# Type - Event - Parameters - Sample Message
+
+(examples for now!)
+# New Place Request
+  Type:    [:Request]
+  Event:   [:newRequest]
+  Params:  [{:user_id => 21, :place_id => 626, :date_start => "21/12/2011", :date_end => "25/12/2011", :request_id => 1292}]
+  Message: "The user #{user_id.full_name} has requested to stay at your place!"
+
+# Cancel Request
+  Type:    [:Request]
+  Event:   [:cancelRequest]
+  Params:  [{:user_id => 21, :place_id => 626, :request_id => 89287}]
+  Message: "The user #{user_id.full_name} has declined your stay at #{place_id.title}"

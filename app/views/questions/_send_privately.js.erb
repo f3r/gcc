@@ -1,0 +1,12 @@
+<% if saved %>
+  alert(<%= t("messages.message_sent_privately") %>);
+<% else %>
+  alert(<%= t("messages.message_error_try_again") %>);
+<% end %>
+
+$('#comment_pm').removeAttr('checked');
+$('#ask-form').hide();
+hideIndicator($('#ask-btn'));
+$('#open-ask-btn').show();
+$('#comment_comment').val('');
+disabled_question_button();

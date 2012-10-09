@@ -1,0 +1,14 @@
+<script>
+  $(document).ready(function() {
+    $('#templates_sidebar_section .panel_contents').load('/admin/mail_view');
+    $('#templates_sidebar_section .panel_contents a').live('click', function(ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+        $("#mail_view_content").attr('src',($(this).attr('href')));
+        $("#main_content .panel h3").html("Template Preview: " + $(this).html());
+        return false;
+    });
+  });
+</script>
+
+<iframe name="mail_view_content" id="mail_view_content" style="width:100%;height:700px;display:block;overflow:auto;"></iframe>

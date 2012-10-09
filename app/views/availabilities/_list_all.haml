@@ -1,0 +1,6 @@
+- if availabilities && availabilities.any?
+  - availabilities.each do |a|
+    - if !defined?(@this_year) || @this_year < Date.parse(a['date_start']).year
+      %h4.year-header= @this_year = Date.parse(a['date_start']).year
+
+    = render 'availabilities/list', :a => a, :place => place

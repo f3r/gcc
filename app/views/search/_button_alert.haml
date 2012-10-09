@@ -1,0 +1,11 @@
+#custom-alerts
+  .header= t("alerts.custom_alerts")
+  .content
+    - if logged_in?
+      %button.btn.save-search{"data-toggle" => "modal", :href => "#save_search"}
+        %i.icon-time
+        =t("alerts.create_alert")
+    - else
+      %a.btn.save-search{:class => 'trigger_signup', :href => '#'}
+        %i.icon-time
+        =t("alerts.create_alert")

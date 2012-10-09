@@ -1,0 +1,8 @@
+%li.divider-title= "#{t("template.header.preferences.choose_language")}..."
+%li.divider
+  - Locale.active.each do |locale|
+    %li{ get_current_language == locale.code ? {:class => "active"} : {} }
+      = link_to :change_preference => true, :locale => locale.code do
+        %span.check &#10003;
+        = locale.name_native
+%li.divider

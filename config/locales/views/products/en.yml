@@ -1,0 +1,83 @@
+en:
+  products:
+    no_listings_home:   "You haven't created any listing yet, <a href='%{link}'> Create one </a>"
+    no_published_listings: "Your listing is invisible, pls review <a href='%{link}'> here </a> and publish it now so people can start hiring you today!"
+    my_listings:        'My %{product_plural}'
+    no_listings:        "You haven't created any listing yet"
+    my_favorites:       'My Favorites'
+    add_a_listing:      'Add a %{product_name}'
+    list_your_product:  'List your %{product_name}'
+    price_filter:       'Price %{price_unit}'
+    preview:            'Preview'
+    view_listing:       'View'
+    listed:             'Listed'
+    invisible:          'Invisible'
+    title:              'Title'
+    description:        'Description'
+    user_reached_limit: 'You cannot add more listings'
+    updated:            'Listing updated'
+    reviews_title:      'Reviews'
+    no_reviews:         'No reviews yet'
+    review_score_label: 'Rate services on a scale of 1-5'
+    review_body_label:  'Write a few lines about your experience'
+    review_average_label: 'Review average'
+    panoramas:          'Panoramas'
+    wizard:
+      step1_title:  'ie. "DJ Tiësto'
+      step1_description: "Enter more information about yourself here, such as general availability, qualifications and specific tasks that you are experienced with. Example: I'm able to work weekdays and weekend evenings. I have my own car."
+      panoramas_link:   'Use Pano2VR to generate the panoramas'
+      upload_panoramas_hint: 'We support Flash and HTML5 panoramas.'
+      what_city:        'What city?'
+      description_title: Description
+      general_title:     General
+      custom_fields_title: Details
+      description_title: Description
+      general_title: General Information
+      address_title: Address
+      photos_title: Photos
+      panoramas_title: Panoramas
+      amenities_title: Amenities
+      traits_title: Genres
+      calendar_title: Calendar
+      price_and_conditions_title: Price and Conditions
+      pricing_title: Pricing
+      additional_costs_title: Additional Costs
+      terms_title: Terms
+      place_and_building_facilities_title: "Place & Building facilities"
+      furnishings_title: Conveniences
+      miscellaneous_title: Miscellaneous
+      sports_and_recreation_title: "Sports & Recreation"
+      photos:
+        upload_photo_hint_min: We support jpg and png images. You must upload a minimum of %{min_photos_count} images.
+        upload_photo_hint_no_min: We support jpg and png images.
+    messages:
+      listing_published:      Your listing is now published!
+      listing_publish_error:  "Sorry, we can not publish your listing because of missing information."
+      listing_unpublished:    Your listing is now invisible
+      listing_deleted:        Listing successfully deleted
+      listing_deletion_error: Listing deletion error
+      listing_photos_count_error: You need at least %{photo_count} photos
+    search:
+      sort_by: Sort by
+      results:
+        zero: No results
+        one: "1 result"
+        other: "%{count} results"
+      price_lowest: Price (Lowest First)
+      price_highest: Price (Highest First)
+      category_filters_title: 'Type'
+    search_map:
+      redo_search: Redo search in map
+      redo_prompt_text: Check this box to see new search results as you move the map
+      redo_yes: Yes, please
+      redo_no: No, thanks
+    inquiries:
+      start_date:       'Date'
+      duration:         'Duration'
+      price:            'Price'
+    price_per_month:    'Price per month'
+    price_per_week:     'Price per week'
+    price_per_hour:     'Price per hour'
+    price_per_day:      'Price per day'
+    price_sale:         'Sale price'
+    edit_listing:       'Edit Listing'

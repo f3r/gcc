@@ -1,0 +1,15 @@
+.row-fluid
+  .span6
+    - CustomField.all.in_groups(2)[0].compact.each do |cf|
+      .row-fluid
+        .span6
+          .details_label= cf.label
+        .span6
+          .details_value= custom_field_value(cf, @resource)
+  .span6
+    - CustomField.all.in_groups(2)[1].compact.each do |cf|
+      .row-fluid
+        .span6
+          .details_label= cf.label
+        .span6
+          .details_value= custom_field_value(cf, @resource)

@@ -1,0 +1,11 @@
+- actions ||= false
+- if product.panoramas.any?
+  .well#panoramas_list
+    %ul.gallery
+      - product.panoramas.each_with_index do |panorama, idx|
+        %li{:id => dom_id(panorama)}
+          = link_to "Panorama #{idx + 1}", panorama.embed_url, :target => '_blank'
+          - if actions
+            %span.formats
+              = "(#{panorama.formats})"
+            = link_to "[x]", listing_panorama_path(@resource, panorama), :target => '_blank', :method => :delete, :class => 'remove', :remote => true

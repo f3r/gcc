@@ -1,0 +1,30 @@
+####################################################################################
+# TEMPLATE
+####################################################################################
+en:
+  template:
+    header:
+      menu:
+        find: Find a %{product_name}
+        how_it_works: How it works
+        why_site: "Why %{site_name}?"
+        help: Help
+        cityguide_sg: "City Guide: Singapore"
+        cityguide_hk: "City Guide: Hong Kong"
+        cityguide_kl: "City Guide: Kuala Lumpur"
+        photography_faq: Photography FAQ
+        community_support: Community Support
+        my_account: My Account
+        my_profile: My Profile
+        my_places: My Properties
+        my_favorite_places: My Favorite Places
+        my_alerts: My Alerts
+        add_a_place: Add a Property
+
+      preferences:
+        choose_language: Choose language
+        choose_currency: Choose currency
+        choose_size_unit: Choose size unit
+        choose_speed_unit: Choose speed unit
+        english_native: English
+        spanish_native: Español

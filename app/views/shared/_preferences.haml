@@ -1,0 +1,10 @@
+%ul.tab.preference-wrapper
+  %li#toggle-preferences.dropdown
+    %a.dropdown-toggle{:href => "#"}
+      - if current_currency
+        %span.selector_label
+          = current_currency.label
+    %ul.dropdown-menu
+      %li.arrow
+        - PreferenceSection.active.each do |pref_section|
+          = render "shared/#{pref_section.code}"

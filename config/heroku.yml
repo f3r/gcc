@@ -1,0 +1,37 @@
+# Format:
+#
+# <heroku_san shorthand name>:
+#   app: <Heroku app name>
+#   stack: <Heroku stack, optional>
+#   config:
+#     - <Heroku config:var name>: <Heroku config:var value>
+#
+
+default_config: &default_config
+  BUNDLE_WITHOUT:       "development:test"
+  PRODUCT_CLASS_NAME:   Service
+  S3_ACCESS_KEY_ID:     AKIAJOJEIAZ6LOVHDFDA
+  S3_SECRET_ACCESS_KEY: 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
+  RECAPTCHA_PUB_KEY:    6Lcoo9ASAAAAALmNU_4LUOy4W11qRueZ9C3FXu3h
+  RECAPTCHA_PVT_KEY:    6Lcoo9ASAAAAAHM-sKYibqSA16qaCYR9IaG8SknD
+  RAKISMET_KEY:         bcba68e5b091
+  COOKIE_STORE_KEY:     _TSE_Session
+  PAYPAL_ACCOUNT:       nico_1334303615_biz@heypal.com
+  PAYPAL_MODE:          test
+
+djconnect-tse:
+  app:   djconnect-tse
+  config:
+    <<: *default_config
+    SITE_URL:             http://globalclubconnect.com
+    # Database and CDN
+    DATABASE_URL:         mysql2://heypaladmin:HYpl99db@heypal-useast-1.c7xsjolvk9oh.us-east-1.rds.amazonaws.com/djconnect-tse
+    S3_BUCKET:            djconnect-tse
+    # Social Networks
+    FB_APP_ID:            440491242660057
+    FB_APP_SECRET:        9c052b96e9fc736bb2f3b8f916b0c9b8
+    # Security
+    SECRET_TOKEN:         6e64338f0cccfec4900baddee971501f9af3e701744698b9610a3eb14b42d40cc223b536337e50e5f2f139f85337d5ace1c350e33730afed4d7a3f71a0e469f5
+    # Paypal (production, to change to test: comment out next two lines)
+    PAYPAL_ACCOUNT:       sales@heypal.com
+    PAYPAL_MODE:          production

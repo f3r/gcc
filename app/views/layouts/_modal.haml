@@ -1,0 +1,26 @@
+- no_sections ||= false
+- callback ||= false
+
+.modal.fade{:id => modal_id}
+  - if no_sections
+    = yield
+  - else
+    .modal-header
+      %a{:href => '#', :class => 'close', 'data-dismiss' => 'modal'}x
+      - if content_for?(:modal_header)
+        = content_for :modal_header
+    .modal-body
+      = yield
+
+    - if content_for?(:modal_footer)
+      .modal-footer
+        = content_for :modal_footer
+
+- if callback
+  :javascript
+    $('##{modal_id}').on('shown', function(){
+      #{callback}();
+    });
+
+:javascript
+  $('##{modal_id}').modal('show');

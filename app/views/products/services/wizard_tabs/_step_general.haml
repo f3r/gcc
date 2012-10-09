@@ -1,0 +1,15 @@
+.panel-wrapper
+  %fieldset.well.form-horizontal
+    .control-group.required
+      = f.label :title, 'DJ Name', :class => 'control-label'
+      .controls
+        = f.text_field :title, :class => "input-xlarge validate[required] autosave"
+    .control-group
+      = f.label :description, t("services.description"), :class => 'control-label'
+      .controls
+        = f.text_area :description, :class => "span8 autosave", :rows => 5, :style => "width: 440px;"
+    / = render 'products/price_fields', :f => f
+    / .control-group
+    /   = f.label :description, t("services.description"), :class => 'control-label'
+    /   .controls
+    /     = f.text_area :description, :class => "span8 autosave", :rows => 5, :style => "width: 440px;"

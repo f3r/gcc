@@ -1,0 +1,37 @@
+<%= open_modal :crop_modal, 'profiles/avatar_crop_modal', :callback => 'Cropper.load', :no_sections => true %>
+
+var jcrop_api, boundx, boundy;
+
+// $('form#image_cropping_form').submit(function() {
+//   // Keep image proportion for cropping
+//   var h = $('img#jcrop_target').height();
+//   var w = $('img#jcrop_target').width();
+//   $('#image_cropper_image_h').val(h);
+//   $('#image_cropper_image_w').val(w);
+// });
+
+/*$('#jcrop_target').Jcrop();
+  onChange: updatePreview,
+  onSelect: updatePreview,
+  bgOpacity: .3,
+  aspectRatio: 1
+},function(){
+  // Use the API to get the real image size
+  var bounds = this.getBounds();
+  boundx = bounds[0];
+  boundy = bounds[1];
+  // Store the API in the jcrop_api variable
+  jcrop_api = this;
+});
+
+function updatePreview(c)
+{
+  if (parseInt(c.w) > 0)
+  {
+    $('#image_cropper_crop_x').val(c.x);
+    $('#image_cropper_crop_y').val(c.y);
+    $('#image_cropper_crop_w').val(c.w);
+    $('#image_cropper_crop_h').val(c.h);
+  }
+};
+*/

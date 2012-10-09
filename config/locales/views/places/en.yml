@@ -1,0 +1,241 @@
+####################################################################################
+# PLACES
+####################################################################################
+en:
+  places:
+    bedrooms_count:
+      one: 1 Bedroom
+      other: "%{count} Bedrooms"
+    bathrooms_count:
+      one: 1 Bathroom
+      other: "%{count} Bathrooms"
+    per_night: Per Night
+    per_week: Per Week
+    per_month: Per Month
+    edit: Edit
+    delete: Delete
+    invisible: Invisible
+    listed: Listed
+    rent_word: Rent
+    inquire: Inquire
+    no_obligation: no obligation
+    minimum_stay: Minimum Stay
+    maximum_stay: Maximum Stay
+    minimum_of: Minimum Of
+    maximum_of: Maximum Of
+    no_maximum: No Maximum
+    no_minimum: No Minimum
+    this_is_a_preview: This is a Preview
+    photos: Photos
+    map: Map
+    calendar: Calendar
+    details: Details
+    questions_title: "Questions (%{count})"
+    other_properties: "Other Properties by this agent (%{count})"
+    house_rules: House rules
+    type: Type
+    size: Size
+    bedrooms: Bedrooms
+    beds: Beds
+    guests: Guests
+    guests_range:
+      one: 1
+      other: "1 - %{count}"
+    bathrooms: Bathrooms
+    price_per_night: Price per Night
+    price_per_week: Price per Week
+    price_per_month: Price per Month
+    final_cleanup: Final Cleanup
+    security_deposit: Security Deposit
+    max_guests: Number of Guests
+    num_bedrooms: Number of Bedrooms
+    num_beds: Number of Beds
+    num_bathrooms: Number of Bathrooms
+    description: Description
+    address: Address
+    currency: Currency
+    check_in_after: Check In After
+    check_out_before: Check Out Before
+    rules: House Rules
+
+    # TODO: delete with rent.haml
+    rent:
+      place_details: Place details
+      stay_details: Stay details
+      check_in_flexible: Flexible
+      duration: Duration
+      nights: Nights
+      clear_selection: Clear selection
+      read_rent_agreement: I have read and agree to the lease agreement
+      continue: Continue
+
+    cancellation: Cancellation
+    cancellation_policy: Cancellation Policy
+    cancellation_policies:
+      flexible: Flexible 30-Day
+      moderate: Moderate
+      strict: Strict
+      strict_7_day: Strict 7-Day
+    cancellation_policy_modal_content: |
+      <p>How is the Place's price calculated?</p>
+      <p>%{site_name} pricing depends on the length of your reservation. Reservations can be daily, weekly or monthly.</p>
+      <ul>
+        <li><b>Daily</b>: Reservations for less than a week</li>
+        <li><b>Weekly</b>: Reservations longer than a week but shorter than a month</li>
+        <li><b>Monthly</b>: Reservations longer than a month</li>
+      <p>Property owners and agents can sometimes offer discount rates for weekly and monthly stays. If your reservation is weekly or monthly, and the agent has introduced a discount, you will be charged at the discounted price for all the days of your stay!</p>
+      <p>What cancellation policies are available?</p>
+      <p>There are 2 cancellation policies on %{site_name}:</p>
+      <ul>
+        <li>
+          <strong>Flexible 30-Day Cancellation Policy</strong>
+          <p>If you wish to cancel your %{site_name} reservation at least 30 days before the reservation date, you will not be charged and any security deposit you have paid will be refunded to you. If you wish to cancel your %{site_name} reservation less than 30 days but at least 7 days before the reservation date, you will be charged 10% of the security deposit. If you cancel your %{site_name} reservation less than 7 days before the reservation date, you will be charged the entire security deposit.</p>
+        </li>
+        <li>
+          <strong>Strict 7-Day Cancellation Policy</strong>
+          <p>If you wish to cancel your %{site_name} reservation at least 7 days before the reservation date, you will be charged 10% of the security deposit. If you cancel your %{site_name} reservation less than 7 days before the reservation date, you will be charged the entire security deposit.</p>
+        </li>
+      </ul>
+    edit: Edit
+    publish: Publish
+    unpublish: Unpublish
+
+    title: Title
+    wizard:
+      list_your_place: List Your Place
+      what_city_is_your_place_in: What city is your place in?
+      place_type: What kind of place is it?
+      how_many_bedrooms: How many bedrooms
+      max_guests: Max number of Guests
+      save_and_continue: "Save and Continue &raquo;"
+      i_agree_to_the: I agree to the
+
+      next_step: "Next Step &raquo;"
+      previous_step: "&laquo; Previous Step"
+
+      back_to_property: Back to Property
+      photos:
+        read_photo_faq: "Read some tips on providing great pictures for your %{site_name} properties"
+        tip: You can sort your photos by drag and drop
+        primary: Primary
+        upload_photo_hint: We support jpg and png images. You must upload a minimum of 3 images.
+        no_caption: No Caption
+        are_you_sure_delete_photo: Are you sure you want to remove this photo?
+        click_here_to_add_caption: Click here to add caption
+      pricing:
+        final_cleanup_hint: The cost of cleaning the place once rental is finished
+        security_deposit_hint: ""
+        head_cancellation:     "If you wish to cancel your %{site_name} reservation"
+        strict_cancellation:   "at least 7 days before the reservation date, you will be charged 10% of the security deposit."
+        moderate_cancellation: "full refund 5 days prior to arrival, except fees"
+        flexible_cancellation: "at least 30 days before the reservation date, you will not be charged and any security deposit you have paid will be refunded to you."
+        see_our: See our
+        for_more_info: for more info
+      amenities:
+        select_one: Please select at least one
+        do_you_allow_smoking: Do you allow smoking in your apartment/balcony?
+        select_all: select all
+        select_none: select none
+      calendar:
+        calendar_hint: Please let us know what dates the place is available for rent
+        add_new: Add New
+        new_date_help: "You can add dates or a range of dates when your place is either unavailable, or you'd like to change the daily rate, which is currently set to %{currency_sign}%{price_per_night}"
+        add: Add
+        edit: Edit
+        close: Close
+        remove: Remove
+        remove_confirmation: Remove this period from your calendar?
+        to: To
+        new_price: New price
+        unavailable: Unavailable
+        something_went_wrong: Something went wrong. Please check again later.
+        status: Status
+        dates: Dates
+
+    availabilities:
+
+      # TODO: remove/ used od availability.haml and availabilities_controller.rb
+      # availability: Availability
+      # payment_details: Payment details
+      # length_of_stay: Length of stay
+      # total_days: Days
+      # sub_total: Subtotal
+      # price_final_cleanup: Cleanup Fee
+      # price_security_deposit: Deposit
+      # add_address: Add address
+      # confirm_rental: Confirm Rental Request
+      # change_address: Change address
+      # billed_address: You will be billed at this address
+
+      messages:
+        something_went_wrong: Something went wrong. Please check your availabilities again.
+
+    search:
+      guests:
+        one: "1 guest"
+        other: "%{count} guests"
+      arriving_on: Arriving on
+      departing_on: Departing on
+      price_size_lowest: Price/Size (Lowest First)
+      price_size_highest: Price/Size (Highest First)
+      type: Type
+      type_title: Type
+      pricing_title: Price per Month
+      sorry_no_matches: "Sorry, there are no properties that match your criteria"
+      no_result: No results found. Try changing some of your search options.
+      no_favorites: "You don't have any favorites, try adding one!"
+      maximum_price: Maximum price
+      minimum_price: Mininum price
+      city: City
+      dates: Dates
+
+    types:
+      apartment: Apartment
+      house: House
+      villa: Villa
+      room: Room
+      other_space: Other space
+
+    amenities:
+      kitchen: Kitchen
+      hot_water: Hot Water
+      hot_tub: Hot Tub
+      elevator: Elevator
+      parking_included: Parking Space
+      heating: Heating
+      handicap: Handicap accessible
+      doorman: Doorman
+      aircon: Air Conditioning
+      buzzer_intercom: Buzzer/Intercom
+      internet: Internet
+      tv: TV
+      dryer: Dryer
+      internet_wifi: Wifi
+      cable_tv: Cable TV
+      washer: Washer
+      pets_allowed: Pets Allowed
+      breakfast: Breakfast
+      smoking_allowed: Smoking Allowed
+      suitable_events: Suitable for Events
+      family_friendly: Family Friendly
+      gym: Gym
+      jacuzzi: Jacuzzi
+      tennis: Tennis
+      pool: Pool
+
+    messages:
+      place_published:      Your place is now listed!
+      place_publish_error:  "Sorry, we can not publish your place because of missing information."
+      place_unpublished:    Your place is now invisible
+      place_deleted:        Place successfully deleted
+      place_deletion_error: Place deletion error
+      logged_to_rent:       You must be logged in to rent a place
+      date_must_be_future:  'date must be future, after today'
+      date_must_be_after:   'end date must be after initial date'
+      occupied:             'Occupied'
+
+    questions:
+      ask_question: Ask a question
+      delete_this_question: Delete this Question?
+      unknown: Unknown
+      owners_answer: Owner's Answer

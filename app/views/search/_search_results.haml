@@ -1,0 +1,10 @@
+- my_products  ||= false
+
+- if @results.blank?
+  .row.no-results
+    .span9
+      .alert.alert-info= t("places.search.no_result")
+- else
+  %ul.list-display
+    #search_result_list
+      = render 'results_list_view', :my_products => my_products

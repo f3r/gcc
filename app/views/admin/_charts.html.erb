@@ -1,0 +1,9 @@
+<%= setup_google_visualizations('annotatedtimeline').html_safe %>
+
+<div class='stats'>
+  <h5><%= title %></h3>
+  <%= annotated_timeline_for(dates, :width => 700, :height => 300) do |atl| %>
+    <% atl.add_line('Users', users, :value => :to_f) %>
+    <% atl.add_line('Places', places, :value => :to_f) %>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+= form_for :user, :url => profile_path, :method => :put, :html => {:id => "change_address", :class => 'form-horizontal'} do |f|
+  .section-header= t('users.section_header_billing_address')
+  = render 'profiles/billing_address_fields', :f => f
+  .clearfix
+  .span4.float-right
+    = f.submit t(:save), :class => 'btn btn-primary'
+  .clearfix

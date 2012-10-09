@@ -1,0 +1,14 @@
+<%= semantic_form_for [:admin, @menu_section] do |f| %>
+	<%= f.inputs "\"#{@menu_section.name}\"" do %>
+		<%= f.input :cmspages, :as => :check_boxes, :label => "Items" %>
+		<ol>
+			<li><label>&nbsp</label>
+				<%= link_to "New Cmspage", new_admin_cmspage_path%> | 
+				<%= link_to "New External Link", new_admin_external_link_path%>
+			</li>
+		</ol>
+	<%end%>
+	<%= f.actions do %>
+      <%= f.action :submit %>
+    <% end %>
+<%end%>

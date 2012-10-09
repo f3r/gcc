@@ -1,0 +1,3 @@
+.manage.pull-right
+  = button_to t("places.edit"), edit_listing_path(@resource), :method => :get, :class => 'btn medium edit'
+  = product_status_badge(@resource)

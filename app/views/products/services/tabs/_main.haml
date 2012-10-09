@@ -1,0 +1,12 @@
+#main-tab.tab-pane.active
+  .row
+    .span3.profile_pic
+      = image_tag @resource.primary_photo, :width => '200'
+    .span7
+      =# render 'products/custom_values'
+      .row-fluid.about
+        .span12
+          %p= resource.description
+      .row-fluid
+        .span12
+          = render :partial => 'shared/social_icons', :locals => { :resource => resource }

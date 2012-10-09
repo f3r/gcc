@@ -1,0 +1,41 @@
+####################################################################################
+# Front page and static pages
+####################################################################################
+en:
+  pages:
+    suggest_thank_you_message: "Thank you for your message. %{site_name} is expanding and we will let you know when '%{city}' is available!"
+    contact_query_response_message: "Thank you for contacting us, our support team will contact you soon."
+    front_page:
+      search_button: Find
+      search_place_stay_in: Search for a place to stay in
+      other_cities: Other cities?
+      description:
+        one: "%{site_name}"
+        two: connects you with
+        three: "trusted, professional, short-term"
+        four: accomodations
+        full: "%{site_name} connects %{role_user_plural} with %{role_agent_plural}"
+      carousel:
+        one: "The Clift - an elegant Singapore downtown loft"
+        two: "Cavenagh - perfect for families coming to Singapore"
+        three: "Kuala Lumpur - now featured on %{site_name}!"
+        four: "Singapore - a rising global business powerhouse"
+        five: "Hong Kong - business gateway to China"
+      teaser:
+        title: "Why should you use %{site_name}?"
+        one: "%{site_name} offers flexible, high-quality accommodations for you. %{site_name} is the destination site to find your perfect short-term or medium-term stay."
+        two: "%{site_name} works with professional Agents and Landlords to ensure a comfortable and professional experience you can trust."
+        three: "%{site_name} offers high quality and distinct properties - have your own home away from home for less then the price of a 5 star hotel."
+      trust:
+        one: Small World Group
+        two: National Research Foundation
+        three: PropNex
+        four: Far East Organization
+      social:
+        facebook: Join us on Facebook
+        twitter: Follow us on Twitter
+        blog: Read our Blog
+      city_modal:
+        title: Can't find the city you were looking for?
+        description: "We're working hard to expand %{site_name}. Please tell us which cities you would like to see next in %{site_name}."
+        footer: "Leave us your email address and we will tell you when new cities are added to %{site_name}."

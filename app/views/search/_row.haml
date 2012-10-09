@@ -1,0 +1,45 @@
+- my_products  ||= false
+- my_favorites ||= false
+- url = my_products ? listing_path(resource) : seo_product_url(resource)
+
+%li{:id => dom_id(resource), "data-url" => url, :class => my_products ? 'search-item' : 'search-item-clickable'}
+  .thumb.data-block{:class => "#{product_class_name}_photo"}
+    - unless my_products
+      %span{:class => "marker_point" ,:id => "marker_point_#{resource.id}"}
+    = link_to url do
+      = image_tag(resource.primary_photo)
+  .info
+    .title
+      %h3
+        = link_to resource.title, url
+    .dj_genres
+      = render :partial => 'shared/genres', :locals => { :resource => resource }
+ 
+    .social_icons
+      = render :partial => 'shared/social_icons', :locals => { :resource => resource }
+
+  .data-block.last-child
+    - if my_products
+      .manage
+        %span.edit_delete_buttons
+          %a.btn.large.small{:title => t("places.edit"), :href => "#{edit_listing_path(resource)}"}
+            = t("edit")
+          = link_to t("delete"), listing_path(resource), :method => :delete,  :class => 'btn large small', :confirm => t("are_you_sure")
+        - if resource.published
+          %span.label.place_status.label-success=  t("products.listed")
+        - else
+          %span.label.place_status=  t("products.invisible")
+    - else
+      .price
+        .figure
+          %span= "##{ranking}"
+        .micro= "#{resource.points} DJ Points"
+        /FB likes count
+        - fb_cf_url = facebook_url_custom_field(resource)
+        - count = fb_likes_count(fb_cf_url) if fb_cf_url.present?
+        .micro
+          = "#{count} FB likes" if count.present?
+              
+        -if resource.product.has_review?
+          .reviews
+            = stars(resource.product.review_avg)

@@ -1,0 +1,4 @@
+= f.select :guests, max_guest_options, :style => "width:100px", :autocomplete => 'off'
+= f.text_field :check_in, :placeholder => t("places.search.arriving_on"), :class => 'textbox big check-in-picker', "data-date" => :from, 'autocomplete' => 'off'
+= "-"
+= f.text_field :check_out, :placeholder => t("places.search.departing_on"), :class => 'textbox big check-out-picker', "data-date" => :to, 'autocomplete' => 'off'

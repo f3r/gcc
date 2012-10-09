@@ -1,0 +1,18 @@
+<h2><%= t("mailers.salutation", :name => @owner.full_name) %></h2>
+<p><%= t("mailers.inquiry_confirmed_owner.intro", :renter_name => @renter.anonymized_name, :target_link => (link_to @target.title, seo_product_url(@target))).html_safe %>
+<% if @inquiry.check_in %>
+<%= t("mailers.inquiry_confirmed_owner.duration", :length => @inquiry.length_in_words, :starting_on => @inquiry.check_in.to_formatted_s(:long)) %>
+<% end %>
+</p>
+<% if @inquiry.message.present? %>
+<p><% t("mailers.inquiry_confirmed_owner.message_from_user", :message => @inquiry.message) %></p>
+<% end %>
+</br>
+<%
+login_link = link_to site_name, new_user_session_url
+messages_link = link_to t("mailers.messages_section"), messages_url
+%>
+<p><%= t("mailers.inquiry_confirmed_owner.please_login", :messages_link => messages_link, :login_link => login_link).html_safe %></p>
+<% content_for(:footer_ps) do %>
+<p><%= t("mailers.inquiry_confirmed_owner.footer_ps") %></p>
+<% end %>

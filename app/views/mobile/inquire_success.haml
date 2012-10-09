@@ -1,0 +1,9 @@
+- content_for(:title) { "Success!!"}
+
+Your inquiry has been sent successful!
+Please check your email for more information
+
+%br
+%br
+= link_to mobile_path do
+  %button{:type => :submit, "data-theme" => :a, "data-mini"=>:true, :class => "ui-btn-hidden", "aria-disabled" => false} Continue

@@ -1,0 +1,25 @@
+<%= f.semantic_fields_for :product do |p| %>
+  <%= p.inputs "General" do %>
+  <%= p.input :published %>
+  <%= p.input :user %>
+  <%= p.input :city %>
+  <%= p.input :title %>
+  <%= p.input :description %>
+  <% end %>
+  
+  <%= p.inputs "Location" do%>
+    <%= p.input :address_1 %>
+    <%= p.input :address_2 %>
+    <%= p.input :zip %>
+    <%= p.input :lat %>
+    <%= p.input :lon %>
+    <%= p.input :radius %>
+  <% end %>
+  
+  <%= p.inputs "Pricing" do %>
+    <%= p.input :currency %>
+    <%= p.input "price_#{f.object.class.price_unit}".to_sym %>
+  <% end %>
+<% end %>
+
+

@@ -1,0 +1,5 @@
+- content_for(:title) do
+  Error
+- page = Rails.cache.read "page_error_500"  
+- page = Page.find_by_page_url('error_500') if page.nil?
+= raw ((page.description unless page.nil?) || "500") 

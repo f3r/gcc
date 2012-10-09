@@ -1,0 +1,578 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  ####################################################################################
+  # App General Stuff
+  ####################################################################################
+  app_name:   '%{site_name}'
+  submit:     Submit
+  submitting: Submitting
+  cancel:     Cancel
+  save:       Save
+  update:     Update
+  contact:    Contact
+  product_name: 'DJ'
+  product_name_plural: 'DJs'
+  upload:     Upload
+  uploading:  Uploading...
+  app_domain: Squarestays.com
+  main_page_title: Squarestays.com
+  footer_text: "&copy; <a href='/'>SquareStays.com</a> 2012"
+  contact: Contact
+  facebook_url: 'https://www.facebook.com/squarestays'
+  twitter_url:  'https://twitter.com/Squarestays'
+
+  ####################################################################################
+  # App Menus
+  ####################################################################################
+  profile:           Profile
+  notifications:     Notifications
+  my_account:        My Account
+  my_profile:        My Profile
+  my_favorite_places: My Favorites
+
+  ####################################################################################
+  # Account creation & management
+  ####################################################################################
+  create_new_account:         Create New Account
+  user_confirmed:             Your account has been successfully confirmed!
+  email_confirmed:            Your email address has been successfully confirmed!
+  user_created:               Your account has been successfully created!
+  invalid_confirmation_code:  Invalid Confirmation Code
+  enter_confirmation_code:    Enter Confirmation Code
+  resend_confirmation:        Resend Confirmation
+  signup_for_an_account:      Signup for a new account
+  enter_your_email:           Enter your Email
+  reset_password:             Reset Password
+  forgot_password:            Forgot Password
+  confirmation_code:          Confirmation code
+  confirmation_email_sent:    Confirmation email sent
+  register:                   Register
+  login:                      Global Club Connect Login
+  login_using:                Login using
+  sign_in:                    Sign In
+  sign_out:                   Sign Out
+  switch_to_login:            Already have an account? Sign in
+  invalid_login:              Invalid Login
+  password_reset_instruction_sent: Password reset instruction has been sent to your email.
+  password_reset_failed:      Password reset failed.
+  signup_complete:            Signup Complete
+  signup_complete_text:       "Thanks for signing up! However, you need to confirm your account. Please check your email and click the link to verify it."
+  confirm_reset_password:     Confirm the password
+  enter_your_new_password:    Enter your new password
+  choose_a_password:          Choose a password for your account
+  password_reset_success:     Password reset successful
+  password_set_first_time:    Your password was set successfully
+  oauth_connected:            You have successfully connected your %{provider} account!
+  facebook_connected:         You have successfully connected your facebook account!
+  twitter_connected:          You have successfully connected your twitter account!
+  authentication_fail:        We are unable to authenticate you at the moment. Please try again.
+  signup_needed_to_connect:   "We need to connect the details to your GCC account, please provide us the following."
+  i_have_an_account:          Already a GCC member?
+  choose_language:            Choose language
+  choose_currency:            Choose currency
+
+
+  ####################################################################################
+  # General field names and validation errors
+  ####################################################################################
+  email:                Email
+  email_example:        e.g. mail@mail.com
+  unconfirmed_email:    Unconfirmed email
+  invalid_email:        Invalid Email
+  password:             Password
+  confirm_password:     Confirm Password
+  terms_and_conditions: Terms and Conditions
+  registration_warning: GCC won't publish anything without your prior consent
+  cancel_email_change:  Cancel email change
+
+  ####################################################################################
+  # Section Headers
+  ####################################################################################
+  section_header_user_profile:      Personal Information
+  section_header_user_information:  User Information
+  section_header_billing_address:   Billing Address
+  section_header_user_password:     Password
+  section_header_bank_account:      Bank Account
+
+  ####################################################################################
+  # User Profile Data
+  ####################################################################################
+  first_name:          First Name
+  last_name:           Last Name
+  name:                Name
+  full_name:           Full Name
+  name_example:        e.g. John Smith
+  gender:              Gender
+  gender_undisclosed:  Undisclosed
+  gender_male:         Male
+  gender_female:       Female
+  mobile_phone:        Mobile Phone Number
+  birthdate:           Birthdate
+  billing_address:     Billing Address
+  reviews:             Reviews
+  profile_req_message: Please click Edit on your profile to enter additional information needed to make reservations on SquareStays.
+  profile_current_pwd: Current Password
+  profile_retype_pwd:  Re-type Password'
+  change_photo:        Change photo
+  change_photo_description: Uploading a current photo helps renters evaluate your profile. While its not required, it helps build trust with property owners if you complete your profile.
+  use_facebook_photo:   Use Facebook Photo
+  upload_a_new_photo:   Upload a new Photo
+  saving_photo:         Saving photo
+  delete_photo:         Delete photo
+  private_field:        Private. Only visible to those that have an active transaction with you
+  fully_private_field:  Private. Only visible to GCC
+  public_field:         Public. Anyone can see this information
+  linked_accounts:      Linked Accounts
+  holder_name:          Holder Name
+  account_number:       Account number
+  bank_code:            Bank code
+  branch_code:          Branch code
+  iban:                 IBAN
+  swift:                Swift
+  choose_country:       Choose a country
+  no_linked_accounts:   You don't have any social accounts linked to the site yet
+
+  ####################################################################################
+  # Transactions/Inquiries
+  ####################################################################################
+
+  confirm_rental:          Confirm Rental Request
+  preapprove_rental:       Pre-approve Rental Request
+  awaiting_request_agent:  "Waiting for guest to make final confirmation"
+  confirmed_rental_guest:  "You have confirmed the rental."
+  confirmed_rental_guest2: "Awaiting for final confirmation from the Agent."
+  awaiting_payment_guest:  "Awaiting for Guest to make paypal payment"
+  payment_fee_desc:        "%{site_name} Fee for %{title}"
+
+  ####################################################################################
+  # Authentications
+  ####################################################################################
+  link_accounts:      + link account
+  edit_account:       Edit Account
+  account_settings:   Edit
+
+  ####################################################################################
+  # Wizard
+  ####################################################################################
+
+  general_info: General Info
+  general_information: General Information
+  photos: Photos
+  amenities: Amenities
+  calendar: Calendar
+  price_and_conditions: Price and Conditions
+  what_city_is_your_place_in: What city is your place in?
+  additional_costs: Additional Costs
+  pricing: Pricing
+  something_went_wrong: Something went wrong. Please check again later.
+  you_can_add_dates: "You can add dates or a range of dates when your place is either unavailable, or you'd like to change the daily rate, which is currently set to"
+  add: Add
+  close: Close
+  new_price: New price
+  unavailable: Unavailable
+  to: To
+  address_1: Address 1
+  address_2: Address 2
+  directions: Directions
+
+  ####################################################################################
+  # Place types
+  ####################################################################################
+
+  apartment: Apartment
+  house: House
+  villa: Villa
+  room: Room
+  other_space: Other space
+
+  ####################################################################################
+  # Amenities
+  ####################################################################################
+
+  kitchen: Kitchen
+  hot_water: Hot Water
+  hot_tub: Hot Tub
+  elevator: Elevator
+  parking_included: Parking Space
+  heating: Heating
+  handicap: Handicap accessible
+  doorman: Doorman
+  aircon: Air Conditioning
+  buzzer_intercom: Buzzer/Intercom
+  internet: Internet
+  tv: TV
+  dryer: Dryer
+  internet_wifi: Wifi
+  cable_tv: Cable TV
+  washer: Washer
+  pets_allowed: Pets Allowed
+  breakfast: Breakfast
+  smoking_allowed: Smoking Allowed
+  suitable_events: Suitable for Events
+  family_friendly: Family Friendly
+  gym: Gym
+  jacuzzi: Jacuzzi
+  tennis: Tennis
+  pool: Pool
+
+  ####################################################################################
+  # Places Wizard
+  ####################################################################################
+  list_your_place: List Your Place
+  what_city: What city is your place in?
+  place_type: What kind of place is it?
+  how_many_bedrooms: How many bedrooms
+  max_guests: Max number of Guests
+  save_and_continue: Save and Continue &raquo;
+  save_and_publish: Save and Publish
+  title: Title
+  type: Type
+  i_agree_to_the: I agree to the
+  terms_and_conditions: Terms and conditions
+  description: Description
+  address: Address
+  max_guests: Number of Guests
+  num_bedrooms: Number of Bedrooms
+  num_beds: Number of Beds
+  num_bathrooms: Number of Bathrooms
+  address_1_help: "Street Address, Company"
+  address_2_help: Apartment / Unit Number / Suite
+  size: Size
+  city: City
+  state: State
+  zip_code: Zip/Postal Code
+  country: Country
+  next_step: Next Step &raquo;
+  previous_step: "&laquo; Previous Step"
+  are_you_sure: Are you sure?
+  are_you_sure_delete_photo: Are you sure you want to remove this photo?
+
+  amenities: Amenities
+  select_one: Please select at least one
+  place_and_building_facilities: "Place & Building facilities"
+  furnishings: Conveniences
+  miscellaneous: Miscellaneous
+  sports_and_recreation: "Sports & Recreation"
+
+  preview_button: Preview &raquo;
+
+  final_cleanup: Final Cleanup
+  final_cleanup_hint: The cost of cleaning the place once rental is finished
+  security_deposit: Security Deposit
+  security_deposit_hint: The wireframe has this but I don't have the text yer
+
+  size: Size
+
+  terms: Terms
+
+  check_in_before: Check In Before
+  check_out_before: Check Out Before
+  check_in_flexible: Flexible
+
+  currency: Currency
+  minimum_stay: Minimum Stay
+  maximum_stay: Maximum Stay
+  minimum_of: Minimum Of
+  maximum_of: Maximum Of
+
+  no_maximum: No Maximum
+  no_minimum: No Minimum
+  nights: Nights
+
+  cancellation_policy: Cancellation Policy
+
+  flexible: Flexible 30-Day
+  moderate: Moderate
+  strict: Strict
+  strict_7_day: Strict 7-Day
+  see_our: See our
+  for_more_info: for more info
+
+  head_cancellation:     "If you wish to cancel your SquareStays reservation"
+  strict_cancellation:   "at least 7 days before the reservation date, you will be charged 10% of the security deposit."
+  moderate_cancellation: "full refund 5 days prior to arrival, except fees"
+  flexible_cancellation: "at least 30 days before the reservation date, you will not be charged and any security deposit you have paid will be refunded to you."
+
+  do_you_allow_smoking: Do you allow smoking in your apartment/balcony?
+
+  not_listed_yet: Your place is not listed yet!
+  preview: Preview
+  back_to_place_details: Back to Property
+
+  invisible: Invisible
+  place_listed: Place listed
+  form_error: Please fix the error on the form first before we can proceed.
+  categories_left: more categories must be completed
+  listed: Listed
+
+  publish: Publish
+  unpublish: Unpublish
+
+  place_published:     Your place is now listed!
+  place_publish_error: "Sorry, we can not publish your place because of missing information."
+  place_unpublished:   Your place is now invisible
+
+  my_favorite_places: My Favorite Places
+  favorite_places: Favorite places
+  add_favorite: Add to favorites
+  remove_favorite: Remove from favorites
+
+  ####################################################################################
+  # Questions & Messages
+  ####################################################################################
+  ask_question:       Ask a question
+  question_new_placeholder: You can ask and answer questions here.
+  pm_prepend_pre:     "Private question regarding your property ["
+  pm_prepend_post:    "]\n\n"
+  new_question_subject: "You have a new question from %{sender} on %{site_name}"
+  new_question_reply_subject: "Your question was answered on %{site_name}"
+  messages:           Messages
+  conversation_with:  Conversation with
+  inquiry_center:     Inquiry Center
+  inquiry_on:         Inquiry on
+  inquiry_sent:       Inquiry sent
+  inquiry_sent_msg:   "The listing owner will be notified of your inquiry. Normally, you should expect a response within 24-48 hours. If, by chance, you don't hear back, we encourage you to inquire on other properties."
+  inquiry_sent_msg2:  "You can check on your inquiries in the %{link}"
+  comments_questions: Comments / Questions
+  Staying:            Staying
+  no_messages:        No messages
+  mark_read:          Mark read
+  mark_unread:        Mark as unread
+  marked_as_unread:   The message was marked as unread
+  marked_as_read:     The message was marked as read
+  failed_unread:      Failed to mark as unread
+  failed_read:        Failed to mark as read
+  no_messages:        You don't have any message in your inbox
+  re_captcha :        Humans only
+
+  ####################################################################################
+  # Photos
+  ####################################################################################
+  photos: Photos
+  no_caption: No Caption
+  you_can_sort: You can sort your photos by drag and drop
+  primary: Primary
+  upload_photo: Upload Photo
+  upload_photo_hint: We support jpg and png images. You must upload a minimum of 3 images.
+  click_here_to_add_caption: Click here to add caption
+  read_photo_faq: Read some tips on providing great pictures for your SquareStays properties
+
+  calendar: Calendar
+  add_new: Add New
+  calendar_hint: Please let us know what dates the place is available for rent
+
+  ####################################################################################
+  # Place show
+  ####################################################################################
+  this_is_preview: This is a Preview
+  per_hour:  Per Hour
+  per_day:   Per Day
+  per_week:  Per Week
+  per_month: Per Month
+  sale: Sale Price
+  rent: Inquire
+
+  map: Map
+  details: Details
+
+  bedroom: Bedrooms
+  bed: Bed
+  guest: Guest
+  bathroom: Bathrooms
+  price_per_day:  Price per Day
+  price_per_week: Price per Week
+  price_per_month: Price per Month
+  cancellation: Cancellation
+  months: Months
+  days: Days
+  weeks: Weeks
+
+  question: Questions
+  pm: send private
+  share: Share via
+  your_place: This is your place!
+  edit_place: Edit
+  delete_place: Delete
+  message_user: Send a Message
+
+  successfully_added_to_your_favorites: The place was successfully added to your favorites
+  share_this_place_with_your_friends: Share this favorite with your friends
+  no_thanks: No thanks
+
+  ####################################################################################
+  # Place rent
+  ####################################################################################
+
+  place_details: Place details
+  stay_details: Stay details
+  arriving: Event Date
+  departing: Departing
+  arriving_on: Arriving on
+  departing_on: Departing on
+  duration: Duration
+  contact_information: Contact Information
+  mobile_phone_number: Mobile phone number
+  passport_number: Passport number
+  payment_details: Payment details
+  lenght_of_stay: Length of Stay
+  sub_total: Subtotal
+  price_final_cleanup: Cleanup Fee
+  price_security_deposit: Deposit
+  billing_address: Billing Address
+  change_billing_address: Change billing address
+  billed_address: You will be billed at this address
+  add_address: Add address
+  change_address: Change address
+  continue: Continue
+  read_agreement: I have read and agree to the lease agreement
+  availability: Availability
+  check_in: Check in
+  check_out: Check out
+  guests: Guests
+  bedrooms: Bedrooms
+  house_rules: House rules
+  view_house_rules: View House Rules
+  days: days
+  length_of_stay: Length of stay
+  street: Street
+  zip: Zip
+  success: Success!
+
+  ####################################################################################
+  # Inquiries
+  ####################################################################################
+
+  inquiry_success:   "Your inquiry has been sent!"
+  inquiry_error:     "There was a problem processing you inquiry, please try again"
+  inquiry_guests:
+    one:             1 guest
+    other:           '%{count} guests'
+
+  user_confirmed_rental_message: You have confirmed the rental. Awaiting final confirmation from Agent
+
+  ####################################################################################
+  # Place index/search
+  ####################################################################################
+  sort_by: Sort by
+  results: Results
+  no_result: No results found. Try changing some of your search options.
+  price_lowest: Price (Lowest First)
+  price_highest: Price (Highest First)
+  price_size_lowest: Price/Size (Lowest First)
+  price_size_highest: Price/Size (Highest First)
+  sorry_no_matches: "Sorry, there are no properties that match your criteria"
+  agent: Agent
+
+
+  ####################################################################################
+  # Alerts
+  ####################################################################################
+  alerts: Alerts
+  my_alerts: My Alerts
+  status: Status
+  query: Query
+  schedule: Schedule
+  delivery_method: Delivery method
+  daily: Daily
+  weekly: Weekly
+  monthly: Monthly
+  sms: SMS
+  email_and_sms: Email and SMS
+  edit: Edit
+  pause: Pause
+  unpause: Unpause
+  delete: Delete
+  active: Active
+  inactive: Inactive
+  maximum_price: Maximum price
+  minimum_price: Mininum price
+  dates: Dates
+  date_select: Click to select date
+  settings: Settings
+  message_alert_created: The alert has been successfully created
+  message_alert_deleted: The alert has been successfully deleted
+  message_alert_paused: The alert has been successfully paused
+  message_alert_unpaused: The alert has been successfully unpaused
+  message_alert_updated: The alert has been successfully updated
+  no_alerts: No alerts found.
+  view_results: View results
+  create_alert: Create alert
+  edit_alert: Edit alert
+  custom_alerts: Custom alerts
+  error_invalid_or_expired_search: Invalid or expired search
+  error_alert_check_dates: Invalid dates
+  error_alert: Unknown error
+
+  ####################################################################################
+  # Home page
+  ####################################################################################
+  homepage_search_but: Find a Place
+  teaser_center_title: Why should you use SquareStays?
+  teaser_1_title:      Flexibility
+  teaser_1_content:    "SquareStays offers flexible, high-quality accommodations for you. Squarestays is the destination site to find your perfect short-term or medium-term stay."
+  teaser_2_title:      Quality
+  teaser_2_content:    "SquareStays works with professional Agents and Landlords to ensure a comfortable and professional experience you can trust."
+  teaser_3_title:      Affordability
+  teaser_3_content:    "Squarestays offers high quality and distinct properties - have your own home away from home for less then the price of a 5 star hotel."
+  homepage_life_sg_title: Business Growth in Asia
+  homepage_life_sg_content: "With business travel to Asia increasing and hotel prices sky-rocketing, finding a place to stay for business travel has become increasingly difficult.  As a hub that connects the east and the west, Singapore is an important market in the Asian business economy with sustained growth and top-rated business environment.  SquareStays is now available in Singapore and plans to expand in other major cities across Asia and worldwide."
+  homepage_about:      About SquareStays
+  homepage_about_content: "SquareStays offers a unique blend of exactly what you need in flexible professional accommodations - quality and trust at a reasonable price. All SquareStays listings are designed to provide the comfort you expect from having a place of your own with the flexibility of a shorter-term stay. SquareStays only lets professional landlords, owners, agents and property managers list places. This ensures you a high level of trust, service and quality for your stay."
+  search_place_stay_in: Search for a place to stay in
+  cant_find_city: Can't find the city you were looking for?
+  leave_us_email: Leave us your email address and we will tell you when new cities are added to SquareStays.
+  working_on_expanding: We're working hard to expand SquareStays. Please tell us which cities you would like to see next in SquareStays.
+  not_going_to_singapore: Other cities?
+  homepage_facebook: Join us on Facebook
+  homepage_twitter:  Follow us on Twitter
+  homepage_blog:     Read our Blog
+
+  ####################################################################################
+  # Error codes
+  ####################################################################################
+  errors:
+   "100": has already been taken
+   "101": can't be blank
+   "102": too short
+   "103": is invalid
+   "104": doesn't match
+   "105": invalid access token
+   "106": not found
+   "107": unconfirmed
+   "108": unauthenticated
+   "109": invalid email or password
+   "110": must sign up
+   "111": invalid oauth request
+   "112": This user doesn't have a linked Facebook account
+   "113": invalid date
+   "114": Amazon API error
+   "115": no results
+   "116": duplicate
+   "117": invalid oauth token
+   "118": must be a number
+   "119": must be future, after today
+   "120": end date must be after initial date
+   "121": interval overlaps with existing interval for the place
+   "122": unmatching parent resource and child resource
+   "123": not enough pictures
+   "124": description is too short
+   "125": no availability
+   "126": no price
+   "127": no currency
+   "128": no security deposit
+   "129": invalid size unit
+   "130": not activated
+   "131": invalid json
+   "132": invalid city (not on the cities table)
+   "133": not allowed to do that
+   "134": doesn't have access to resource
+   "135": Invalid currency
+   "136": occupied
+   "137": invalid place request, check availability
+   "138": already cancelled
+   "139": date must be on the past
+   "140": must be greater than
+   "141": minimum stay not met
+   "142": over maximum stay

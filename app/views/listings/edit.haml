@@ -1,0 +1,27 @@
+.wizard
+  .row.title-bar
+    .span10.title
+      %h1= @resource.title
+    .span2
+      .listing-badge.pull-right
+        = product_status_badge(@resource)
+  - if false
+    .span2
+      .listing-actions.pull-right
+        - if @resource.published
+          = button_to t("products.view_listing"), listing_path(@resource), :method => :get, :class => 'btn'
+          = button_to t("places.unpublish"), unpublish_listing_path(@resource), :method => :put, :class => 'btn btn-danger'
+        - else
+          = button_to t("products.preview"), listing_path(@resource), :method => :get, :class => 'btn'
+          = button_to t("places.publish"), publish_listing_path(@resource), :method => :put, :class => 'btn btn-success'
+.row
+  .span12
+    .row
+      .span3
+        = render_overridable_partial('edit_sidebar')
+        &nbsp;
+      .span9
+        .wizard-wrapper
+          %h2.title.section_title= t("products.wizard.#{@wizard.current_step_name}_title")
+          .tab-content
+            = render_overridable_partial('tabbed_wizard')

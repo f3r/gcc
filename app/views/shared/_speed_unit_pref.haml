@@ -1,0 +1,10 @@
+%li.divider-title= "#{t("template.header.preferences.choose_speed_unit")}..."
+%li.divider
+  - Preferences.speed_units.each do |key, id|
+    %li{ get_current_speed_unit == id ? {:class => "active"} : {} }
+      = link_to :change_preference => true, :speed_unit => key do
+        %span.check &#10003;
+        %span.option-label= t("units.#{key}_short")
+        =t("units.#{key}")
+%li.divider
+

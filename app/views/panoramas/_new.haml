@@ -1,0 +1,17 @@
+= form_for :panorama, :url => listing_panoramas_path(@resource), :method => :post, :html => { :multipart => true } do |f|
+  %ul
+    %li
+      %label
+        Panorama SWF
+      = f.file_field :swf
+    %li
+      %h3 HTML5
+    %li
+      %label
+        Panorama XML
+      = f.file_field :xml
+    - (0..5).each do |i|
+      %li
+        %label= "Tile File #{i}"
+        = f.file_field "asset_#{i}"
+  = f.submit 'Save', :class => 'btn btn-primary'

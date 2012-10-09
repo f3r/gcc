@@ -1,0 +1,11 @@
+.control-group
+  = f.label :date_start_label, t("inquiries.arriving"), {:class => 'control-label'}
+  .controls
+    = text_field_tag "date_start_display", (@inquiry.check_in.strftime('%d %b %Y') if @inquiry && @inquiry.check_in), :placeholder => t("date_select"), :class => 'validate[required] textbox medium datepicker', :id => 'inquiry_date_start_display'
+    = f.hidden_field :check_in
+.control-group
+  = f.label :budget, t("inquiries.budget"), {:class => 'control-label'}
+  .controls
+    .input-prepend
+      %span.add-on.currency-sign= Currency.default.label
+      = f.text_field :budget, :class => "validate[custom[number],min[1],required] input-small"

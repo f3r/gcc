@@ -1,0 +1,17 @@
+es:
+  jobs:
+    main: Principal
+    work_profile: Perfil de trabajo
+    map: Mapa
+    calendar: Calendario
+    questions: "Preguntas y Respuestas (%{count})"
+    age: Edad
+    speaks: Habla
+    looking_for: Buscando
+    educational_status: Estado de la Educación
+    last_educational_institute: Última instituto educativo
+    domestic_care: Cuidado Doméstico
+    personal_care: Cuidado Personal
+    qualifications: Calificaciones
+    name_work_profile: "%{name} - Perfil de Trabajo"
+    about_me: Acerca de mí

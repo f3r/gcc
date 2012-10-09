@@ -1,0 +1,67 @@
+####################################################################################
+# DEFAULTS
+####################################################################################
+en:
+  site_title: "%{site_name} - %{site_tagline}"
+  default_site_title: The Sharing Engine
+  default_site_tagline: Powered by The Sharing Engine
+  submit: Submit
+  submitting: Submitting
+  cancel: Cancel
+  save: Save
+  accept: Accept
+  terms_of_service: Terms of Service
+  terms_and_conditions: Terms and Conditions
+  privacy_policy: Privacy Policy
+  contact: Contact
+  are_you_sure: Are you sure?
+  share_via: Share via
+  read_more: Read more
+  months: Months
+  days: Days
+  weeks: Weeks
+  flexible: Flexible
+  private: Private
+  choose_country: Choose a country
+  preview: Preview
+  delete: Delete
+  date_select: Click to select date
+  or: Or
+  contact_information: Contact Information
+  error: Error
+  close: Close
+  time_ago: "%{time} ago"
+  site_address: |
+      <p><strong>%{site_name}</strong><br />
+      HeyPal Pte Ltd<br />
+      71 Ayer Rajah Crescent 07-05<br />
+      Singapore 139951<br />
+      info@%{site_domain}</p>
+
+  units:
+    sqm: Square meters
+    sqf: Square feet
+    sqm_short: "m²"
+    sqf_short: "ft²"
+    kmh: Kilometer per Hour
+    mph: Meter per Hour
+    kmh_short: "kmh"
+    mph_short: "mph"
+
+  roles:
+    admin: Admin
+    superadmin: SuperAdmin
+    agent: Agent
+    user: User
+
+  addresses:
+    address_1: Address 1
+    address_2: Address 2
+    address_1_help: "Street Address, Company"
+    address_2_help: Apartment / Unit Number / Suite
+    directions: Directions
+    city: City
+    state: State
+    zip_code: Zip/Postal Code
+    country: Country
+    street: Street

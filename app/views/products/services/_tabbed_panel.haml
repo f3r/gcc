@@ -1,0 +1,37 @@
+.tabbed-panel.jobs-panel
+  %ul.nav.nav-tabs
+    %li.active
+      %a{:href => "#main-tab", 'data-toggle' => 'tab'}= t("jobs.main")
+    - if SiteConfig.photos? && resource.photos.any?
+      %li
+        %a{:href => "#photo-slider", 'data-toggle' => 'tab'}= t("jobs.photos")
+    - if AmenityGroup.any?
+      %li
+        %a{:href => "#work_profile-tab", 'data-toggle' => 'tab'}= t("jobs.work_profile")
+    %li
+      %a{:href => "#map-tab", 'data-toggle' => 'tab'}= t("jobs.map")
+    - if SiteConfig.calendar?
+      %li
+        %a{:href => "#calendar-tab", 'data-toggle' => 'tab'}= t("jobs.calendar")
+    %li
+      %a{:href => '#details-questions', 'data-toggle' => 'tab'}
+        = t('jobs.questions', :count => resource.q_and_a.count)
+    %li
+      %a{:href => '#reviews-tab', 'data-toggle' => 'tab'}= t('products.reviews_title')
+
+  .tab-content
+    = render 'products/services/tabs/main',         :resource => resource
+    - if SiteConfig.photos?
+      = render 'products/properties/tabs/photos', :resource => resource
+    - if AmenityGroup.any?
+      = render 'products/tabs/amenity_details', :resource => resource
+    = render 'products/services/tabs/map',          :resource => resource
+    - if SiteConfig.calendar?
+      = render 'products/services/tabs/calendar',     :resource => resource
+    = render 'questions/questions'
+
+    // Reviews tab
+    - if can_review?(resource, current_user)
+      = render 'reviews/new'
+    - else
+      = render 'reviews/summary'

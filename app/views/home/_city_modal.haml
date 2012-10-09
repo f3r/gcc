@@ -1,0 +1,20 @@
+- content_for(:modal_header) do
+  %h3 Can't find your city?
+
+%p We're working hard to expand Global Club Connect. Please tell us which city you would like to see next!
+.form-horizontal
+  .control-group
+    %label{:class => 'control-label'}= t("addresses.city")
+    .controls
+      = hidden_field_tag :type, :city_suggestion
+      = text_field_tag :message
+  - unless logged_in?
+    .control-group
+      %label{:class => 'control-label'}= t("users.email")
+      .controls
+        = text_field_tag :email
+    %p
+      %i= t("pages.front_page.city_modal.footer")
+
+- content_for(:modal_footer) do
+  %button.btn.primary=t("submit")

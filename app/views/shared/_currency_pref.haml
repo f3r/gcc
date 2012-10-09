@@ -1,0 +1,8 @@
+%li.divider-title= "#{t("template.header.preferences.choose_currency")}..."
+%li.divider
+  - Currency.active.each do |a_cur|
+    %li{current_currency == a_cur ? {:class => "active"} : {} }
+      = link_to :change_preference => true, :currency => a_cur.currency_code do
+        %span.check &#10003;
+        %span.option-label= a_cur.label
+%li.divider

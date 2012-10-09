@@ -1,0 +1,10 @@
+- content_for :meta_keywords do
+  = @staticpage.meta_keywords
+
+- content_for :meta_description do
+  = @staticpage.meta_description
+
+- if @staticpage.present?
+  .cmspagewrapper.row
+    .span10.offset1
+      = parse_cms_embeds(@staticpage.description).html_safe

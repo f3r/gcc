@@ -1,0 +1,39 @@
+<i>*Remember that photos should be in 602px width and 401px height for optimum visualization</i>
+<br/>
+<br/>
+
+<script>
+	$(function(){
+
+		var csrf_token = $('meta[name=csrf-token]').attr('content');
+		var csrf_param = $('meta[name=csrf-param]').attr('content');
+
+		var token = '<%=current_active_admin_user.authentication_token%>';
+
+		$('#photoQueue').pluploadQueue({
+		      runtimes: 'html5,flash,silverlight',
+		      url: '<%=admin_gallery_gallery_items_path(@gallery)%>/add_photo',
+		      max_file_size: '10mb',
+		      multiple_queues: true,
+		      multipart: true,
+		      dragdrop:true,
+		      multipart_params: {
+		        '_method' : 'post',
+		        '<%=Rails.application.config.session_options[:key]%>' : '<%=cookies[Rails.application.config.session_options[:key]]%>',
+		        'auth_token' : token ,
+		        'authenticity_token' : encodeURI(csrf_token),
+		        'csrf_token' : encodeURI(csrf_param),
+		        'format': 'json'
+		      },
+		      filters: [
+		        {title: "Images", extensions: "jpg,jpeg,png"}
+		      ],
+		      init: {
+		        UploadComplete: function(up, files) {
+		        	window.location.href = "<%=admin_gallery_gallery_items_path(@gallery)%>?order=id_desc";
+		        }
+		      }
+		});
+	});
+</script>
+<div id="photoQueue" class="uploadQueue"></div>

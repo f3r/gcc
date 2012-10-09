@@ -1,0 +1,63 @@
+= form_for :user, :url => profile_path, :method => :put, :html => {:id => "update_user", :class => 'form-horizontal'} do |f|
+  .section-header= t("users.section_header_user_information")
+  - unless coded_errors_for(@user).blank?
+    %div{:class => 'alert-message error'}= coded_errors_for @user
+      
+  .control-group
+    = f.label :first_name, "#{t("users.first_name")}*", :class => 'control-label'
+    .controls
+      = icon_tooltip(:private)
+      = f.text_field :first_name, :class => "validate[required]"
+  
+  .control-group
+    = f.label :last_name, "#{t("users.last_name")}*", :class => 'control-label'
+    .controls
+      = icon_tooltip(:public)
+      = f.text_field :last_name, :class => "validate[required]"
+  
+  .control-group
+    = f.label :email, "#{t("users.email")}*", :class => 'control-label'
+    .controls
+      = icon_tooltip(:private)
+      = f.text_field :email, :class => "validate[required,custom[email]]",:disabled => "disabled"
+      %br
+      %a{:href => "#contact_request",:style => "padding-left:20px;",:data => {:toggle => "modal", :show => "true", :keyboard => "true", :backdrop => "true"}} Request email change
+  
+  - if false && !@user['unconfirmed_email'].blank?
+    .control-group
+      = f.label :unconfirmed_email, "#{t("users.unconfirmed_email")}*", :class => 'control-label'
+      .controls
+        = @user['unconfirmed_email']
+        = link_to cancel_email_change_path, :method => :get, :remote => true, :id => "cancel_email_change", :rel => 'tooltip', :title => t("users.cancel_email_change") do
+          %i.icon-remove-sign
+  
+  .control-group
+    = f.label :gender, t("users.gender"), :class => 'control-label'
+    .controls
+      = icon_tooltip(:private)
+      = f.select :gender, [[t("users.gender_undisclosed"), 'unknown'],[t("users.gender_male"), 'male'], [t("users.gender_female"), 'female']]
+  
+  .control-group
+    = f.label :phone_mobile, t("users.mobile_phone"), :class => 'control-label'
+    .controls
+      = icon_tooltip(:private)
+      = f.text_field :phone_mobile
+  
+  .control-group
+    = f.label :birthdate, "#{t("users.birthdate")}*", :class => 'control-label'
+    .controls
+      = icon_tooltip(:private)
+      = f.date_select :birthdate, :order => [:day, :month, :year], :start_year => 1930, :end_year => Date.today.year - 18, :include_blank => true, :size => 5
+
+  - if @user.agent? || @user.admin?
+    .control-group
+      = f.label :paypal_email, "#{t("users.paypal_email")}*", :class => 'control-label'
+      .controls
+        = icon_tooltip(:private)
+        = f.text_field :paypal_email, :class => "validate[required,custom[email]]"
+  
+  .clearfix
+  .span4.float-right
+    = f.submit t("save"), :class => 'btn btn-primary'
+    = link_to t("cancel"), profile_path, :class => 'btn btn-secondary'
+  .clearfix

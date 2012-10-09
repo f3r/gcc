@@ -1,0 +1,7 @@
+<h2><%= t("mailers.salutation", :name => @user.full_name) %></h2>
+<% target_link = link_to @target.title, seo_product_url(@target) %>
+<p><%= t("mailers.inquiry_confirmed_renter.intro", :target_link => target_link).html_safe %><p>
+<% messages_link = link_to t("mailers.messages_section"), messages_path %>
+<p><%= t("mailers.inquiry_confirmed_renter.manage_messages", :messages_link => messages_link).html_safe %>
+<br />
+<p><%= t("mailers.inquiry_confirmed_renter.warning") %></p>

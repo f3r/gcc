@@ -1,0 +1,26 @@
+%div.availabilities-block
+  %div{:class => "availability-color #{color_price(a, place)}"}
+
+  %div.data-container
+    %span= "#{date_formatted(a['date_start'])} - #{date_formatted(a['date_end'])}"
+    %span= price_availability(a, place)
+    %span= link_to t(:edit), '#', :class => 'open-edit-availability hide'
+
+  %div.edit-data-container.hide
+    = hidden_field_tag "id", a['id'], :id => "id-#{a['id']}"
+    = text_field_tag "date_start", "", :placeholder => "dd/mm/yyyy", :class => 'small from-to-picker', :value => Date.parse(a['date_start']).strftime("%d/%m/%Y"), :id => "date_start-#{a['id']}", "data-date" => :from
+    to
+    = text_field_tag "date_end", "", :placeholder => "dd/mm/yyyy", :class => 'small from-to-picker', :value => Date.parse(a['date_end']).strftime("%d/%m/%Y"), :id => "date_end-#{a['id']}", "data-date" => :to
+
+    %span.availability-price
+      = select_tag "availability_type", raw("<option value='1'#{' selected="selected"' if a['availability_type'] == 1}>Unavailable</option><option value='2'#{' selected="selected"' if a['availability_type'] == 2}>New Price</option>"), :class => 'availability_type', :id => "availability_type-#{a['id']}"
+
+      %span.wrap{:class => "#{' hide' if a['availability_type'] == 1}"}
+        %small.currency-sign= place.currency.label
+        = text_field_tag "price_per_night", "", :placeholder => "New Price", :class => "small", :value => a['price_per_night'], :id => "price_per_night-#{a['id']}"
+
+    %div.availability-action
+      %div.remove-action
+        = link_to "Remove", place_availability_path(place.to_param, a['id']), :method => :delete, :confirm => 'Remove this period from your calendar?', :class => 'delete-availability btn error', :remote => true
+      = button_tag "Close", :class => "btn cancel-edit-availability"
+      = button_tag "Save", :class => "btn primary edit-availability"

@@ -1,0 +1,244 @@
+/*
+ *= require plupload.css
+ *= require redactor/redactor.css
+*/
+
+// Copied from Twitter bootstrap tooltip
+.tooltip {
+  position: absolute;
+  z-index: 1020;
+  display: block;
+  visibility: visible;
+  padding: 5px;
+  font-size: 11px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.tooltip.in {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.tooltip.top {
+  margin-top: -2px;
+}
+.tooltip.right {
+  margin-left: 2px;
+}
+.tooltip.bottom {
+  margin-top: 2px;
+}
+.tooltip.left {
+  margin-left: -2px;
+}
+.tooltip.top .tooltip-arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #000000;
+}
+.tooltip.left .tooltip-arrow {
+  top: 50%;
+  right: 0;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #000000;
+}
+.tooltip.bottom .tooltip-arrow {
+  top: 0;
+  left: 50%;
+  margin-left: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #000000;
+}
+.tooltip.right .tooltip-arrow {
+  top: 50%;
+  left: 0;
+  margin-top: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #000000;
+}
+.tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  background-color: #000000;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+/*********************************************************************************************************
+ * ADMIN FAQ
+ *********************************************************************************************************/
+
+#admin_faq {
+  h4 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .inner {
+    margin-top: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .well.expandable.collapsed {
+    cursor: pointer;
+
+    &:hover {
+	  background-color: #bfe0f2;
+    }
+  }
+
+  .well {
+    background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+  }
+
+  .expandable {
+    position: relative;
+    padding: 5px 20px;
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    .read-more {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+    }
+
+    img {
+      float: right;
+      width: 400px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+body.active_admin {
+
+  .t_edit {
+    label {
+      width: 200px;
+      font-size: 1.0em;
+      font-weight: bold;
+      color: #5E6469;
+      display: table-cell;
+    }
+    .translation {
+      display: table-cell;
+      background: white;
+      border: 1px solid #DDD;
+      padding: 4px;
+      line-height: 27px;
+    }
+  }
+
+  .t_example {
+    background: white;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #DDD;
+  }
+
+    .status_tag.active, .status_tag.user, .status_tag.yes, .status_tag.translated {
+        background: #8DAA92;
+    }
+
+    .status_tag.agent {
+        background: #0066BB;
+    }
+
+    .status_tag.admin {
+        background: #BB1111;
+    }
+}
+
+body.admin_settings {
+    .breadcrumb {
+        display: none;
+    }
+
+    .buttons .cancel {
+        display: none;
+    }
+}
+
+body.admin_advanced_settings {
+    .breadcrumb {
+        display: none;
+    }
+}
+
+
+.dashboard .stats div {
+    margin: 10px auto 30px;
+}
+
+#place_published_input {
+    display: none;
+}
+
+.dashboard .stats div {
+    margin: 10px auto 30px;
+}
+
+#place_published_input {
+    display: none;
+}
+
+.admin_questions .table_tools {
+    display: none;
+}
+
+.admin_translations .action_item:first-child {
+    display: none;
+}
+
+.translations {
+    display:block; float:left; width: 80%;
+    li{
+        margin-bottom:15px;
+        h3 {
+            font-size:13px;
+            margin:0;
+            font-weight:bold
+        }
+    }
+}
+
+.other_translation_text {
+    background-color:#fff;
+    border:1px solid #ccc;
+    padding:10px;
+    margin:10px 20px 10px 0;
+    overflow: auto;
+    white-space: normal;
+}
+
+#header ul#tabs > li ul li {
+    a {color: #DDDDDD;}
+}
+
+body.admin_cmspages {
+    .redactor_box {
+        margin-bottom: 17px;
+    }
+}

@@ -1,0 +1,29 @@
+#contact_request.modal.hide.fade{:style => 'height: 248px; overflow: hidden'}
+  = form_for(:contact_request, :url => '/contacthp', :html => {:method => :post, :remote => true, :id => "contact_form"}) do |f|
+    .modal-header
+      %a{:href => '#', :class => 'close', 'data-dismiss' => 'modal'}x
+      %h3= t("contact_requests.contact_request_modal_title")
+
+    .modal-body
+      .form-horizontal
+        - unless logged_in?
+          .control-group
+            = f.label :name, t("users.full_name"), {:class => 'control-label'}
+            .controls
+              = text_field_tag :name, nil, :placeholder => t("users.name_example"), :class => 'validate[required]',:name => 'contact_request[name]',:id => 'contact_request_name'
+          .control-group
+            = f.label :email, t("users.email"), {:class => 'control-label'}
+            .controls
+              = text_field_tag :email, nil, :placeholder => t("users.email_example"), :class => 'validate[required,custom[email]]',:name => 'contact_request[email]',:id => 'contact_request_email'
+
+        .control-group
+          = f.label :message, t("contact_requests.contact_request_message"), {:class => 'control-label'}
+          .controls
+            = f.text_area :message, :rows => 5, :placeholder => t("contact_requests.contact_request_message"), :class => 'validate[required]'
+
+    .modal-footer{:style => 'padding: 7px 15px 7px;'}
+      .contact-actions
+        %button.btn.btn-large.btn-primary{'data-loading-text' => t("submitting"), 'id' => 'contact_button', 'autocomplete' => 'off'}=t("contact_requests.button_contact")
+
+:javascript
+  $('#contact_form').attr('action', '#{contacts_path}')

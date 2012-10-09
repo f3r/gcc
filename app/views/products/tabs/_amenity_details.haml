@@ -1,0 +1,21 @@
+#work_profile-tab.tab-pane
+  .row
+    .span3.profile_pic
+      = image_tag @resource.primary_photo, :width => '200'
+
+    .span8
+      .row-fluid
+        .span12
+          %h2= t("services.name_work_profile", :name => @resource.user.anonymized_name)
+      .row-fluid
+        - AmenityGroup.all.each do |ag|
+          .span4
+            %h3= ag.name
+            - ag.amenities.each do |a|
+              .row-fluid
+                - checked = @resource.amenities.include?(a)
+                - if SiteConfig.show_all_amenities
+                  .w-left-icon{:class => checked ? 'check' : 'ekis'}= a.name
+                - else
+                  - if checked
+                    .w-left-icon{:class => 'check'}= a.name

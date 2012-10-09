@@ -1,0 +1,12 @@
+<%- if @type.eql?('question') %>
+  $("#qdiv-<%= @comment_params['id'] %>").hide("drop", { direction: "left" }, function() {
+    $(this).remove();
+  });
+
+<%- else %>
+  $("#rdiv-<%= @comment_params['id'] %>").hide("drop", { direction: "left" }, function() {
+    $(this).remove();
+
+    $("#qdiv-<%= @question_id %>").append("<%= escape_javascript(render '/questions/form', :product => @product, :comment_id =>  @question_id) %>");
+  });
+<%- end %>

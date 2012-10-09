@@ -1,0 +1,10 @@
+<p>
+	New user feedback from: 
+	<% if @user %>
+	  <%= "#{@user.full_name} (#{@user.email})" %>
+	<% else %>
+	  Guest User
+	<% end %>
+</p>
+<p>Type: <%= @type %></p>
+<p>Message: <%= @message %></p>

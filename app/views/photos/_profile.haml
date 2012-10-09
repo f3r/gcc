@@ -1,0 +1,12 @@
+#profile_picture_box.panel-wrapper
+  .well
+    %h3= 'Profile picture'
+    .row-fluid
+      = form_for :user, :url => update_avatar_profile_path, :method => :post, :remote => true, :html => {:id => "update_avatar"} do |f|
+        .avatar-box.span3
+          = image_tag(large_avatar(current_user), :class => "avatar_placeholder", :width => 100)
+        .span7
+          %p.hint= "This is the image we show in listings, make sure it looks good"
+          = f.file_field :original_avatar, :autocomplete => 'off', :onchange => "$('#save-btn').click()"
+          %br
+          = f.button t(:upload), :class => 'btn primary',  "data-loading-text" => t(:uploading), :onclick => "$('#save-btn').button('loading')", :id => "save-btn", :autocomplete => 'off'

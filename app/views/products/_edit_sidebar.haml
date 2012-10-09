@@ -1,0 +1,23 @@
+.wizard-aside-wrapper
+  .wizard-aside
+    %ul.nav.nav-tabs.nav-stacked#wizard_tabs
+      - @wizard.tabs.each_with_index do |tab_name, tab_idx|
+        - step = tab_idx + 1
+        %li{:class => wizard_step_class(@wizard, step)}
+          .indicator
+            - if @wizard.completed_step?(step)
+              = image_tag('check.png')
+            - else
+              = image_tag('check-disabled.png')
+          - if @wizard.enabled_step?(step)
+            = link_to t("products.wizard.#{tab_name}_title"), {:s => step}, {:title => t("products.wizard.#{tab_name}_title")}
+          - else
+            %a= t("products.wizard.#{tab_name}_title")
+
+  .actions
+    - if @resource.published
+      = button_to t("products.view_listing"), listing_path(@resource), :method => :get, :class => 'btn btn-large'
+      = link_to "#{t("places.unpublish")}", unpublish_listing_path(@resource), :method => :put, :class => 'unpublish'
+    - else
+      = button_to t("places.publish"), publish_listing_path(@resource), :method => :put, :class => 'btn btn-success btn-large'
+      = button_to t("products.preview"), listing_path(@resource), :method => :get, :class => 'btn btn-large'

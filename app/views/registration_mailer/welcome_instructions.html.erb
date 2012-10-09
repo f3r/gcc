@@ -1,0 +1,11 @@
+<h2><%= t("mailers.salutation", :name => @user.first_name)%></h2>
+<p><%= t('mailers.welcome_instructions.title') %></p>
+
+<p><%= t('mailers.welcome_instructions.first_line') %></p> 
+<br/>
+<% link = link_to t("mailers.here"), root_url %>
+<% if @user.agent? %>
+  <p><%= t('mailers.welcome_instructions.content_agent').html_safe %></p>
+<% elsif @user.consumer? %>
+  <p><%= t('mailers.welcome_instructions.content_consumer').html_safe %></p>
+<% end%>

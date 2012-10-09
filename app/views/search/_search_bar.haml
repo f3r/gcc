@@ -1,0 +1,31 @@
+.search-bar-wrapper
+  .search-bar-container
+    .search-bar#search_bar
+      .float-left
+        %h2{:style => 'padding-bottom: 9px'}
+          = "#{@city.present? ? @city.name : 'World'}'s Best DJs"
+        - # --> WARNING: don't delete the '#' here --> #num_search_results= search_results_count(@results)
+        - #link_to "Not going to #{@city.name}?", root_path, {:style => 'color: #ccc; display:inline; font-size: 12px'}
+
+      .float-right
+        = form_for @search, :url => search_index_path, :as => :search, :html => {:remote => true, :autocomplete => 'off', :method => :get} do |f|
+          .filters
+            = hidden_field_tag :submitted_action
+            = f.hidden_field :city_id
+            = f.hidden_field :min_price
+            = f.hidden_field :max_price
+            = f.hidden_field :category_ids
+            = f.hidden_field :amenity_ids
+            = f.hidden_field :min_lat
+            = f.hidden_field :max_lat
+            = f.hidden_field :min_lng
+            = f.hidden_field :max_lng
+            = f.hidden_field :currency_id
+            = f.hidden_field :current_page
+            = f.hidden_field :total_pages
+            = render_overridable_partial('search_fields', :f => f)
+
+          / .views
+          /   .sorting
+          /     = t("products.search.sort_by")
+          /     = f.select :sort_by, sort_options, :class => 'medium', :autocomplete => 'off'

@@ -1,0 +1,5 @@
+- @resource.amenities.all.in_groups_of(3, false) do |all|
+  .row-fluid.offset1
+    - for genre in all
+      .span3
+        %h4{:style => 'font-size: 13px;'}= genre.name

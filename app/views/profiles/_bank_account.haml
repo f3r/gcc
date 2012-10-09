@@ -1,0 +1,77 @@
+= form_for :bank_account, :url => user_change_bank_account_path((@user['id'] ? @user['id'] : params[:id])), :method => :put, :html => {:id => "change_bank_account", :class => 'form-horizontal'} do |f|
+  .section-header= t("users.section_header_bank_account")
+  .text
+    -# FIXME: coded_errors_for is not working
+    -# = coded_errors_for @bank_account
+    .control-group
+      = f.label :holder_name, "#{t("users.bank_accounts.holder_name")}*", :class => 'control-label'
+      .controls
+        = icon_tooltip(:fully_private)
+        = f.text_field :holder_name, :class => "validate[required]"
+    
+    .control-group
+      = f.label :holder_street, "#{t("addresses.street")}*", :class => 'control-label'
+      .controls
+        = icon_tooltip(:fully_private)
+        = f.text_field :holder_street, :class => "validate[required]"
+    
+    .control-group
+      = f.label :holder_country_code, "#{t("addresses.country")}*", :class => 'control-label'
+      .controls
+        = icon_tooltip(:fully_private)
+        = f.country_select(:holder_country_code, [], {:include_blank => t("choose_country")}, {:class => "validate[required]"})
+      = f.hidden_field :holder_country_name
+    
+    .control-group
+      = f.label :holder_city_name, "#{t("addresses.city")}*", :class => 'control-label'
+      .controls
+        = icon_tooltip(:fully_private)
+        = f.text_field :holder_city_name, :class => "validate[required]"
+    
+    .control-group
+      = f.label :holder_state_name, "#{t("addresses.state")}", :class => 'control-label'
+      .controls
+        = icon_tooltip(:fully_private)
+        = f.text_field :holder_state_name
+    
+    .control-group
+      = f.label :holder_zip, "#{t("addresses.zip_code")}*", :class => 'control-label'
+      .controls
+        = icon_tooltip(:fully_private)
+        = f.text_field :holder_zip, :class => "validate[required]"
+        = f.hidden_field :id
+    
+    .local_bank  
+      .control-group
+        = f.label :account_number, "#{t("users.bank_accounts.account_number")}*", :class => 'control-label'
+        .controls
+          = icon_tooltip(:fully_private)
+          = f.text_field :account_number, :class => "validate[required]"
+      .control-group
+        = f.label :bank_code, "#{t("users.bank_accounts.bank_code")}*", :class => 'control-label'
+        .controls
+          = icon_tooltip(:fully_private)
+          = f.text_field :bank_code, :class => "validate[required]"
+      .control-group
+        = f.label :branch_code, "#{t("users.bank_accounts.branch_code")}*", :class => 'control-label'
+        .controls
+          = icon_tooltip(:fully_private)
+          = f.text_field :branch_code, :class => "validate[required]"
+    
+    .international_bank
+      .control-group
+        = f.label :iban, "#{t("users.bank_accounts.iban")}*", :class => 'control-label'
+        .controls
+          = icon_tooltip(:fully_private)
+          = f.text_field :iban, :class => "validate[required]"
+      .control-group
+        = f.label :swift, "#{t("users.bank_accounts.swift")}*", :class => 'control-label'
+        .controls
+          = icon_tooltip(:fully_private)
+          = f.text_field :swift, :class => "validate[required]"
+
+    .clearfix
+    .span4.float-right
+      = submit_tag t("save"), :class => 'btn btn-primary'
+      = link_to t("cancel"), profile_path, :class => 'btn btn-secondary'
+    .clearfix

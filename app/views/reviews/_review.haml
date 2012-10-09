@@ -1,0 +1,7 @@
+.well
+  .score= stars(review.score)
+  %h4= review.user.anonymized_name
+  .date
+    = 'on '
+    = l(review.created_at.to_date, :format => :long)
+  .body= review.body

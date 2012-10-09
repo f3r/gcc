@@ -1,0 +1,11 @@
+.row
+  .span10.offset1
+    = breadcrumb [['Home', root_path]], t('products.my_listings')
+  .span10.offset1
+    .results.my_places
+      - if @collection.blank?
+        .alert-message.info= t("products.no_listings")
+      - else
+        %ul.list-display
+          #search_result_list
+            = render :partial => 'search/row', :collection => @collection, :as => :resource, :locals => {:my_products => true}

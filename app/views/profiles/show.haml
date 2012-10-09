@@ -1,0 +1,6 @@
+.profile_page
+  .row
+    .span12
+      = breadcrumb [['Home', root_path]],  t('my_profile')
+  = render "users/user_left_column", :user => @user
+  = render "users/info"

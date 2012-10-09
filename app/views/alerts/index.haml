@@ -1,0 +1,47 @@
+- if @alerts.blank?
+  .alert.alert-info= t("alerts.no_alerts")
+- else
+  %table.table.table-striped.alerts
+    %tr
+      %th= t("alerts.status")
+      %th= t("alerts.schedule")
+      %th= t("alerts.delivery_method")
+      %th
+    - @alerts.each do |alert|
+      %tr{:id => "alert-#{alert['id']}"}
+        %td
+          - if alert.active?
+            %span.label.label-success= t("alerts.active")
+          - else
+            %span.label= t("alerts.inactive")
+        %td= t("alerts.#{alert.schedule}")
+        %td= t("alerts.#{alert.delivery_method}")
+        %td
+          %div.btn-group
+            = link_to show_search_alert_path(alert.id), :class => "results btn btn-small" do
+              %i.icon-search
+              =t("alerts.view_results")                
+            = link_to edit_alert_path(alert.id), :class => "edit btn btn-small", :remote => true, :id => dom_id(alert) do
+              %i.icon-cog
+              =t("alerts.settings")                
+            - if alert.active?
+              = link_to pause_alert_path(alert.id), :class => "pause btn btn-small" do
+                %i.icon-pause
+                =t("alerts.pause")                
+            - else
+              = link_to unpause_alert_path(alert.id), :class => "unpause btn btn-small" do
+                %i.icon-play
+                =t("alerts.unpause")                
+            = link_to alert_path(alert.id), :class => "delete btn btn-danger", :method => :delete, :confirm => t("are_you_sure") do
+              %i.icon-trash.icon-white
+              =t("delete")                
+:javascript
+  // Very basic hash based navigation :)
+  $(function(){
+    var hash = window.location.hash;
+    if(hash.length) {
+      var the_hash = hash.substring(1,hash.length);
+      $.getScript(window.location.pathname + the_hash);
+    }
+  });
+#edit.modal.hide

@@ -1,0 +1,13 @@
+= form_for(:inquiry, :url => inquiry_path(@inquiry), :html => {:method => :put, :id => "inquire_form"}) do |f|
+  = hidden_field_tag :conversation_id, params[:conversation_id]
+  .modal-header
+    %a{:href => '#', :class => 'close', 'data-dismiss' => 'modal'}x
+    %h3= t("inquiries.update_inquiry_title")
+  .modal-body
+    .form-horizontal
+      - if show_inquiry_length_fields?
+        = render 'length_fields', :f => f
+    .clearfix
+    .modal-footer
+      .inquiry-actions
+        %button.btn.btn-large.btn-primary{'data-loading-text' => t("submitting"), 'id' => 'inquire_button', 'autocomplete' => 'off'}=t(:update)

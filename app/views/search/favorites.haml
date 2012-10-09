@@ -1,0 +1,11 @@
+.row
+  .span12
+    = breadcrumb [['Home', root_path]], t('my_favorite_places')
+  .span10.offset1
+    .results.my_places
+      - if @results.blank?
+        .alert-message.info= t("places.search.no_favorites")
+      - else
+        %ul.list-display
+          #search_result_list
+            = render :partial => 'search/row', :collection => @results, :as => :resource, :locals => {:my_favorites => true}

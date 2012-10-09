@@ -1,0 +1,11 @@
+- providers = user.authenticated_providers
+.linked_accounts
+- if providers.empty?
+  .well
+    = t('no_linked_accounts')
+    %br
+    = render "profiles/connect_accounts"
+- else
+  - providers.each do |provider|
+    = image_tag("icons/#{provider}.png", :size => "32x32", :style=>"margin-bottom:3px;")
+    = "Linked account"

@@ -1,0 +1,6 @@
+- providers = user.authenticated_providers
+- unless providers.empty?
+  .linked_accounts
+    - providers.each do |provider|
+      = image_tag("icons/#{provider}.png", :size => "32x32",:style=>"margin-bottom:3px;")
+      = "Linked account"

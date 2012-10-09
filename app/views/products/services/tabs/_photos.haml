@@ -1,0 +1,29 @@
+#photo-slider.tab-pane
+  .viewport
+    %ul.overview
+      - photos = carousel_photoset(@resource)
+      - photos.each_cons(3) do |p1, p2, p3|
+        %li
+          .big
+            - if p1.name.present?
+              .caption= p1.name
+            = image_tag(p1.photo.url(:large))
+          .small
+            - if p2.present?
+              %a{:href => "#", :class => "extra-paginator", "data-page" => photos.index(p2) + 1}
+                = image_tag(p2.photo.url(:medium))
+            - if p3.present?
+              %a{:href => "#", :class => "extra-paginator", "data-page" => photos.index(p3) + 1}
+                = image_tag(p3.photo.url(:medium))
+
+  .slider-nav
+    %a.buttons.prev{:href => "#"}
+      =raw('&laquo;')
+    %ul.pager
+      - @resource.photos.each_with_index do |p, i|
+        %li
+          %a{"data-page" => i, :class => "pagenum", :href => "#"}
+            = image_tag(p.photo.url(:tiny))
+
+    %a.buttons.next{:href => "#"}
+      =raw('&raquo;')

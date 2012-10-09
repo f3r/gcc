@@ -1,0 +1,6 @@
+<h2><%= t("mailers.salutation", :name => @user.first_name)%></h2>
+<p><%= t("mailers.new_message_reply.intro", :name => @message.from.anonymized_name) %><p>
+<% link = link_to t("mailers.click_here"), messages_path %>
+<p><%= t("mailers.new_message_reply.respond", :link => link).html_safe %>
+<% site_link = link_to site_name, new_user_session_url %>
+<p><%= t("mailers.new_message_reply.check_mailbox_info", :site_link => site_link).html_safe %>

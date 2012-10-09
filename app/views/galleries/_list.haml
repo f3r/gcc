@@ -1,0 +1,20 @@
+.gallery-pics{:id => "g_#{gallery.name}"}
+  - g_items.each do |image|
+    = link_to image.link, :class => "thumbnail" do
+      - if image.label.present?
+        .description= "#{image.label}"
+      = image_tag image.image_url
+
+- if g_items.count > 1
+  :javascript
+    $(document).ready(function(){
+      $("#g_#{gallery.name}").after(
+        '<div class="gallery-nav gnav#{gallery.name}">'
+      )
+      .cycle({
+          fx:     'fade',
+          speed:  'slow',
+          timeout: #{gallery.transition_speed},
+          pager:  '.gnav#{gallery.name}'
+          });
+    });

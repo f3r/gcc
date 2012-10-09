@@ -1,0 +1,3 @@
+$("#qdiv-<%= @replying_to %>").children(".open-respond-form, #respond-form-div").remove();
+
+$("#qdiv-<%= @replying_to %>").append("<%= escape_javascript(render('/questions/reply', :reply => @comment, :question_id => @replying_to)) %>");

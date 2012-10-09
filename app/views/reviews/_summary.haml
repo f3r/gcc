@@ -1,0 +1,13 @@
+#reviews-tab.tab-pane
+  - if @product.reviews.blank?
+    .alert.alert-info= t("products.no_reviews")
+  - else
+    .row
+      .span9.offset1
+        .average
+          %h2= t('products.review_average_label')
+          = stars(@product.review_avg)
+        - reviews = @product.reviews.limit(5)
+        - reviews.each do |review|
+          .review
+            = render 'reviews/review', :review => review

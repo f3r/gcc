@@ -1,0 +1,49 @@
+.inquiry
+  - if listing.inquiry_photo
+    .span2.photo
+      = image_tag listing.inquiry_photo, :alt => listing.title
+  .span8.details
+    .title= link_to listing.title, seo_product_url(listing)
+    - if target.guests.present?
+      .guests
+        %span.value= t("inquiries.inquiry_guests", :count => target.guests)
+    - if target.check_in.present?
+      .arriving
+        %span.key
+          %i.icon-calendar{:title => t("products.inquiries.start_date")}
+        %span.value= I18n.l(target.check_in, :format => :long)
+    - if false
+      .stay
+        %span.key
+          %i.icon-time{:title => t("products.inquiries.duration")}
+        %span.value= target.length_in_words
+    .edit
+      = link_to '(change)', edit_inquiry_path(target, :conversation_id => @conversation.id), :remote => true
+  .price
+    = target.transaction.total_amount_display
+    = link_to '#', :class => 'price-popover', :title => 'Price Details' do
+      %i.icon-question-sign
+  .popover-content{:style => 'display: none'}
+    .price-details
+      .line
+        %span.concept= "Payment"
+        %span.equal= "="
+        %span.figure= target.transaction.product_amount_display
+      .line
+        %span.concept= target.transaction.fee_description
+        %span.equal= "="
+        %span.figure= target.transaction.fee_amount_display
+
+      .line=# "<b>Total</b>: #{target.transaction.total_amount_display}".html_safe
+      .line
+        %span.concept.total= "Total"
+        %span.equal= "="
+        %span.figure= target.transaction.total_amount_display
+:javascript
+  $(document).ready(function(){
+    $('.price-popover').popover({
+      html: true,
+      content: $('.popover-content').html(),
+      placement: 'bottom'
+    });
+  });

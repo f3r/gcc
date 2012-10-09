@@ -1,0 +1,4 @@
+<h2><%= t("mailers.salutation", :name => @user.first_name) %></h2>
+<p><%= t("mailers.transaction_request_owner.intro", :name => @renter.anonymized_name) %></p>
+<% inquiry_center_link = link_to t("mailers.inquiry_center"), messages_url %>
+<p><%= t("mailers.transaction_request_owner.content", :inquiry_center_link => inquiry_center_link).html_safe %></p>

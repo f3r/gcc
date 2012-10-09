@@ -1,0 +1,28 @@
+.panel-wrapper
+  %fieldset.well.form-horizontal
+    %h3= t("products.wizard.address_title")
+    .control-group.required
+      = f.label :city_id, t("addresses.city"), :class => 'control-label'
+      .controls
+        = f.select :city_id, cities_options, {}, { :class => "validate[required] autosave input-xlarge"}
+
+    .control-group
+      = f.label :address_1, t("addresses.address_1"), :class => 'control-label'
+      .controls
+        = f.text_field :address_1, :class => "input-xlarge autosave"
+        %p.help-block
+          = t("addresses.address_1_help")
+    .control-group
+      = f.label :address_2, t("addresses.address_2"), :class => 'control-label'
+      .controls
+        = f.text_field :address_2, :class => "input-xlarge autosave"
+        %p.help-block
+          = t("addresses.address_2_help")
+    .control-group#zip_input
+      = f.label :zip, t("addresses.zip_code"), :class => 'control-label'
+      .controls
+        = f.text_field :zip, :class => "input-xlarge span3 autosave"
+    .control-group
+      = f.label :directions, t("addresses.directions"), :class => 'control-label'
+      .controls
+        = f.text_area :directions, :class => "span6 autosave", :rows => 5

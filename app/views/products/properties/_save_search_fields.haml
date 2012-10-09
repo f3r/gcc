@@ -1,0 +1,35 @@
+.control-group
+  %label{:class => "control-label"}= t("places.guests")
+  .controls
+    = search_form.select :guests, options_for_select(max_guest_options, @alert.search.guests)
+.control-group
+  %label{:class => "control-label"}= t("places.search.dates")
+  .controls
+    = search_form.text_field :check_in, :placeholder => t("places.search.arriving_on"), :class => 'span2 check-in-picker', "data-date" => :from, 'autocomplete' => 'off'
+    = search_form.text_field :check_out, :placeholder => t("places.search.departing_on"), :class => 'span2 check-out-picker', "data-date" => :to, 'autocomplete' => 'off'
+    
+
+:javascript
+  // Initialize the date pickers
+  $('.check-in-picker, .check-out-picker').datepicker('destroy').datepicker({
+    dateFormat: 'yy-mm-dd',
+    minDate: +1,
+    onSelect: function(selectedDate) {
+      var me = $(this);
+      var who = me.attr("data-date");
+      var instance = me.data("datepicker");
+
+      var date = $.datepicker.parseDate(
+            instance.settings.dateFormat ||
+            $.datepicker._defaults.dateFormat,
+            selectedDate, instance.settings);
+
+      if (who == 'from') {
+        from = me.next();
+        from.datepicker("option", "minDate", date);
+      } else {
+        to = me.prev();
+        to.datepicker("option", "maxDate", date);
+      }
+    }
+  });

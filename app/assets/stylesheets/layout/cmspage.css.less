@@ -1,0 +1,63 @@
+.cmspagewrapper {
+  ul {
+    margin-left: 25px;
+  }
+  
+  ol {
+    margin-left: 30px;
+  }
+  
+  .gallery-pics {
+      height: 309px;
+      
+      .thumbnail{
+        display: block;
+        background: #fff;
+        -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;
+        padding: 4px;
+        border: 1px solid #c0c0c0;
+        position: relative;
+        width: 450px;
+        height: 296px;
+        overflow: hidden;
+
+        img {
+          display: block;
+          width: 450px;
+          height: 296px;
+        }
+
+        .description{
+          color: #f0f0f0;
+          background: transparent url(/assets/glass.black.png) repeat 0 0;
+          width: 430px;
+          height: 20px;
+          padding: 10px;
+          position: absolute;
+          left: 4px;
+          font-size: 14px;
+          bottom: 4px;
+          z-index: 2;
+        }
+      }
+  }
+    
+  .gallery-nav {
+      overflow: hidden;
+      padding: 10px 195px;
+      text-align: center;
+      a{
+        height: 10px;
+        width: 10px;
+        background:  transparent url(/assets/dot.normal.png) no-repeat center center;
+        text-indent: -9999px;
+  	    outline:0;
+        float: left;
+        margin: 0 2px;
+        &.activeSlide{
+          background:  transparent url(/assets/dot.em.png) no-repeat center center;
+          }
+      }
+  }
+    
+}

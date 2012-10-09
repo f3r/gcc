@@ -1,0 +1,149 @@
+.conversations {
+  a:hover {
+    text-decoration: none;
+  }
+  &:hover .delete-conversations {
+    display: inline;
+  }
+
+  .delete-conversations {
+    position:relative;
+    z-index:2;
+    margin: 5px 5px 0;
+    display: none;
+  }
+
+  .mark-as {
+    margin-top: -20px;
+    margin-bottom:15px
+  }
+}
+
+.inbox {
+  .entry {
+    border: 1px solid @gray_box_border_color;
+		background-color:@gray_box_background_color;
+    margin: 1px 1px 1px 21px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 7px 0;
+    color: #333333;
+    &.unread {
+     background-color: #E0F5DA;
+    }
+    &:hover {
+      margin: 0 0 0 20px;
+      border: 2px solid #C0C0C0;
+    }
+  }
+  .inquiry {
+    color: #B0B2B4;
+    .value {
+      color: #333333;
+    }
+  }
+  .message .empty {
+    font-style: italic;
+    color: #B0B2B4;
+  }
+}
+
+.conversation {
+  .or {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 100px;
+    min-height: 100px;
+    text-align: center;
+  }
+  .btn-huge {
+    display: block;
+    height: 80px;
+    line-height: 80px;
+
+    span {
+      font-size: 20px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.125);
+    }
+  }
+  .system-message {
+    padding-bottom: 10px;
+    .well {
+      margin-bottom: 0;
+      padding: 10px 19px;
+      font-style: italic;
+      color:gray;
+    }
+  }
+  .message {
+    margin-bottom: 10px;
+    .body {
+      border: 1px solid #C0C0C0;
+      border-radius: 4px 4px 4px 4px;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+      padding: 7px;
+      background-color: @messaging_background_color;
+      &.system {
+        font-style: italic;
+      }
+    }
+    .from {
+      text-align: center;
+    }
+  }
+  .target {
+    position: relative;
+    border: 1px solid #C0C0C0;
+    border-radius: 5px;
+    margin: 10px 0 30px;
+    padding: 7px;
+    background-color: #B5E0A8;
+    .inquiry {
+      .title {
+        font-size: 26px;
+        font-weight: bold;
+        padding: 6px 0;
+      }
+      .value {
+        font-weight: bold;
+      }
+      .price {
+        line-height: 24px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 22px;
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        .iso-code {
+          font-size: 12px;
+        }
+      }
+      .price-popover i {
+        vertical-align: baseline;
+      }
+      .price-details {
+        font-size: 20px;
+        .line {
+          display: table-row;
+          .concept {
+            display: table-cell;
+          }
+          .figure {
+            display: table-cell;
+          }
+        }
+      }
+    }
+  }
+}
+
+#inquiry_workflow {
+  form {
+    margin-bottom: 5px;
+  }
+  .hint {
+    font-style: italic;
+    margin-top: 13px;
+  }
+}

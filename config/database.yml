@@ -1,0 +1,23 @@
+development:
+  adapter: mysql2
+  host: 127.0.0.1
+  encoding: utf8
+  database: djconnect
+  username: root
+  password:
+
+test:
+  adapter: mysql2
+  host: 127.0.0.1
+  encoding: utf8
+  database: heypal_test
+  username: root
+  password:
+
+production:
+  adapter: mysql2
+  host: 127.0.0.1
+  encoding: utf8
+  database: heypaldb
+  username: root
+  password:

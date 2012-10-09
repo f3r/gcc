@@ -1,0 +1,26 @@
+#edit_profile.edit_profile_page
+  = render 'users/user_left_column', :user => current_user, :editable => true
+
+  .span6
+    = render "profiles/user_information"
+    = render "profiles/billing_address"
+    = #render "profiles/bank_account" if @user.agent? || @user.admin?
+    = render "profiles/new_password"
+
+
+    .form-horizontal.accounts
+      .section-header=t(:linked_accounts)
+      = render "linked_accounts_self", :user => @user
+
+
+- if @user.address
+  #map-tab.span3
+    #profile_map{:style => "width: 218px;height:210px;border:#ccc 1px solid;"}
+    .clearfix
+  :javascript
+    PlaceShow.initializeMap(#{@user.address.lat || 'null'}, #{@user.address.lon || 'null'}, '#{@user.address.city}','#{@user.address.country}', 0, "profile_map");
+
+:javascript
+  $(function(){
+    UserEdit.initialize();
+  });

@@ -1,0 +1,34 @@
+.start
+  .row
+    .span6.leftBox
+      .hub
+        %h1#search_in
+          Find professional DJs in
+
+        .btn-group#button_homepage
+          %button.btn.btn-large.btn-primary.button_left{:onclick =>"location.href='/#{current_city.slug}'"}= current_city.name
+          %button.btn.btn-large.btn-primary.dropdown-toggle.button_right{"data-toggle" => "dropdown"}
+            %span.caret
+          %ul.dropdown-menu.pull-left{:style => "width:201px"}
+            - cities = City.active_and_have_a_listing
+            - cities.each do |city|
+              %li
+                = link_to city.name, "/#{city.slug}", :class => 'city'
+            - if cities.present?
+              %li.divider
+            %li= link_to t("pages.front_page.other_cities"), new_feedback_path, :remote => true
+        #description
+          %p.first_description
+            Join now, it's free!
+          /%p.second_description
+
+    .span6.rightBox
+      = parse_cms_embeds(Page.find_by_page_url('home_page_right').present? ? Page.find_by_page_url('home_page_right').description : "")
+
+- home_page_footer = Page.find_by_page_url('home_page_footer')
+= parse_cms_embeds(home_page_footer.description.html_safe) unless home_page_footer.nil?
+
+:javascript
+  $('#button_homepage a.city').click(function(){
+    $('#button_homepage .button_left').html($(this).html());
+  });

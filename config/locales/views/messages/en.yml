@@ -1,0 +1,56 @@
+####################################################################################
+# MESSAGES & INQUIRIES
+####################################################################################
+en:
+  messages:
+    no_messages_inbox:          You don't have any message in your inbox
+    no_messages:                No messages
+    mark_read:                  Mark read
+    mark_unread:                Mark as unread
+    marked_as_unread:           The message was marked as unread
+    marked_as_read:             The message was marked as read
+    failed_unread:              Failed to mark as unread
+    failed_read:                Failed to mark as read
+    button_send_a_message:      Send a Message
+    question_new_placeholder:   You can ask and answer questions here.
+    reply:                      Reply
+    message_sent_privately:     Message sent privately
+    messsage_error_try_again:   An error occured. Please try again.
+    conversation_with_deleted:  "Conversation with %{name} deleted."
+    archive:                    Archive
+    archive_message:            Are you sure you want to archive it?
+
+  inquiries:
+    inquiries_title: Inquiries
+    inquiry_modal_title: Hire this DJ
+    update_inquiry_title: Update inquiry
+    inquiry: Inquiry
+    button_inquire: Inquire
+    arriving: Event Date
+    arriving_on: Arriving on
+    staying: Staying
+    budget: Budget
+    comments_questions: Comments / Questions
+    inquiry_questions: "Please add any other questions to the DJ here"
+    re_captcha: Humans only
+    inquiry_sent: Inquiry sent
+    inquiry_success_title: "Your inquiry has been sent!"
+    inquiry_sent_msg: "The DJ has been notified of your inquiry. Normally, you should expect a response within 24-48 hours."
+    inquiry_sent_just_created_msg: "We have created automatically an account for you in %{site_name}, Thank you!"
+    inquiry_sent_check_link: "You can check on your inquiries in the %{link}"
+    inquiry_error: "There was a problem processing you inquiry, please try again"
+    inquiry_center: Inquiry Center
+    inquiry_guests:
+      one:             1 guest
+      other:           '%{count} guests'
+    inquiry_on:         Inquiry on
+    conversation_with:  Conversation with
+    existing_account_please_login: "You already have an account registered with that email, please login before sending your inquiry."
+
+  contact_requests:
+    contact_request_modal_title: Contact Us
+    contact_request_message: Message
+    button_contact: Submit
+    contact_request_error: "There was a problem processing your contact, please try again"
+    contact_request_success_title: "Your contact request has been sent!"
+    contact_request_sent_msg: "Received your contact request, Our support team will contact you shortly."

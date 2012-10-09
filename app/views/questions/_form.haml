@@ -1,0 +1,9 @@
+%a.open-respond-form.btn.btn-primary= t("messages.reply")
+.row.span9.offset1.hide#respond-form-div
+  = form_for 'comment', :url => product_question_reply_to_message_path(product.id, comment_id), :html => {:class => 'respond-form', :remote => true} do |f|
+    .row{:style => "margin-left:-13px; margin-top: 16px"}
+      .span1{:style=>"margin-right: 10px"}= avatar_image(current_user)
+      = f.text_area :comment, :rows => 3, :style => "height:54px; width:509px; max-width:509px !important; min-width:509px;"
+    .row{:style => "float:right; margin-right:105px; margin-bottom: 20px"}
+      = button_tag t("cancel"), :id => 'ask-cancel', :class => 'btn respond-cancel'
+      = button_tag t("submit"), :id => 'ask-btn',    :class => "btn btn-primary respond-btn"

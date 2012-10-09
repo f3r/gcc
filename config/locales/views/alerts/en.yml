@@ -1,0 +1,40 @@
+####################################################################################
+# ALERTS
+####################################################################################
+en:
+  alerts:
+    alerts: Alerts
+    my_alerts: My Alerts
+    status: Status
+    query: Query
+    schedule: Schedule
+    delivery_method: Delivery method
+    daily: Daily
+    weekly: Weekly
+    monthly: Monthly
+    sms: SMS
+    email: Email
+    email_and_sms: Email and SMS
+    edit: Edit
+    pause: Pause
+    unpause: Unpause
+    delete: Delete
+    active: Active
+    inactive: Inactive
+    maximum_price: Maximum price
+    minimum_price: Mininum price
+    settings: Settings
+    no_alerts: No alerts found.
+    view_results: View results
+    create_alert: Create alert
+    edit_alert: Edit alert
+    custom_alerts: Custom alerts
+    error_invalid_or_expired_search: Invalid or expired search
+    error_alert_check_dates: Invalid dates
+    error_alert: Unknown error
+    message_alert_created: The alert has been successfully created
+    message_alert_deleted: The alert has been successfully deleted
+    message_alert_paused: The alert has been successfully paused
+    message_alert_unpaused: The alert has been successfully unpaused
+    message_alert_updated: The alert has been successfully updated
+    email_subject: "Your %{product_plural} search alert"

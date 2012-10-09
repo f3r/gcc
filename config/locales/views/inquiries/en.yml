@@ -1,0 +1,8 @@
+en:
+  inquiries:
+    confirmed_renter_subject: "Your Inquiry on %{site_name} has been sent"
+    confirmed_owner_subject:  "You have received an inquiry on %{site_name}"
+    reminder_owner_subject:   "Reminder about a new inquiry on %{site_name}"
+    received_spam_subject:    "You have received a spam inquiry on %{site_name}"
+  messages:
+    new_reply_subject:        "You have a new message from %{sender} on %{site_name}"

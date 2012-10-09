@@ -1,0 +1,9 @@
+= breadcrumb [], t("inquiries.inquiries_title")
+.inbox
+  - if @conversations.blank?
+    .alert.alert-info
+      = t("messages.no_messages_inbox")
+  - else
+    - @conversations.each do |c|
+      .row
+        = render 'conversation', :conversation => c

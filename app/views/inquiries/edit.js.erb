@@ -1,0 +1,21 @@
+<%= open_modal :inquire, 'inquiries/edit', :no_sections => true %>
+
+$('#inquiry_date_start_display').datepicker({
+  dateFormat: 'd M yy',
+  minDate: +1,
+  altField: "#inquiry_check_in",
+  altFormat: 'yy-mm-dd'
+})
+
+//$('.alert-message').remove()
+$("#inquire_form").validationEngine({
+  promptPosition: "bottomRight:-10,-10",
+  relative: true,
+  onValidationComplete: function(form, status){
+    if(status){
+      $("#inquire_button").button('loading');
+      form.validationEngine('detach');
+      form.submit();
+    }
+  }
+})

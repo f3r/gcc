@@ -1,0 +1,74 @@
+<%= semantic_form_for [:admin, @translation] do |f| %>
+	<%= f.inputs do %>
+	  <% if controller.action_name == "edit" %>
+		<%= f.input :locale, :input_html => { :disabled => true } %>
+		<%= f.input :key, :input_html => { :disabled => true } %>
+    <% elsif params[:locale] && params[:key] %>
+    <%= f.input :locale, :input_html => { :value => params[:locale], :readonly => true } %>
+		<%= f.input :key, :input_html => { :value => params[:key], :readonly => true } %>
+    <% else %>
+    <%= f.input :locale, :as => :select, :collection => Hash[Locale.all.map{|l| [l.code,l.code]}], :include_blank => false %>
+		<%= f.input :key %>
+		<% end %>
+		<%= f.input :value %>
+    <% if controller.action_name == "edit" or (params[:locale] && params[:key]) %>
+		<li class="text input optional" id="translation_value_input">
+			<label class=" label" for="translation_value">Other Languages</label>
+			<div class="translations">
+			<ul>
+			<% for locale in Locale.all %>
+			<%
+		    the_key = @translation.key ? @translation.key : params[:key]
+		    the_locale = @translation.locale ? @translation.locale : params[:locale]
+		    new_locale = Locale.find_by_code(the_locale)
+			%>
+  			<% if the_locale != locale.code %>
+    			<li>
+    				<h3><%= locale.name %>:</h3>
+            <% if t(the_key, :locale => locale.code).include? 'translation_missing' or t(the_key, :locale => locale.code).include? 'translation missing' %>
+              <pre class="other_translation_text">Translation missing, <%= link_to "Create translation", new_admin_translation_path(:locale => locale.code, :key => the_key) %></pre>
+            <% else %>
+      				<pre class="other_translation_text" id="database_value_<%= locale.code %>"><%= t(the_key, :locale => locale.code) %></pre>
+      				<p><%= link_to "Edit", redirect_edit_admin_translations_path(:locale => locale.code, :key => the_key) %>,
+      				<a href="javascript:void(0);" class="translate" onclick="setThisText('database_value_<%= locale.code %>')">Copy <%= locale.name %> text to <%= new_locale.name %></a>
+      				<% if the_locale != locale.code %>
+      				 or <a href="javascript:void(0);" class="translate" onclick="translate('database_value_<%= locale.code %>', '<%= locale.code %>', '<%= the_locale %>')">Auto translate to <%= new_locale.name %></a>
+      				<% end %>
+      				</p>
+      			<% end %>
+    			</li>
+  			<% end %>
+			<% end %>
+			</ul>
+			</div>
+		</li>
+		<% end %>
+	<% end %>
+	<%= f.buttons :commit %>
+<% end %>
+
+<% if controller.action_name == "edit" or (params[:locale] && params[:key]) %>
+<script type="text/javascript">
+
+	function setThisText(text) {
+		var text = $('#' +text).text();
+		$("#translation_value").val(text);
+		return false;
+	}
+
+	function translateCallbak(text) {
+    if (text) {
+      $("#translation_value").val(text);
+    }
+	}
+	function translate(id, from_language, to_language) {
+		var text = encodeURIComponent($('#' +id).text());
+      var s = document.createElement("script"), app_id = 'C602A8D24208A89EC0D1A6394B6043DA1FB72844';
+      s.type = 'text/javascript';
+		s.src = 'http://api.microsofttranslator.com/V2/Ajax.svc/Translate?oncomplete=translateCallbak&appId='+ app_id +'&from=' + from_language + '&to=' + to_language + '&text=' + text
+      document.getElementsByTagName("head")[0].appendChild(s);
+		return false;
+	}
+
+</script>
+<% end %>

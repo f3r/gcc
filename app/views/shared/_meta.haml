@@ -1,0 +1,52 @@
+%meta{:charset => "utf-8"}
+%title= content_for?(:title) ? "#{yield(:title)} | #{t("site_title", :site_tagline => SiteConfig.site_tagline)}" : t("site_title", :site_tagline => SiteConfig.site_tagline)
+= SiteConfig.custom_meta.html_safe
+%meta{:content => content_for?(:meta_keywords) ? "#{yield(:meta_keywords)}" : "#{SiteConfig.meta_keywords}", :name => "keywords"}
+%meta{:content => content_for?(:meta_description) ? "#{yield(:meta_description)}" : "#{SiteConfig.meta_description}", :name => "description"}
+%link{:rel => "icon", :type => "image/png", :href => static_asset('favicon.ico')}
+
+= stylesheet_link_tag 'plugins'
+= stylesheet_link_tag css_color_scheme
+= stylesheet_link_tag 'plupload'
+
+= javascript_include_tag "application"
+
+= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3&sensor=false'
+
+/[if lt IE 9]
+  = javascript_include_tag 'http://html5shim.googlecode.com/svn/trunk/html5.js'
+/ Le styles
+
+- # We can have 2 different google analytic tracking codes,
+- # one for the client and one for us to track
+- if SiteConfig.gae_tracking_code.present? || SiteConfig.gae_tracking_code_tse.present?
+  %script{:type=>"text/javascript"}
+    var _gaq = _gaq || [];
+
+    - if SiteConfig.gae_tracking_code.present?
+      _gaq.push(['_setAccount', '#{SiteConfig.gae_tracking_code}'], ['_trackPageview']);
+
+    - if SiteConfig.gae_tracking_code_tse.present?
+      _gaq.push(['b._setAccount', '#{SiteConfig.gae_tracking_code_tse}'], ['b._trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+
+%script{:type=>"text/javascript"}
+  var switchTo5x=true;
+= javascript_include_tag 'http://w.sharethis.com/button/buttons.js'
+%script{:type=>"text/javascript"}
+  stLight.options({publisher: "f91eb31f-708d-40c7-b96e-f3b8ce71ba44"});
+
+= csrf_meta_tag
+
+= yield :javascripts
+
+= raw(SiteConfig.head_tag) if SiteConfig.head_tag.present?
+
+:javascript
+  document.write(unescape("%3Cscript src='" + (("https:" == document.location.protocol) ? "https" : "http") + "://cdn.mouseflow.com/projects/fe437cf6-de28-4d49-adea-a68e5286bece.js' type='text/javascript'%3E%3C/script%3E"));

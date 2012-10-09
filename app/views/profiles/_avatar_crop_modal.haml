@@ -1,0 +1,20 @@
+= form_for :user, :url => crop_avatar_profile_path, :method => :post, :remote => true, :html => {:id => "crop_avatar"} do |f|
+  .modal-header
+    %h3= "Choose avatar area"
+  .modal-body
+
+    #image_cropping_area
+      = image_tag @user.original_avatar.url(:croppable), :id => "jcrop_target"
+
+    = f.hidden_field :crop_x
+    = f.hidden_field :crop_y
+    = f.hidden_field :crop_w
+    = f.hidden_field :crop_h
+    = f.hidden_field :image_h
+    = f.hidden_field :image_w
+
+    %p
+      %i= "Click and drag to make a selection"
+
+  .modal-footer
+    = f.button t(:submit), :class => 'btn primary', "data-loading-text" => t(:submitting), :onclick => "$(this).button('loading')"

@@ -1,0 +1,11 @@
+- if resource.amenities.present?
+  - resource.amenities.all.each do |amenity|
+    - style_data = genres_style
+    %div{:class => "tag #{style_data[0]}"}
+      %span.larr
+        &nbsp;
+      %span.strip{:style => "background-color: #{style_data[1]}"}
+        %h4{:style => 'font-size: 13px;'}= amenity.name
+        %span.action
+      %span.rarr
+        &nbsp; 

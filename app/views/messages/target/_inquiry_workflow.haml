@@ -1,0 +1,4 @@
+- if current_user?(target.user)
+  = render 'messages/target/guest_workflow', :target => target
+- else
+  = render 'messages/target/agent_workflow', :target => target

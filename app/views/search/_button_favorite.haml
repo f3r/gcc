@@ -1,0 +1,10 @@
+%div.button_favorite{:id => dom_id(favorable, 'favorite')}
+  - if logged_in?
+    - if Favorite.is_favorited?(favorable, current_user)
+      = link_to favorite_path(:id => favorable.id), :remote => true, :method => :delete, :class => 'fav active', :rel => 'tooltip', :title => t("favorites.remove_favorite"), "data-page" => @current_action, :onclick => "$(this).tooltip('hide')" do
+        %i
+    - else
+      = link_to favorites_path(:id => favorable.id), :remote => true, :method => :post, :class => 'fav', :rel => 'tooltip', :title => t("favorites.add_favorite"), "data-page" => @current_action, :onclick => "$(this).tooltip('hide')" do
+        %i
+  - else
+    %a.fav{:rel => "tooltip", :title => t("favorites.add_favorite"), :class => "trigger_signup", "data-ref" => favorites_add_path(:place_id =>  favorable.id), :href => "#" }      

@@ -1,0 +1,44 @@
+- content_for(:title)  { "#{t("inquiries.inquiry_modal_title")}"}
+- content_for(:footer) { "inquiry" }
+- content_for(:id)     { "#{@resource.id}" }
+
+= form_for(:inquiry, :url => inquiries_path(:id => @resource.id), :html => {:method => :post, :remote => true, :id => "inquire_form"}) do |f|
+
+  = hidden_field_tag :mobile, :true
+  = f.label :name, t("users.full_name")
+  = text_field_tag :name, nil, :placeholder => t("users.name_example")
+
+  = f.label :email, t("users.email")
+  = text_field_tag :email, nil, :placeholder => t("users.email_example")
+
+  - if show_inquiry_length_fields?
+    = f.label :date_start_label, t("inquiries.arriving")
+    %input{:id => "inquiry_date_start_label", :name => :i, :placeholder => t("date_select")}
+    = f.hidden_field :date_start
+
+    = f.label :length_stay, t("inquiries.staying")
+    %select{:name=> :length_stay, "data-mini" => "true"}
+      - 8.times do |i|
+        = "<option value=\"#{i+1}\"> #{i+1} </option>".html_safe
+    = f.select :length_stay_type, transaction_length_options
+
+  = f.label :message, t("inquiries.comments_questions")
+  = f.text_area :message, :style => "height:70px", :placeholder => t("inquiries.inquiry_questions")
+  %br
+  %button{:type => :submit, "data-theme" => :a, "data-mini"=>:true, :class => "ui-btn-hidden", "aria-disabled" => false}=t("inquiries.button_inquire")
+
+:javascript
+  $(function(){
+    $('#inquiry_date_start_label').scroller({
+        preset: 'date',
+        theme: 'ios',
+        display: 'modal',
+        mode: 'scroller',
+        dateOrder: 'mmD ddy'
+    });
+
+    $('#inquiry_date_start_label').click(function(){
+        $('#i').scroller('show');
+        return false;
+    });
+  });

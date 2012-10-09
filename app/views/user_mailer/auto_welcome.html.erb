@@ -1,0 +1,7 @@
+<h2><%= t("mailers.salutation", :name => @user.first_name) %></h2>
+<p><%= t('mailers.auto_welcome.intro') %></p>
+<%= simple_format(@message.html_safe) %>
+<p><%= link_to t("mailers.auto_welcome.set_password"), edit_password_url(@user, :reset_password_token => @user.reset_password_token, :welcome => true) %>.</p>
+<% content_for(:footer_ps) do %>
+  <p></p>
+<% end %>

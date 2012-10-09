@@ -1,0 +1,37 @@
+- @user ||= User.new
+
+.section.span6.bored
+  %h2.offset-one-eight= t("users.registration.create_new_account")
+  %br
+  = form_for(@user, :url => user_registration_path, :html => {:id => 'registerForm'})  do |f|
+    = render 'registrations/oauth_fields', :f => f
+    .input= f.text_field     :email,      :placeholder => t("users.email_address"),               :class => "validate[required,custom[email]]"
+    .input= f.password_field :password,   :placeholder => t("users.password"),                    :class => "validate[required,custom[onlyLetterNumber]]"
+    .input= f.password_field :password_confirmation, :placeholder => t("users.confirm_password"), :class => "validate[required, equals[user_password]]"
+
+    .input.agree
+      %div.reset-width
+        = f.check_box :terms, :id => 'terms_and_conditions'
+        %label.for-checkbox{:for => "terms_and_conditions"}
+          = t("users.registration.i_accept_the")
+          = link_to t("terms_and_conditions"), terms_path, :target => :blank
+
+    %div.signup_button_group
+      - if SiteConfig.agent_need_approval
+        %button.btn.float-right#user{:type => 'submit', :name => 'user[signup_role]', :value => 'user'}
+          = t("users.registration.create_account")
+      - else
+        %button.btn.btn-primary.float-left#agent{:type => 'submit', :name => 'user[signup_role]', :value => 'agent'}
+          = t("users.registration.sign_up_as_agent")
+
+        %button.btn.btn-primary.float-right#user{:type => 'submit', :name => 'user[signup_role]', :value => 'user'}
+          = t("users.registration.sign_up_as_user")
+
+  .switch-login
+    = t("users.registration.switch_to_login")
+    = link_to t("users.registration.here"), login_path_with_ref
+
+:javascript
+  $(document).ready(function(){
+    $("#registerForm").validationEngine('attach');
+  });

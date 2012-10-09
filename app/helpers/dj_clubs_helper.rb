@@ -1,0 +1,2 @@
+module DjClubsHelper
+end

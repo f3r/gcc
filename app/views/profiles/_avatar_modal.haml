@@ -1,0 +1,26 @@
+#avatar-modal.modal.hide.fade
+  = form_for :user, :url => profile_path, :method => :put, :html => {:id => "update_avatar"} do |f|
+    .modal-header
+      = link_to "x", '#', :class => "close", 'data-dismiss' => "modal"
+      %h3=t(:change_photo)
+    .modal-body
+      .row
+        .avatar-box.span2
+          = image_tag(large_avatar(user), :class => "avatar_placeholder", :width => 100)
+          - if user.avatar?
+            = f.check_box :delete_avatar, :autocomplete => 'off', :style => 'display:none'
+            = link_to t(:delete_photo), '#', :id => 'delete_avatar_link'
+          .preview
+            =t(:preview)
+        .span7
+          %p= t(:change_photo_description)
+          %p
+            =#%a.btn.medium.facebook_avatar=t(:use_facebook_photo)
+            =# f.hidden_field(:facebook_image, :value => "http://graph.facebook.com/#{@facebook_uid}/picture?type=large") if !@facebook_uid.blank?
+          %span
+            %a.btn.medium.upload_avatar= t(:upload_a_new_photo)
+            %span.upload_field
+              = f.hidden_field :avatar_url
+              = f.file_field :avatar, :onchange => "UserEdit.readURL(this);", :style=>"display:none;", :autocomplete => 'off'
+    .modal-footer
+      = f.button t(:save), :class => 'btn primary',  "data-loading-text" => "#{t(:saving_photo)}...", :id => "save-btn"

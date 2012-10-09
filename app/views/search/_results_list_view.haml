@@ -1,0 +1,7 @@
+- if @results
+  - @results.each_with_index do |r, idx|
+    = render 'row', :my_products => my_products, :resource => r, :ranking => idx + 1
+- else
+  %li
+    .thumb.data-block
+      = t("places.search.sorry_no_matches")

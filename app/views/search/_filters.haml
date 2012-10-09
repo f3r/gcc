@@ -1,0 +1,18 @@
+.search-aside
+  .panel-wrap
+    %ul.panel-expander
+      %li
+        = render 'button_alert'
+
+      - category_filters = @search.category_filters
+      - unless category_filters.empty?
+        %li
+          = render 'checkbox_filters', :filters => category_filters, :title => @search.category_filters_title, :field => :category_ids
+
+      - amenity_filters = @search.amenity_filters
+      - unless amenity_filters.empty?
+        %li
+          = render 'checkbox_filters', :filters => amenity_filters, :title => @search.amenity_filters_title, :field => :amenity_ids
+
+      %li
+        = render 'price_filters'

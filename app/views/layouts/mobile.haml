@@ -1,0 +1,48 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1" }
+    %meta{:charset => "utf-8"}
+    %meta{:name => "apple-mobile-web-app-capable", :content => "yes"}
+    %meta{:name => "google", :value => "notranslate" }
+    %title= content_for?(:title) ? "#{yield(:title)} | #{t("site_title", :site_tagline => SiteConfig.site_tagline)}" : t("site_title", :site_tagline => SiteConfig.site_tagline)
+
+    = stylesheet_link_tag    'http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css'
+    = javascript_include_tag 'http://code.jquery.com/jquery-1.7.2.min.js'
+    = javascript_include_tag 'http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js'
+    - if (content_for :footer == 'map')
+      = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3&sensor=false'
+      = javascript_include_tag 'places_show.js'
+    - if (content_for :footer == 'photos')
+      = stylesheet_link_tag    'photoswipe.css'
+      = javascript_include_tag 'klass.min.js'
+      = javascript_include_tag 'code.photoswipe.jquery-3.0.5.min.js'
+    - if (content_for :footer == 'inquiry')
+      = stylesheet_link_tag    'mobiscroll-2.0.1.custom.min.css'
+      = javascript_include_tag 'mobiscroll-2.0.1.custom.min.js'
+
+
+  %body
+    %div{"data-role" => :page, "data-add-back-btn" => :true, "data-direction" => :reverse}
+      - if content_for?(:title)
+        %div{"data-role"=> :header}
+          %h1= content_for :title
+
+      %div{"data-role"=> :content}
+        %p= yield
+
+      - if content_for?(:footer)
+        %div{"data-role"=> :footer, "data-id" => :fool, "data-position" => :fixed}
+          %div{"data-role"=> :navbar}
+            - id    = content_for :id
+            - menu  = content_for :footer
+            - klass = "ui-btn-active ui-state-persist"
+            %ul
+              %li
+                %a{:href => "/mobile/info/#{id}",    :class => "#{menu == 'info' ? klass : '' }"} Info
+              %li
+                %a{:href => "/mobile/map/#{id}",     :class => "#{menu == 'map' ? klass : '' }"} Map
+              %li
+                %a{:href => "/mobile/photos/#{id}",  :class => "#{menu == 'photos' ? klass : '' }"} Photos
+              %li
+                %a{:href => "/mobile/inquire/#{id}", :class => "#{menu == 'inquire' ? klass : '' }"} Inquire!

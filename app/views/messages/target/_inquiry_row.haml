@@ -1,0 +1,11 @@
+- if target.guests.present?
+  .guests
+    %span.value= t("inquiries.inquiry_guests", :count => target.guests)
+- if target.check_in
+  .arriving 
+    %span.key= t("products.inquiries.start_date")
+    %span.value= l(target.check_in, :format => :long)
+- if target.length_in_words
+  .stay
+    %span.key= t("products.inquiries.duration")
+    %span.value= target.length_in_words

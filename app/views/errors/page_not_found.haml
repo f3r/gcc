@@ -1,0 +1,5 @@
+- content_for(:title) do
+  Page not found
+- page = Rails.cache.read "page_error_404"  
+- page = Page.find_by_page_url('error_404') if page.nil?
+= raw ((page.description unless page.nil?) || "404")

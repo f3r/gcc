@@ -1,0 +1,25 @@
+.table_tools
+  .panel
+    %h3 City Search
+    .panel_contents
+      = form_for :geo_search, :url => geonames_search_admin_cities_path, :method => :get do |f|
+        = f.text_field :name, :value => (params[:geo_search][:name] if params[:geo_search]), :style => 'width:400px'
+        = f.country_select :country_code, [], {:include_blank => 'All countries'}
+        = f.submit 'Search'
+
+- if @results
+  %table
+    %thead
+      %th= 'Name'
+      %th= 'Country'
+      %th= 'Map'
+      %th= 'Actions'
+    - @results.each do |city|
+      %tr
+        %td= city.name
+        %td= city.country
+        %td= static_image_map(city, 5, true)
+        %td= link_to('Add', admin_cities_path(:city => city.attributes.except(:slug, :cached_completed_name)), :method => :post)
+- else
+  .blank_slate_container
+    %span.blank_slate Search for a city by name

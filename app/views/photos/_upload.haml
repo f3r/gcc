@@ -1,0 +1,100 @@
+.panel-wrapper
+  .well
+    %h3= 'Gallery'
+    - if false
+      .alert.alert-info
+        = link_to t("places.wizard.photos.read_photo_faq"), home_photo_faq_path
+    .upload_wrapper#up_container
+      %a#upload{:href => "javascript:{}"}
+        %img{:src => asset_path('upload-photos.png')}
+      %p.hint= Product.min_photo_count > 0 ? t("products.wizard.photos.upload_photo_hint_min", :min_photos_count => Product.min_photo_count) : t("products.wizard.photos.upload_photo_hint_no_min")
+
+    .clearfix
+    .photo_wrapper
+
+    .clearfix
+    .photos_wrapper
+      %p= t("places.wizard.photos.tip")
+
+      .primary_marker
+        = t("places.wizard.photos.primary")
+      .row
+        .span8
+          %ul.gallery#photos_list
+            = render 'photos/list'
+
+:javascript
+  /* TODO: Finish moving this to wizard.js */
+
+  var updatePhotoLabel = function(photo_id, label) {
+    $.ajax({
+      type: 'PUT',
+      dataType: 'script',
+      url: '/listings/#{@resource.id}/photos/' + photo_id,
+      data: {name: label},
+      success: function() {
+        $('#photo_ids-' + photo_id + ' p').html(label);
+      }
+    });
+  };
+
+  $(function() {
+    var csrf_token = $('meta[name=csrf-token]').attr('content');
+    var csrf_param = $('meta[name=csrf-param]').attr('content');
+
+    PhotoManager.initialize('#{sort_listing_photos_path(@resource.id)}', #{Product.min_photo_count});
+
+    var uploader = new plupload.Uploader({
+    browse_button: 'upload',
+    container: 'up_container',
+    runtimes: 'html5,flash,silverlight',
+    url: '/listings/#{@resource.id}/photos',
+    max_file_size: '10mb',
+    multiple_queues: true,
+    multipart: true,
+    dragdrop:true,
+    drop_element: 'upload',
+    multipart_params: {
+      '_method' : 'post',
+      '#{Rails.application.config.session_options[:key]}' : '#{cookies[Rails.application.config.session_options[:key]]}',
+      'authenticity_token' : encodeURI(csrf_token),
+      'csrf_token' : encodeURI(csrf_param),
+      'format': 'json'
+    },
+    filters: [
+      {title: "Images", extensions: "jpg,jpeg,png"}
+    ],
+    init: {
+      FileUploaded: function(up, file, info) {
+        $('#' + file.id).remove();
+        PhotoManager.insert(info["response"]);
+        $('.active-label').trigger('click');
+        $('.active-label input[type=text]').attr('placeholder',"Caption");
+        $('.active-label input[type=text]').focus();
+        PhotoManager.adjustScroll();
+      }
+    }
+    });
+
+    uploader.init();
+
+    uploader.bind('FilesAdded', function(up, files) {
+            $.each(files, function(i, file) {
+                $('#up_container').append(
+                    '<div id="' + file.id + '">' +
+                    file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' +
+                '</div>');
+            });
+            up.refresh(); // Reposition Flash/Silverlight
+            up.start();
+        });
+
+    uploader.bind('UploadProgress', function(up, file) {
+            $('#' + file.id + " b").html(file.percent + "%");
+            if(file.percent == 100)
+            {
+              $('#' + file.id + " b").html(file.percent + "% almost there ...");
+            }
+        });
+  });
+

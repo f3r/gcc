@@ -1,0 +1,40 @@
+<%= javascript_include_tag "/assets/uploadify-3.1/jquery.uploadify-3.1.min.js" %>
+<%= stylesheet_link_tag "uploadify/uploadify.css"%>
+
+<i>*Remember that photos should be in 602px width and 401px height for optimum visualization</i>
+<br/>
+<br/>
+
+<script>
+	$(function(){
+
+		var csrf_token = $('meta[name=csrf-token]').attr('content');
+		var csrf_param = $('meta[name=csrf-param]').attr('content');
+
+		var token = '<%=current_active_admin_user.authentication_token%>';
+
+		$('#file_upload').uploadify({
+			  'debug'           : false,
+			  'swf'             : '/assets/uploadify-3.1/uploadify.swf',
+			  'cancelImg'       : '/assets/uploadify-3.1/cancel.png',
+			  'buttonImage'     : '/assets/uploadify-3.1/browse-button.png',
+			  'buttonClass'     : 'dumm',
+			  'width'           : 400,
+			  'height'          : 200,
+			  'queueID'         : 'photoQueue',
+			  'wmode'           : 'transparent',
+			  'fileTypeExts'         : '*.jpg;*.png',
+			  'method'          : 'post',
+			  'uploader'        : "<%=admin_frontpage_images_path%>/new_set_upload",
+			  'formData'        : {'_method' : 'post', 'auth_token' : token, 'authenticity_token' : encodeURI(csrf_token), 'csrf_token' : encodeURI(csrf_param), '<%=Rails.application.config.session_options[:key]%>' : '<%=cookies[Rails.application.config.session_options[:key]]%>', 'format': 'json' },
+			  'onQueueComplete' : function(queueData) {
+			  		window.location.href = "<%=admin_frontpage_images_path%>?order=id_desc";
+			  }
+			}
+		);
+
+		$('#file_upload-button').removeClass('uploadify-button');
+	});
+</script>
+<div id="photoQueue" class="uploadifyQueue"></div>
+<input type="file" name="file_upload" id="file_upload" />

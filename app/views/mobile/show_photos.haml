@@ -1,0 +1,13 @@
+- content_for(:title)  { "#{@resource.title}"}
+- content_for(:footer) { "photos" }
+- content_for(:id)     { "#{@resource.id}" }
+
+%ul#Gallery
+  - @resource.photos.all.each do |photo|
+    %li
+      %a{:href => photo.photo.url(:large)}= image_tag(photo.photo.url(:small), :alt => photo.name)
+
+:javascript
+  $(document).ready(function(){
+    var myPhotoSwipe = $("#Gallery a").photoSwipe({ enableMouseWheel: false , enableKeyboard: false });
+  });

@@ -1,0 +1,14 @@
+####################################################################################
+# Cities
+####################################################################################
+en:
+  cities:
+    hong_kong:          Hong Kong
+    singapore:          Singapore
+    kuala_lumpur:       Kuala Lumpur
+    los_angeles:        Los Angeles
+    manila:             Manila
+    new_york:           New York
+    san_francisco:      San Francisco
+    shanghai:           Shanghai
+    sydney:             Sydney

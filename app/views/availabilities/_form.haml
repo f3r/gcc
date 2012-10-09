@@ -1,0 +1,76 @@
+%fieldset.form-horizontal.well
+  .control-group
+    = label_tag "date_start", 'Dates', :class => 'control-label'
+    .controls
+      = text_field_tag "date_start", "", :placeholder => "dd/mm/yyyy", :class => 'small from-to-picker', "data-date" => :from
+      = t(:to)
+      = text_field_tag "date_end", "", :placeholder => "dd/mm/yyyy", :class => 'small from-to-picker', "data-date" => :to
+
+  .availability-price.control-group
+    = label_tag "availability_type", 'Status', :class => 'control-label'
+    .controls
+      = select_tag "availability_type", raw("<option value='1'>#{t(:unavailable)}</option><option value='2'>#{t(:new_price)}</option>"), :class => 'availability_type'
+
+      %span.wrap.hide
+        %span.input-prepend
+          %small.add-on.currency-sign= @place.currency.label
+          = text_field_tag "price_per_night", "", :placeholder => t(:new_price), :class => 'small validate[custom[number],min[0]]'
+
+      %p.help-block
+        =t(:you_can_add_dates)
+        %span.currency-sign
+          = @place.currency.label
+          = @place.price_per_night
+
+    %div.availability-action.pull-right
+      = button_tag t(:close), :class => "btn cancel-new-availability"
+      = button_tag t(:add), :id => "new-availability", :class => "btn primary"
+
+:javascript
+
+  $(".cancel-new-availability").unbind('click').click(function() {
+    $("#new-availability-form").hide();
+    $("#open-new-availability").show();
+    return false;
+  });
+
+  $("#new-availability").unbind('click').click(function() {
+    var save_btn = $(this);
+    var place_id = $("#place_id").val();
+
+    showIndicator(save_btn);
+    save_btn.attr('disabled', 'disabled');
+    $.ajax({
+      type: 'POST',
+      url: '/places/'+place_id+'/availabilities',
+      data: {
+        'availability_type':$("#availability_type").val(),
+        'price_per_night':$("#price_per_night").val(),
+        'date_start':$("#date_start").val(),
+        'date_end':$("#date_end").val()
+      },
+      success: function(data) {
+        if (data.stat) {
+          $("#all-availabilities").html(data.data);
+          $(".cancel-new-availability").click();
+
+          $("#date_start, #date_end").val('');
+          $("#availability_type").val("1");
+          $("#price_per_night").val('').parent().hide();
+
+          add_datepicker();
+        } else {
+          alert(data.data);
+        }
+
+        hideIndicator(save_btn);
+        save_btn.removeAttr('disabled');
+      },
+      error: function() {
+        alert("#t(:something_went_wrong)");
+        hideIndicator(save_btn);
+        save_btn.removeAttr('disabled');
+      }
+    });
+    return false;
+  });

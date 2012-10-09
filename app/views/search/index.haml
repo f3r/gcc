@@ -1,0 +1,19 @@
+- content_for(:title) do
+  - @city.present? ? @city.name : "All DJs"
+
+- content_for(:meta_description) do
+  - "#{@city.present? ? @city.name : 'All DJs'} - #{SiteConfig.meta_description}"
+
+%section.clearfix
+  .row
+    .span10.offset1
+      = render 'search_bar'
+      .results{:style => "padding-top: 10px;"}
+        #search_load_indicator.hide
+          = image_tag('loading.gif', :alt => 'loading')
+        #search_results
+          = render 'search_results'
+
+      .see-more.center
+        %span#see_more_load_indicator.hide= image_tag('loading.gif')
+        =# link_to_function 'see more', 'PlaceFilters.seeMore()'

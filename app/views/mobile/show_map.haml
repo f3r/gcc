@@ -1,0 +1,36 @@
+- content_for(:title)  { "#{@resource.title}"}
+- content_for(:footer) { "map" }
+- content_for(:id)     { "#{@resource.id}" }
+- require_google_apis
+
+
+%div#map{:style => 'height: 450px; width: 320px; margin: -30px -15px 0px -15px'}
+
+:javascript
+  $(function(){
+    mapOptions = {
+      zoom: 13,
+      center: new google.maps.LatLng(#{@resource.lat}, #{@resource.lon}),
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      zoomControlOptions: {
+        position: google.maps.ControlPosition.TOP_LEFT
+      }
+    };
+
+    map = new google.maps.Map(document.getElementById('map'),mapOptions);
+
+    rand = parseFloat((Math.random() * (0.002 - (-.002)) + (-.002)).toFixed(4));
+    circle_lat = #{@resource.lat} + rand;
+    circle_lon = #{@resource.lon} + rand;
+
+    circle = new google.maps.Circle({
+      map: map,
+      center: new google.maps.LatLng(circle_lat, circle_lon),
+      strokeColor: '#004de8',
+      strokeWeight: 1,
+      strokeOpacity: 0.62,
+      fillColor: '#004de8',
+      fillOpacity: 0.27,
+      radius: 1000
+    });
+  });

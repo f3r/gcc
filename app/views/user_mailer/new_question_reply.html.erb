@@ -1,0 +1,4 @@
+<h2><%= t("mailers.salutation", :name => @user.first_name)%></h2>
+<p><%= t("mailers.new_question_reply.intro", :place_title => @product.title)%><p>
+<% link = link_to t("mailers.click_here"), seo_product_url(@product, :anchor => 'details-questions') %>
+<p><%= t("mailers.new_question_reply.respond", :link => link).html_safe %>

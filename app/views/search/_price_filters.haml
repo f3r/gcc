@@ -1,0 +1,31 @@
+- min_price, max_price, step = @search.price_filter
+- current_min = @search.min_price || min_price
+- current_max = @search.max_price || max_price
+
+- if min_price && max_price
+  .header= t('products.price_filter', :price_unit => t(@search.price_unit))
+  = content_tag :div, :id => 'price_filter', :data => {:min => current_min, :max => current_max, :tmin => min_price, :tmax =>  max_price} do
+    .content
+      #max_price.float-right= current_max
+      #min_price= current_min
+
+      .slider{:style => "z-index:1;"}
+
+  :javascript
+    // Initialize Price Sliders
+    $("#price_filter .slider").slider({
+      range: true,
+      min: #{min_price},
+      max: #{max_price},
+      values: [#{current_min}, #{current_max}],
+      step: #{step},
+      slide: function( event, ui ) {
+        $("#min_price").html(ui.values[0]);
+        $('#search_min_price').val(ui.values[0]);
+        $("#max_price").html(ui.values[1]);
+        $('#search_max_price').val(ui.values[1]);
+      },
+      change: function() {
+        PlaceFilters.search();
+      }
+    });

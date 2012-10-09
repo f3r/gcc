@@ -1,0 +1,5 @@
+/ .control-group.required
+/   = f.label :description, t("services.wizard.description"), :class => 'control-label'
+/   .controls
+/     = f.text_area :description, :class => "span8 validate[required]", :rows => 5, :style => "width: 440px;", :placeholder => t('products.wizard.step1_description')
+/ = render 'products/price_fields', :f => f

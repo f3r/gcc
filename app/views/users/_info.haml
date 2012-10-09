@@ -1,0 +1,61 @@
+.span6
+  .section-header
+    =t(:section_header_user_profile)
+    - if current_user?(@user)
+      = link_to t(:account_settings), edit_profile_path, :class => "settings"
+    
+  %table.borderless.user_info
+    %tr
+      %td.label_detail
+        = t(:first_name)
+      %td.user_detail
+        = @user.first_name
+    %tr
+      %td.label_detail
+        = t(:last_name)
+      %td.user_detail
+        = @user.last_name
+    %tr
+      %td.label_detail
+        = t("users.email")
+      %td.user_detail
+        = @user.email
+    %tr
+      %td.label_detail
+        = t("users.gender")
+      %td.user_detail
+        = @user.gender == 'unknown' ? t("users.gender_undisclosed") : @user.gender
+    %tr
+      %td.label_detail
+        = t("users.mobile_phone")
+      %td.user_detail
+        = @user.phone_mobile 
+    %tr
+      %td.label_detail
+        = t("users.birthdate")
+      %td.user_detail
+        = @user.birthdate.strftime('%d %B %Y') if @user.birthdate.present?
+    %tr
+      %td.label_detail
+        = t("users.paypal_email")
+      %td.user_detail
+        = @user.paypal_email
+  
+  - if @user.address.present?      
+    .section-header= t('users.section_header_billing_address')
+    %table.borderless.user_info
+      %tr
+        %td.label_detail
+          = t(:street)
+        %td.user_detail
+          = @user.address.street   
+      %tr
+        %td.label_detail
+          = t(:city)
+        %td.user_detail
+          = @user.address.city.name if @user.address.city.present?
+      %tr
+        %td.label_detail
+          = t(:zip)
+        %td.user_detail
+          = @user.address.zip             

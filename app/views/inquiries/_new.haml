@@ -1,0 +1,38 @@
+= form_for(:inquiry, :url => inquiries_path(:product_id => @product.id), :html => {:method => :post, :remote => true, :id => "inquire_form"}) do |f|
+  .modal-header
+    %a{:href => '#', :class => 'close', 'data-dismiss' => 'modal'}x
+    %h3= t("inquiries.inquiry_modal_title")
+  .modal-body
+    .form-horizontal
+      - unless logged_in?
+        .control-group
+          = f.label :name, t("users.full_name"), {:class => 'control-label'}
+          .controls
+            = text_field_tag :name, nil, :placeholder => t("users.name_example"), :class => 'validate[required]'
+        .control-group
+          = f.label :email, t("users.email"), {:class => 'control-label'}
+          .controls
+            = text_field_tag :email, nil, :placeholder => t("users.email_example"), :class => 'validate[required]'
+      - if show_inquiry_length_fields?
+        = render 'length_fields', :f => f
+
+      .control-group
+        = f.label :message, t("inquiries.comments_questions"), {:class => 'control-label'}
+        .controls
+          = f.text_area :message, :rows => 5, :placeholder => t("inquiries.inquiry_questions"), :class => 'span5'
+      - if false && !logged_in?
+        .control-group
+          %label{:class => 'control-label'}= t("inquiries.re_captcha")
+          .controls
+            = recaptcha_tags :theme => 'validate[required]'
+          .recaptcha_error
+    .clearfix
+    .modal-footer
+      .inquiry-actions
+        %button.btn.btn-large.btn-primary{'data-loading-text' => t("submitting"), 'id' => 'inquire_button', 'autocomplete' => 'off'}=t("inquiries.button_inquire")
+      %div.inquiry-sent-msg.btn.btn-large.btn-primary.disabled= t("inquiries.inquiry_sent")
+
+- if false
+  = # Cheap antispam, we change the form target via JS
+  :javascript
+    $('#inquire form').attr('action', '#{inquiries_path(:id => @resource.id)}')

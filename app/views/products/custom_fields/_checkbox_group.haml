@@ -1,0 +1,4 @@
+- options.each do |opt|
+  %label
+    = check_box_tag "#{field_name}[]", opt, (field_value && field_value.include?(opt)), :id => field_id
+    = opt

@@ -1,0 +1,448 @@
+/*********************************************************************************************************
+ * PLACE INQUIRY
+ *********************************************************************************************************/
+
+.details_label {
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 5px;
+  text-align: right;
+}
+
+.details_value {
+  text-align: left;
+}
+
+#inquire {
+  background: #F2F2F2;
+
+  .inquiry-sent-msg {
+    display: none;
+  }
+
+  &.sent {
+    .inquiry-sent-msg {
+      display: block;
+    }
+    .inquiry-actions {
+      display: none;
+    }
+  }
+  input {
+    /*width: 250px;*/
+  }
+  &.modal {
+    .control-label {
+      width: 100px;
+    }
+    .controls {
+      margin-left: 120px;
+    }
+    max-height: 628px;
+
+  }
+}
+
+/*********************************************************************************************************
+ * CANCELATION POLICY TEXT
+ *********************************************************************************************************/
+#cancellation_policy_text {
+  width: 700px;
+  height: 500px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/*********************************************************************************************************
+ * PLACES SHOW
+ *********************************************************************************************************/
+#map {
+  height: 400px !important;
+  width: 921px !important;
+  margin-left: 8px;
+  margin-right: 8px;
+
+  img{
+    max-width: none !important;
+  }
+}
+
+#calendar-tab {
+  .fc td.free {
+    background-color: #69BF42;
+  }
+
+  .fc td.busy {
+    background-color: #B30D12;
+  }
+}
+
+.share_place_modal.modal {
+  width:500px;
+  margin-left:-225px;
+  .modal-header, .modal-body {
+    text-align:center;
+  }
+  .modal-body {
+    h4 {
+      margin-bottom:10px;
+      color:#888;
+    }
+  }
+}
+/*********************************************************************************************************
+ * AMENITIES
+ *********************************************************************************************************/
+.amenities {
+  .amenity_group_header {
+    margin-top: -33px;
+    span{
+    	float:right;
+    	margin: 4px 1px;
+    	font-size: 9px;
+    	a{
+    	  float:right;
+    	  margin-left: 10px;
+    	}
+    }
+    h3 {
+      margin-top: 15px;
+      display:inline;
+    }
+    .prompt_text {
+      font-style: italic;
+    }
+  }
+
+  .amenity_fieldset {
+    background-color: rgba(195, 202, 214, 0.31);
+    .border-radius(3px);
+    margin-top: 10px;
+    padding: 10px 10px 10px 20px;
+  }
+
+  label {
+    padding-top: 6px;
+    font-size: @baseFontSize + 1;
+    float: left;
+    width: 200px;
+    text-align: right;
+    margin-right: 10px;
+    color: @grayDark;
+  }
+
+  .amenity {
+    display: inline;
+    width: 200px;
+    font-size: 14px;
+    text-align: right;
+    height: 50px;
+
+    &:nth-child(3n+3) .save-indicator {
+      margin-bottom:4px;
+      /* Note: Don't know why but this is needed on every last (3rd) on the amenities list, if not, it destroys layout on un/check */
+    }
+  }
+
+  input[type="checkbox"] {
+    float:right;
+    margin:3px 0 10px 9px;
+    padding-right:5px;
+  }
+
+  a { float: right }
+}
+
+/*********************************************************************************************************
+ * PHOTO SLIDER
+ *********************************************************************************************************/
+#photo-slider-control{
+  padding: 10px 0;
+  margin-bottom: 10px;
+  a{
+    margin: 0 .5em;
+  }
+}
+
+#photo-slider {
+  .thumb{
+    padding: 4px;
+    background-color: #3e3e3e;
+  }
+  .viewport {
+    float: left;
+    width: 876px;
+    height: 405px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 12px 10px;
+  }
+  .disable  { opacity: .4; }
+  .overview {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    li {
+      overflow: hidden;
+      _zoom: 1;
+      float: left;
+      margin-right: 20px;
+      height: 401px;
+      width: 930px;
+
+      .big, .small{
+        float: left;
+        text-align:center;
+      }
+      .big{
+        width: 602px;
+        margin: 0 1px;
+        position: relative;
+        background-color:#3e3e3e;
+        min-height:401px;
+
+        .caption{
+          width: 582px;
+          position: absolute;
+          top: 361px;
+          left: 0;
+          padding: 10px;
+          height: 20px;
+          color: #fff;
+          background: transparent url(/assets/glass.black.png) repeat 0 0;
+        }
+      }
+      .small{
+        width: 309px;
+
+        a{
+          display: block;
+          background-color:#3e3e3e;
+          min-height: 200px;
+
+          &:first-child{
+            margin-bottom: 1px;
+          }
+
+          img{
+            margin: 0 auto;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .slider-nav{
+    background: #f0f0f0;
+    border: 1px solid #eee;
+    .border-radius(2px);
+    overflow: hidden;
+    clear: both;
+    padding: 10px 10px 0;
+    float: none;
+    position: relative;
+
+    .buttons {
+      display: block; width: 10px; height: 40px;  background: #000;
+      padding: 5px;
+      position: absolute;
+      font-size: 20px;
+      font-weight: bold;
+      top: 10px;
+      z-index: 1;
+      text-indent: -9999px;
+      &.next{
+        right: 10px;
+        background: transparent url(/assets/icons/icon.arr-right.png) no-repeat right center;
+      }
+      &.prev{
+        left: 10px;
+        background: transparent url(/assets/icons/icon.arr-left.png) no-repeat left center;
+      }
+    } //buttons
+
+
+    .pager {
+      overflow:hidden;
+      list-style: none;
+      float: left;
+      margin: 0;
+      padding: 0 20px 0 19px;
+      width: 900px;
+      position: relative;
+
+      li {
+        float: left;
+        margin: 0 4px 10px;
+      }
+      .pagenum {
+        background-color: #fff;
+        text-decoration: none;
+        text-align: center;
+        padding: 5px;
+        color: #555555;
+        font-size: 14px;
+        font-weight: bold;
+        display: block;
+        width: 40px;
+        height: 40px;
+        .box-shadow(0 1px 1px rgba(0,0,0,.075));
+        border-radius: 0;
+
+        img{
+          display: block;
+        }
+       }
+      .active { color: #fff; background-color:  #2a830e; }
+    }
+  }
+}
+
+/*********************************************************************************************************
+ * PANORAMAS
+ *********************************************************************************************************/
+
+
+#panorama_container {
+  text-align: center;
+  .gallery {
+    display: none;
+  }
+  .buttons {
+    display: block; height: 40px;  background: #000;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 1;
+    text-indent: -9999px;
+
+    &.next{
+      background: transparent url(/assets/icons/icon.arr-right.png) no-repeat right center;
+    }
+    &.prev{
+      background: transparent url(/assets/icons/icon.arr-left.png) no-repeat left center;
+    }
+  }
+}
+
+#tab_panoramas {
+  .actions {
+    margin-bottom: 20px;
+  }
+}
+
+#panoramas_list {
+  .remove {
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+    font-size: 13px;
+  }
+}
+
+/*********************************************************************************************************
+ * SHARE ICONS (Facebook, Twitter,...)
+ *********************************************************************************************************/
+
+.share{
+  .clearfix();
+  overflow: hidden;
+  width: 120px;
+
+  label{
+    float: left;
+    background: none;
+    text-transform: none;
+    font-weight: normal;
+    color: #999;
+    font-size: 13px;
+    padding: 0;
+    width: auto;
+    margin-right: 5px;
+  }
+
+  span.st{
+    width: 16px;
+    height: 16px;
+    text-indent: -9999px;
+    margin: 3px 5px 0 0;
+    background: #f0f0f0;
+    float: left;
+
+    &.st_facebook_custom{
+      background: transparent url(/assets/icons/facebook.png) 0 0;
+    }
+    &.st_twitter_custom{
+      background: transparent url(/assets/icons/twitter.png) 0 0;
+    }
+  }
+}
+
+/*********************************************************************************************************
+ * TABBED PANEL
+ *********************************************************************************************************/
+.tabbed-panel{
+  .border-radius(5px);
+  border: 1px solid #eee;
+  overflow: hidden;
+  margin: 20px 0;
+  _zoom: 1;
+  .clearfix();
+
+  .tabs{
+    padding: 5px 10px 0;
+    background: #f8f8f8;
+  }
+  .contents{
+    clear: both;
+    padding: 10px;
+    background: #fff;
+
+    .fine-print{
+      margin: 0;
+      padding: 0;
+
+      .span4{
+        width: 198px;
+      }
+    }
+  }
+}
+
+/*********************************************************************************************************
+ * REVIEWS
+ *********************************************************************************************************/
+.product_info #reviews-tab {
+  h2 {
+    margin-bottom: 0px;
+  }
+  .average {
+    margin-bottom: 20px;
+  }
+  .review.short .well {
+    overflow: hidden;
+  }
+  .review {
+    .date { color: #888888; }
+    .score { float: right; }
+  }
+}
+
+/*********************************************************************************************************
+ * MANAGEMENT
+ *********************************************************************************************************/
+.listing-actions {
+  form, div { display: inline; }
+}
+.listing-badge {
+  line-height: 36px;
+}
+.product-status.label {
+  vertical-align: middle;
+  font-size: 16px;
+}

@@ -1,0 +1,12 @@
+- if resource.errors.any?
+  %div{:class => 'alert alert-error'}
+    = error_messages_for resource
+.credentials-box
+  .section.span6
+    %h2= t("users.registration.reset_password")
+
+    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+      .input.span3
+        = f.email_field 'email',  :placeholder => t("users.registration.enter_your_email")
+      %button.btn.float-right{:type => 'submit'}
+        = t("submit")

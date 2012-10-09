@@ -1,0 +1,68 @@
+/********************************************************************************************************* 
+ * PLACES PHOTOS
+ *********************************************************************************************************/
+
+.primary_marker {
+  margin-left: 30px;
+  font-weight: bold;
+  color: @grayDark;
+}
+
+.photo_wrapper {
+  .active-photo {
+    text-align: center;
+    min-height: 420px;
+  }
+  
+  .active-label input {
+    margin-bottom: 0;
+  }
+}
+
+ul#photos_list { 
+  list-style-type: none; 
+  margin: 10px 0 0 0; 
+  padding: 0;
+
+  li {
+    cursor:pointer;
+    margin: 0 20px;
+    float: left;
+    text-align: center;
+    width:115px;
+    height: 140px;
+
+    .photo_image {
+      margin-bottom: 15px;
+      width:106px;
+      height:70px;
+      border: 1px solid #000;
+      background-color: #F2F2F2;
+      padding:3px;
+    }
+
+    .photo_action {
+      font-size: 13px;
+      z-index:999;
+      display:none;
+      position:absolute;
+      margin-left:95px;
+      margin-top:-10px;
+
+      a {
+        cursor:pointer;
+        color:red;
+        font-weight:bold;
+        font-size:13px;
+
+        &:hover {
+          text-decoration:none;
+        }
+      }
+    }
+  }
+  li.active {
+    .photo_image {
+    }
+  }
+}

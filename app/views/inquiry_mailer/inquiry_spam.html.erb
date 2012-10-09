@@ -1,0 +1,19 @@
+<h2>Dear Admin,</h2>
+
+<p>
+<%= @renter.anonymized_name %> has sent an inquiry about the following listing: <%= link_to @target.title, seo_product_url(@target) %>
+<% if @inquiry.check_in %>
+for <%= @inquiry.length_in_words %> starting on <%= @inquiry.check_in.to_formatted_s(:long) %>
+<% end %>
+</p>
+<p>
+The system feels this is a spam due to the message with the inquiry.
+</p>
+
+<% if @inquiry.message.present? %>
+  <p>The message from the user is:
+    <blockquote>
+      <%= @inquiry.message %>
+    </blockquote>
+  </p>
+<% end %>

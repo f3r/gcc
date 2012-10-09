@@ -1,0 +1,9 @@
+- providers = @user.not_yet_authenticated_providers
+
+- unless providers.empty?
+  .link_accounts
+    %h4
+      #{t(:link_accounts)}:
+    .links
+      - providers.each do |provider|
+        = link_to image_tag("icons/#{provider}.png", :size => "32x32"), user_omniauth_authorize_path(provider)

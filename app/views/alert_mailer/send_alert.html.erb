@@ -1,0 +1,28 @@
+<h2>Dear <%= @user.first_name %>, here is your <%= @alert.schedule %> alert</h2>
+<% if @city %>
+  <li><%= @city.cached_complete_name %></li>
+<% end %>
+
+<% if @new_results.present? %>
+<h3>New results</h3>
+<ul>              
+  <% for product in @new_results %>
+    <li><%= link_to product.title, seo_product_url(product) %></li>
+  <% end %>
+</ul>
+<% end %>
+<% if @recently_added.present? %>
+<h3>Recently added</h3>
+<ul>
+  <% for product in @recently_added %>
+    <li><%= link_to product.title, seo_product_url(product) %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= link_to "View more results", show_search_code_url(@alert[:search_code]) %>
+<br/> <br/>
+<p><i> Manage your alert</i> =>
+<%= link_to "Edit",  "#{alerts_url}#/#{@alert.id}/edit" %> | 
+<%= link_to "Pause", pause_alert_url(@alert) %>
+</p>

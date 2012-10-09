@@ -1,0 +1,7 @@
+- content_for(:title) {"#{SiteConfig.site_name}"}
+
+%ul{"data-role"=>"listview", "data-inset"=>"true", "data-filter"=>"true"}
+  - @cities.each do |city|
+    %li
+      = link_to city.name, "/mobile/search/#{city.slug}"
+      %span{:class => "ui-li-count ui-btn-up-c ui-btn-corner-all"}= city.num

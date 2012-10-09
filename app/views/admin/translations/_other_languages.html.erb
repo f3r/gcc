@@ -1,0 +1,11 @@
+<% for lang in Locale.all %>
+  <% if lang.code != locale %>
+    <h5><%= lang.name %>:</h5>
+    <% if t(key, :locale => lang.code).include? 'translation_missing' or t(key, :locale => lang.code).include? 'translation missing'%>
+    <pre>Translation missing, <%= link_to "Create translation", new_admin_translation_path(:locale => lang.code, :key => key) %></pre>
+    <% else %>
+    <div class="other_translation_text"><%= t(key, :locale => lang.code) %></div>
+    <p><%= link_to "Edit", redirect_edit_admin_translations_path(:locale => lang.code, :key => key) %> or <%= link_to "View", redirect_view_admin_translations_path(:locale => lang.code, :key => key) %></p>
+    <% end %>    
+  <% end %>
+<% end %>

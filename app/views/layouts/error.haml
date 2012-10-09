@@ -1,0 +1,19 @@
+!!!
+%html{:lang => "en"}
+  %head
+    = render 'shared/meta'
+
+  %body
+    %header.header
+      .container
+        .row
+          .span5
+            .logo
+              = link_to root_path, :title => SiteConfig.site_name do
+                = image_tag static_asset('logo.png'), :alt => SiteConfig.site_name
+      = render 'shared/menu'
+    .container
+      = flash_messages
+      .content
+        = yield
+      = render 'shared/footer'

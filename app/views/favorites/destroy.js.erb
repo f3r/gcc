@@ -1,0 +1,7 @@
+<% if @remove_item %>
+	$(".place_<%= @parent.id %>").remove();
+<% else %>
+	<%= page_replace("##{dom_id(@resource, 'favorite')}",
+	  :partial => 'search/button_favorite', :locals => { :favorable => @resource }) %>
+	$('#<%=dom_id(@resource, 'favorite')%>').find('a').tooltip();
+<% end %>

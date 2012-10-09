@@ -1,0 +1,8 @@
+- @photos = @resource.photos
+- if @photos && @photos.any?
+  - @photos.each do |photo|
+    %li{:id => "photo_ids-#{photo.id}"}
+      .photo_action
+        = link_to "[x]", listing_photo_path(@resource, photo), :method => :delete, :remote => true,
+          :confirm => t("places.wizard.photos.are_you_sure_delete_photo")
+      = render_photo(photo)

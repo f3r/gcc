@@ -1,0 +1,135 @@
+.new-place {
+  .control-label {
+    width: 180px;
+    text-align: left;
+  }
+}
+.wizard {
+  .title-bar {
+    border-bottom: 1px solid #EEEEEE;
+    line-height: 1.2em;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    height: 53px;
+  }
+  .manage {
+    div, form {
+      display: inline;
+    }
+  }
+
+  .nav .completed a {
+    background-color: green;
+  }
+}
+
+.wizard-aside-wrapper .actions {
+  text-align: center;
+  .btn { width: 180px; }
+  .unpublish { color: red; }
+}
+.wizard-wrapper {
+  .help-block, .checkbox-help-block {
+    color: #666666;
+    font-size: 11px;
+    font-style: italic;
+    margin-top: 0px;
+  }
+  p.hint {
+    text-align: center;
+    font-style: italic;
+  }
+
+  #update_avatar p.hint {
+    text-align: left;
+  }
+
+  h2.title {
+    margin-bottom: 0px;
+    border-radius: 5px 5px 0 0;
+  }
+  fieldset.well {
+    border-radius: 0 0 4px 4px;
+  }
+}
+
+#crop_modal {
+  .jcrop_target {
+    max-width: 534px;
+  }
+  img {
+    max-width: none;
+    height: auto;
+  }
+  .bottom {
+    margin-bottom: 0;
+  }
+}
+
+
+ul#wizard_tabs {
+  /*list-style: none;
+  padding:0;
+  margin:0 0 35px 0;*/
+  li {
+    width: 220px;
+    height: 44px;
+    /* padding: 5px; */
+    .indicator {
+      float: left;
+      height: 32px;
+      width: 32px;
+      padding: 5px;
+      margin-right: 10px;
+    }
+    a {
+      padding: 10px;
+      display:block;
+      color: @wizard_tabs_text_color;
+      height: 18px;
+      font-size: 14px;
+			background-color: @wizard_tabs_background_color;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  li.active a {
+    background-color: @wizard_tabs_background_active_color;
+    color: @wizard_tabs_text_active_color;
+    font-weight: bold;
+  }
+  li.disabled a {
+    color: #999;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  li.enabled a {
+    color: @wizard_tabs_text_active_color;
+  }
+}
+
+.wizard-aside {
+  /*position: fixed;*/
+  width: 240px;
+  top: auto;
+  .nav > li > a:hover {
+    background-color: #FFF;
+  }
+  .actions {
+    margin-left: 20px;
+  }
+}
+
+.availability-action {
+  margin-top:10px;
+  text-align:right;
+  .remove-action {
+    float:left;
+  }
+}
+
+#add-button {
+  margin-bottom: 20px;
+}

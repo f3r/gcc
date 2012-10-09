@@ -1,0 +1,27 @@
+.conversation
+  = breadcrumb [[t("inquiries.inquiries_title"), messages_path]], breadcrumb_conversation_title do
+    .actions.pull-right
+      = link_to t("messages.mark_unread"), mark_as_unread_message_path(@conversation.id), :method => :put
+      |
+      = link_to t("messages.archive"), message_path(@conversation.id), :method => :delete, :confirm => t("messages.archive_message")
+
+  - if @conversation.target
+    .row.target
+      = render_target(@conversation.target, :box)
+
+  - if @messages.present?
+    - @messages.each do |m|
+      = render 'message', :m => m
+  - else
+    =t("messages.no_messages")
+
+  .row
+    .span1
+      .from.center
+        = avatar_image(current_user)
+        = current_user.anonymized_name
+    .span5
+      = render 'new'
+    - if @conversation.target
+      #inquiry_workflow
+        = render_target(@conversation.target, :workflow)

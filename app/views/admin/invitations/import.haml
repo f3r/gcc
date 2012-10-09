@@ -1,0 +1,25 @@
+= form_for :invitation, :url => import_invitations_admin_users_path do |f|
+  %fieldset.inputs
+    %legend
+      %span Invitation
+    %ol
+      %li
+        %label CSV
+        = f.file_field :file
+        %p.inline-hints
+          = "CSV columns: name, email"
+          = link_to "Download a sample csv file", '/files/csv_invitation_sample.csv'
+      %li
+        %label Role
+        = f.select :role, [['Consumer', 'consumer'], ['Agent', 'agent']]
+      %li
+        %label Message
+        = f.text_area :message, :value => t('mailers.auto_welcome.content')
+        %p.inline-hints= 'Message for the invitation email'
+
+  %fieldset.buttons
+    %ol
+      %li.commit.button
+        = f.submit 'Send invitations'
+      %li.cancel
+        = link_to 'Cancel', admin_users_path

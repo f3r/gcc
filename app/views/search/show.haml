@@ -1,0 +1,58 @@
+- content_for(:title) do
+  - "#{@resource.title} - #{@resource.city.name}"
+
+- content_for(:meta_description) do
+  - "#{@resource.description}"
+
+- require_google_apis
+
+.row
+  - if @my_products
+    .span8.offset1
+      = breadcrumb [[t('products.my_listings'), listings_path]], @resource.title
+    .span2.listing-actions
+      = render 'listings/actions'
+  - else
+    .span10.offset1
+      = breadcrumb [['Search Results', seo_city_path(@resource.city)]],  @resource.title
+
+.row.product_info{:id => dom_id(@resource)}
+  .span10.offset1
+    /******************************************************************************************
+    / Name, Price, Inquire Button
+    /******************************************************************************************
+
+    .accomodation-wrapper
+      .header
+        .title
+          / comment out for now
+          / = render 'search/button_favorite', :favorable => @resource
+          %h1
+            = @resource.title
+            -if @resource.product.has_review?
+              .review_average{:style => "text-align: right;"}
+                = stars(@resource.product.review_avg)
+            .inquire
+              = link_to "Hire Me!", new_inquiry_path(:product_id => @product.id), :class => 'btn btn-large btn-info', :remote => true
+          .meta
+            %p= "#{@resource.city.name}, #{@resource.city.country}"
+            .share
+              %label= t("share_via")
+              .sharePlace
+
+      .well
+        = render 'products/services/tabs/main',       :resource => @resource
+
+      .well
+        = render 'products/services/tabs/traits',     :resource => @resource
+
+      .well
+        = render 'products/properties/tabs/photos',   :resource => @resource
+
+      /******************************************************************************************
+      / Tabbed Panel: Photos, Map, Calendar, Details, Amenities, Directions, House Rules, Questions
+      /******************************************************************************************
+      =# render_overridable_partial('tabbed_panel', :resource => @resource)
+
+:javascript
+  PlaceShow.initializeSharePlace("#{h(@resource.title)}", '#{seo_product_url(@resource)}', '#{@resource.id}')

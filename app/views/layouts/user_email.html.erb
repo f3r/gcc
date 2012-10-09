@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>
+    <%= site_name %>
+  </title>
+  <style type="text/css">
+    body {margin: 0; padding: 0; background: #3977b0;}
+    a:hover  { text-decoration: none !important; }
+    .wrapper {margin: 35px auto !important; font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #ffffff; -moz-box-shadow: 0 0px 10px #1a4a75; -webkit-box-shadow: 0 0px 10px #1a4a75; box-shadow: 0 0px 10px #1a4a75;   -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; width:560px}
+    .content p {color:#767676; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica; }
+    .content a {color: #2e9ac7; text-decoration: none;}
+    .content a.btn { float: left; margin: 20px 0 5px; background: #469fe1; display: block; padding: 10px 20px; text-align: center; font-size: 14px; font-weight: bold; color: #fff;  -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;text-decoration: none;}
+    .content p.foot a{ color: #888 !important;}
+    .message    {padding: 20px; background: #e6e6e6; margin-bottom: 30px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;}
+    .message h2 {color:#636363; font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; margin: 0 0 20px 0; padding: 0; line-height: 24px; font-size: 24px;}
+    .message p  {color:#767676; font-weight: normal; margin: 0; padding: 0; line-height: 20px; font-size: 12px;font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .message p a {color: #2e9ac7; text-decoration: none;}
+	.contact_details {font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;font-size: 14px;line-height: 2.2em;color:#0C9AC9;margin:-10px;}
+	.contact_details ul { list-style-type:circle;}
+	.footer {padding: 20px 0 0 0;}
+    .footer p {font-size: 10px; color:#808080; margin: 0; padding: 0;font-family: 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, sans-serif;}
+    .footer a {color: #2e9ac7; text-decoration: none;}
+    .links_footer a:not(:last-child):after { content: " / ";}
+  </style>
+</head>
+<body>
+  <table class="wrapper" cellpadding="10" cellspacing="0">
+    <tr>
+      <td width="20" style="font-size: 0px;">&nbsp;</td>
+      <td width="610" valign="top" align="left" class="content">
+        <table cellpadding="0" cellspacing="0" border="0" style="margin: 0; padding: 0;" width="610">
+        <tr>
+          <td style="padding: 25px 0 8px;"  valign="top">
+            <h1 style="float: left; margin-top:0px;">
+              <%= image_tag static_asset('logo.png'), :alt => SiteConfig.site_name %>
+            </h1>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="message" valign="top">
+            <%= yield %>
+            <br>
+            <p><%= t('mailers.have_any_question_html') %><p>
+            <br>
+            <p>Thanks,</p>
+            <p><i><%= t('mailers.signature') %></i></p>
+            <% if content_for?(:footer_ps) %>
+              <br>
+              <%= content_for(:footer_ps) %>
+            <% else %>
+              <br>
+              <p><%= t('mailers.ps_message') %></p>
+            <% end %>
+          </td>
+        </tr>
+        <% if false %>
+          <tr>
+            <td class="footer">
+              <p class="links_footer">
+                <a href="<%= terms_url %>">Terms of Service</a>
+                <a href="<%= privacy_url %>">Privacy Policy</a>
+              </p>
+            </td>
+          </tr>
+        <% end %>
+        <tr>
+          <td style="padding: 5px;">&nbsp;</td>
+        </tr>
+        </table>
+      </td>
+      <td width="20" style="font-size: 0px;">&nbsp;</td>
+    </tr>
+  </table>
+  </body>
+</html>

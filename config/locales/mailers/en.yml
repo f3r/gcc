@@ -1,0 +1,130 @@
+en:
+  mailers:
+    here: here
+    click_here: Click here
+    salutation: "Dear %{name},"
+    messages_section: messages section
+    inquiry_center: Inquiry Center
+    welcome_instructions:
+      subject: 'Welcome to %{site_name}!'
+      title: 'Welcome to %{site_name}!'
+      first_line: '%{site_name} helps you find the best short-term and flexible accommodation for your business and personal travel.'
+      content_consumer: |
+        Please login to your account to easily manage your inquiries, favorites and alerts.
+      content_agent: |
+        Please login to your account so you can easily update your profile, create listings, manage your inquiries and alerts.
+    auto_welcome:
+      subject: 'Welcome to %{site_name}!'
+      intro: "Welcome to %{site_name}!"
+      content: |
+        %{site_name} helps you find the best short-term and flexible accommodation for your business and personal travel.
+        We automatically created an account for you so you can easily manage your inquiries, favorites and alerts.
+      set_password: 'Click here to set a password and activate your account'
+    reset_password_instructions:
+      subject: 'Reset password instructions'
+      intro: "Someone has requested a link to change your password, and you can do this through the link below."
+      warning: |
+        If you didn't request this, please ignore this email.<br /><br />
+        Your password won't change until you access the link above and create a new one.
+      change_my_password: Change my password
+    reset_password_reminder_instructions:
+      subject:  "%{site_name} Reminder: Reset your password."
+      intro: "Please change your password at your earliest convenience. You can do this through the link below."
+      set_password: 'Click here to reset your password and activate your account.'
+    new_question:
+      subject: "You have a new question from %{sender} on %{site_name}"
+      intro: "You have a question from %{name} regarding %{place_title} waiting for you on %{site_name}!"
+      respond: "%{link} to respond to this question."
+    new_question_reply:
+      subject: "Your question was answered on %{site_name}"
+      intro: "Your question regarding '%{place_title}' was answered on %{site_name}!"
+      respond: "%{link} to view the response."
+    new_message_reply:
+      subject: "You have a new message from %{sender} on %{site_name}"
+      intro: "You have a new message from %{name} waiting for you on %{site_name}!"
+      respond: "%{link} to read and respond to this message."
+      check_mailbox_info: |
+        You can always check your inbox from your account at %{site_link} to
+        view and respond to your messages. You'll see an alert on the top
+        navigation bar when there are new messages for you.
+    inquiry_confirmed_renter:
+      subject: "Your Inquiry on %{site_name} has been sent"
+      intro: "Your inquiry on %{target_link} has been sent."
+      manage_messages: "You can manage your inquiries at the %{messages_link}."
+      warning: |
+        The property owner or listing agent will get a copy of your request.
+        Normally, your request will be handled within 24-48 hours.
+    inquiry_confirmed_owner:
+      subject: "You have received an inquiry on %{site_name}"
+      intro: "%{renter_name} has sent you an inquiry about your listing %{target_link}"
+      duration: "for %{length} starting on %{starting_on}"
+      message_from_user: |
+        The message from the user is:
+        <blockquote>%{message}</blockquote>
+      please_login: "Please log in to %{login_link} to view the request. You can reply to your inquiries at the %{messages_link}."
+      footer_ps: |
+        P.S. Please remember to respond to your messages and inquiries
+        promptly. Many people's accommodation needs are urgent, so
+        the quicker you reply, the quicker you can get your properties
+        rented out.
+    inquiry_reminder_owner:
+      subject: "Reminder about a new inquiry on %{site_name}"
+      time_reply: "It's been %{time} and you still haven't replied to this inquiry."
+      remember: |
+        Please remember to respond to your messages and inquiries promptly.
+        Many people's accommodation needs are urgent, so the quicker you
+        reply, the quicker you can get your properties rented out.
+      footer_ps:
+    transaction_request_renter:
+      subject: Request Confirmed!
+      intro: You have confirmed your rental request!
+      content: |
+        Once the listing owner has checked all conditions and property
+        availability, you will be prompted to pay the rental initiation fee
+        of SGD $300. This will secure the property for you for the duration
+        of your rental request.
+    transaction_request_owner:
+      subject: Request Confirmed!
+      intro: "%{name} has submitted a rental request, confirming their intent to rent this property!"
+      content: |
+        Please double-check the terms of the rental, including the payment
+        schedule, property availability and other considerations and
+        requirements you may have. When you are ready, please go to our
+        %{inquiry_center_link} to confirm the tenant's rental request.
+        The tenant will then be prompted to pay the rental confirmation fee.
+    transaction_approve_renter:
+      subject: Request Approved!
+      intro: The listing owner has confirmed your rental request!
+      content: |
+        Please login to our %{inquiry_center_link} and use the button at the
+        bottom to pay the rental initiation fee of SGD $300. This will
+        secure the property for you for the duration of your rental request.
+    transaction_approve_owner:
+      subject: Request Approved!
+      content: |
+        %{name} The tenant has been notified of the rental approval. The
+        tenant has been asked to pay the rental initiation fee. You will be
+        notified when the payment is complete.
+    transaction_pay_renter:
+      subject: Transaction Confirmed!
+      content: |
+        <p>Congratulations! You will be renting %{product_title} from %{owner_address}</p> <p>We recommend you
+        contact the listing owner as soon as possible to coordinate and confirm any remaining items.</p>
+        <br/>
+        <p>Enjoy your stay and thank you for using %{site_name}!</p>
+    transaction_pay_owner:
+      subject: Transaction Confirmed!
+      content: |
+        <p>Congratulations! Your property %{product_title} has been rented on %{site_name}.</p>
+        <p>The tenant's contact details are: </p>
+        %{renter_address}
+        <p>The tenant will pay the remainder of the rental fees directly to you.</p>
+        <p>We recommend you contact the tenant as soon as possible to coordinate and confirm any remaining items.</p>
+        <br/>
+        <p>Thank you for listing your property with %{site_name}!</p>
+    have_any_question_html: 'If you have any questions, please email us at %{support_email_link}'
+    signature:         '-- The %{site_name} team'
+    ps_message: |
+      P.S.  Do you want to publish on %{site_name}? Please contact us at %{support_email} and become an approved property owner on %{site_name}!
+    new_alert:
+      subject: "Your %{product_plural} search alert"

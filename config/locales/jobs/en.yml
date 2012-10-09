@@ -1,0 +1,18 @@
+en:
+  jobs:
+    main: Main
+    photos: Photos
+    work_profile: Work Profile
+    map: Map
+    calendar: Calendar
+    questions: "Questions & Answers (%{count})"
+    age: Age
+    speaks: Speaks
+    looking_for: Looking for
+    educational_status: Educational Status
+    last_educational_institute: Last educational institute
+    domestic_care: Domestic Care
+    personal_care: Personal Care
+    qualifications: Qualifications
+    name_work_profile: "%{name} - Work Profile"
+    about_me: About Me

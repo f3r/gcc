@@ -1,0 +1,24 @@
+.panel-wrapper.amenities.well
+  .alert.alert-info
+    = "#{t("places.wizard.amenities.select_one")}"
+
+  - AmenityGroup.all.each do |ag|
+    .amenity_group_header
+      %h3= ag.name
+      - if ag.prompt_text.present?
+        %br
+        %span
+          = link_to "#{t("places.wizard.amenities.select_none")}", "#",:id =>  "none_#{dom_id(ag)}"
+          = link_to "#{t("places.wizard.amenities.select_all")}", "#",:id =>  "all_#{dom_id(ag)}"
+        %p.prompt_text= ag.prompt_text
+      - else
+        %span
+          = link_to "#{t("places.wizard.amenities.select_none")}", "#",:id =>  "none_#{dom_id(ag)}"
+          = link_to "#{t("places.wizard.amenities.select_all")}", "#",:id =>  "all_#{dom_id(ag)}"
+
+    .amenity_fieldset
+      %fieldset{:id => dom_id(ag)}
+        - ag.amenities.each do |a|
+          %label.amenity{:for => dom_id(a)}
+            = check_box_tag 'listing[amenity_ids][]', a.id, @resource.amenities.include?(a), :id => dom_id(a)
+            = a.name

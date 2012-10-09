@@ -1,0 +1,7 @@
+.control-group
+  %label{:class => "control-label"}= t('services.search.amenity_filter_title')
+  - @alert.search.amenity_filters.each do |a,count,checked|
+    .controls
+      %label.checkbox
+        = check_box_tag "alert[search_attributes][amenity_ids][]", a.id, checked, :id => "#{a.name.parameterize}_filter"
+        = a.name

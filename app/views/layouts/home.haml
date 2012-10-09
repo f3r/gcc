@@ -1,0 +1,16 @@
+!!!
+%html{:lang => "en"}
+  %head
+    = render 'shared/meta'
+
+  %body{:id => @body_id}
+    .site_wrapper
+      .everything
+        = render 'shared/header'
+        = render 'shared/contact'
+        .container
+          .content
+            = flash_messages
+            = yield
+      #push
+    = render 'shared/footer'

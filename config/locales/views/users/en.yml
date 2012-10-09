@@ -1,0 +1,126 @@
+####################################################################################
+# USERS
+####################################################################################
+en:
+  users:
+    sign_in:                    Sign In
+    sign_out:                   Sign Out
+    register:                   Register
+    first_name:                 First Name
+    last_name:                  Last Name
+    full_name:                  Full Name
+    name_example:               e.g. John Smith
+    email:                      E-mail
+    paypal_email:               Paypal Email
+    email_address:              E-Mail Address
+    email_example:              e.g. mail@mail.com
+    billing_address:            Billing Address
+    unconfirmed_email:          Unconfirmed email
+    cancel_email_change:        Cancel email change
+    birthdate:                  Birthdate
+    gender:                     Gender
+    gender_undisclosed:         Undisclosed
+    gender_unknown:             Undisclosed
+    gender_male:                Male
+    gender_female:              Female
+    mobile_phone:               Mobile Phone Number
+    passport_number:            Passport number
+    password:                   Password
+    confirm_password:           Confirm Password
+    retype_password:            Re-type Password
+    private_field:              Private. Only visible to those that have an active transaction with you
+    fully_private_field:        "Private. Only visible to %{site_name}"
+    public_field:               Public. Anyone can see this information
+    linked_accounts:            Linked Accounts
+    link_account:               Link account
+    change_photo:               Change photo
+    change_photo_description:   "Uploading a current photo helps renters evaluate your profile. While its not required, it helps build trust with property owners if you complete your profile."
+    use_facebook_photo:         Use Facebook Photo
+    upload_a_new_photo:         Upload a new Photo
+    saving_photo:               Saving photo
+    edit:                       Edit
+    profile_required_message:   "Please click Edit on your profile to enter additional information needed to make reservations on %{site_name}."
+    required_fields:            Required fields
+    role_user:                  Consumer
+    role_user_plural:           Consumers
+    role_agent:                 Agent
+    role_agent_plural:          Agents
+    role_admin:                 Admin
+    role_superadmin:            SuperAdmin
+
+    registration:
+      login:                      Login
+      login_to_site:              "%{site_name} Login"
+      login_using:                Login using
+      forgot_password:            Forgot your Password?
+      resend_confirmation:        Resend Confirmation
+      signup_for_an_account:      Signup for a new account
+      sign_in_with:               "Sign in with %{provider}"
+      sign_in_provider_info:      "This will allow you to log in to %{site_name} using your existing Facebook account"
+      create_new_account:         Create New Account
+      create_account:             Create account
+      sign_up_as_user:            Sign up as a Senior
+      sign_up_as_agent:           Sign up as a Carer
+      confirm:                    Confirm
+      i_accept_the:               I accept the
+      switch_to_login:            Already have an account? Sign in
+      here:                       Here
+      create_an_account_using:    Signup with Facebook
+      reset_password:             Reset Password
+      enter_your_email:           Enter your Email
+      enter_confirmation_code:    Enter Confirmation Code
+      confirmation_code:          Confirmation Code
+      resend_confirmation_code:   Resend Confirmation Code
+      signup_complete:            Signup Complete
+      signup_complete_text:       "Thanks for signing up! However, you need to confirm your account. Please check your email and click the link to verify it."
+      set_password_welcome_title: 'Hello %{user_name}'
+      choose_a_password:          Choose a password for your account
+      set_password_welcome_text:  'We have automatically created an account for you. Please choose a secure password to continue.'
+      confirm_reset_password:     Confirm the password
+      enter_your_new_password:    Enter your new password
+      registration_warning:       "%{site_name} won't publish anything without your prior consent"
+      already_member:             Already A Member ?
+      hello:                      Hello
+      please_login:               "Login to %{site_name}"
+
+    section_header_user_profile:      Personal Information
+    section_header_user_information:  User Information
+    section_header_billing_address:   Billing Address
+    section_header_user_password:     Password
+    section_header_bank_account:      Bank Account
+
+    bank_accounts:
+      holder_name:          Holder Name
+      account_number:       Account number
+      bank_code:            Bank code
+      branch_code:          Branch code
+      iban:                 IBAN
+      swift:                Swift
+      choose_country:       Choose a country
+
+    messages:
+      user_created:                                 Your account has been successfully created!
+      user_confirmed:                               Your account has been successfully confirmed!
+      email_confirmed:                              Your email address has been successfully confirmed!
+      invalid_confirmation_code:                    Invalid Confirmation Code
+      confirmation_email_sent:                      Confirmation email sent
+      invalid_email:                                Invalid Email
+      password_reset_instruction_sent:              Password reset instruction has been sent to your email.
+      password_reset_failed:                        Password reset failed.
+      password_set_first_time:                      Your password was set successfully
+      password_reset_success:                       Password reset successful
+      successfully_updated_profile_check_email:     'You successfully updated your profile! However, you need to confirm your email. Please check your email and click the link to verify it.'
+      successfully_updated_profile:                 You successfully updated your profile.
+      successfully_updated_password:                You successfully updated your password.
+      invalid_login:                                Invalid Login
+      signup_needed_to_connect:                     "We need to connect the details to your %{site_name} account, please provide us the following."
+      authentication_fail:                          We are unable to authenticate you at the moment. Please try again.
+      connected_with_account:                       "%{oauth_provider} is connected in your account."
+      successfully_updated_billing:                 You successfully updated your billing address
+    invitation_preview:
+      back_to_edit: Back to edit
+      send_email_and_create_user: Send email and create user
+
+  take_control_bar_message: "You are now administering the account of %{full_name} (%{email})."
+  release_control: "Release Control"
+  take_control: "Take Control"

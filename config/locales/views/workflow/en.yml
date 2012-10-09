@@ -1,0 +1,22 @@
+####################################################################################
+# Workflow Messages
+####################################################################################
+en:
+  workflow:
+    requested_guest:            "Waiting for DJ to accept or reject your offer. You will be notified when the DJ replies."
+    requested_agent:            "You hace received an offer to spin! You can communicate privately through our messaging system or change the offer details to make a counter offer. If you are OK with the conditions, click on 'Accept' and the requestor will be prompted to pay, otherwise 'Reject' the offer"
+    requested_agent_button:     "Accept Offer"
+    reject_offer_agent_button:  "Reject Offer"
+    readypay_guest:             "The DJ has accepted your offer. Secure your booking by submitting the payment now. You will be redirected to our secure gateway for payment."
+    reject_offer_guest:         "The DJ has rejected your offer. Try to inquire other DJ's as well."
+    reject_offer_agent:         "The requestor has been notified about the offer rejection. "
+    readypay_guest_button:      "Pay and Confirm Booking"
+    readypay_agent:             "The requestor has been notified of the offer acceptance and he/she has been asked to pay your fees. You will be notified when the payment is complete. Hold tight :)"
+    paid_guest:                 "Congratulations! Your rental is confirmed. The DJ's contact details will be sent to you in an email and you will pay the remainder of your rental fees directly to the DJ. Enjoy your stay and thank you for using %{site_name}!"
+    paid_agent:                 "Congratulations! This rental is confirmed. The tenant's contact details will be sent to you in an email and the tenant will pay the remainder of your rental fees directly to you. Thank you for listing your property with %{site_name}!"
+    system_msg_send:            "Inquiry sent"
+    system_msg_request:         "User requested to book this DJ"
+    system_msg_pre_approve:     "The DJ accepted the offer"
+    system_msg_decline:         "The DJ declined the offer"
+    system_msg_pay:             "The booking was paid"
+    error_in_transaction:       "There has been an unknown error with your transaction, please contact the administrators"

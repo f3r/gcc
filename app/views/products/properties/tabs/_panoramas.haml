@@ -1,0 +1,14 @@
+- panorama = @product.panoramas.first
+#panoramas-tab.tab-pane
+  .viewport
+    .overview
+      .big.row-fluid#panorama_container
+        %a.buttons.prev.span1{:href => "#"}
+          =raw('&laquo;')
+        .panorama.span10
+          = content_tag(:iframe, :width => 600, :height => 400, 'frameBorder' => 0,  :scrolling => "no") do
+            - #empty
+        %a.buttons.next.span1{:href => "#"}
+          =raw('&raquo;')
+
+        = render 'panoramas/list', :product => @product

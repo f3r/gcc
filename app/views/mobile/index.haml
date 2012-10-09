@@ -1,0 +1,7 @@
+- content_for(:title) {"#{SiteConfig.site_name}"}
+
+= link_to mobile_cities_path, {:style => "text-decoration:none"} do
+  %center
+    = image_tag static_asset('logo.png'), {:style => "margin-top: 100px", :width => "290px"}
+    %p{:style => "color:#999;"}
+      %i click to continue

@@ -1,0 +1,19 @@
+= link_to message_path(conversation) do
+  .span12.entry{:class => (conversation.read?)? "read" : "unread" }
+    - if conversation.target
+      = render_target(conversation.target, :photo)
+    .span1.from
+      = avatar_image(conversation.from)
+      = conversation.from.anonymized_name
+
+    .span2.inquiry
+      - if conversation.target
+        = render_target(conversation.target, :row)
+
+    .span4.message
+      - if conversation.body.present?
+        = truncate(mask_or_dontmask_msg(conversation).html_safe, :length => 80)
+      - else
+        %span.empty= t("messages.no_messages")
+    .span2
+      %span.time= t("time_ago", :time => time_ago_in_words(conversation.created_at))

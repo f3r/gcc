@@ -1,0 +1,20 @@
+#reviews-tab.tab-pane
+  .span9.offset1
+    .form-vertical.well
+      = form_for :review, :url => product_reviews_path(@product), :html => {:class => 'validated'} do |f|
+        .control-group
+          = f.label :score, t('products.review_score_label')
+          .score-input
+            - (1..5).each do |i|
+              = f.radio_button :score, i, :class => 'star-picker validate[groupRequired[score]]'
+        %br
+        %br
+        .control-group
+          = f.label :body, t('products.review_body_label')
+          = f.text_area :body, :class => 'span7 validate[required]', :rows => 6
+
+        .actions
+          = f.button t("submit"),  :class => "btn btn-primary"
+
+:javascript
+  $('.star-picker').rating({required: true});

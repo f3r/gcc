@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<script type="text/javascript" src="http://s3.amazonaws.com/squarestays-static/modernizr-1.5.min.js"></script>
+		<script type="text/javascript" src="http://s3.amazonaws.com/squarestays-static/p2q_embed_object.js"></script>
+		<script type="text/javascript" src="http://s3.amazonaws.com/squarestays-static/pano2vr_player.js"></script>
+	</head>
+	<body>
+    <script type="text/javascript">
+		  var embedded;
+		  <% if panorama.swf? %>
+    		if (DetectFlashVer(9,0,0)) {
+          p2q_EmbedFlash('<%= panorama.swf_file_name %>',
+            '600px', '400px',
+            'bgcolor', '#f0f0f0',
+            'play', 'true',
+            'cache','true',
+            'allowFullscreen','true',
+            'autoplay','true');
+    			embedded = true;
+    		}
+    	<% end %>
+		  <% if panorama.xml? %>
+  		  // check for CSS3 3D transformations
+    		if (!embedded && Modernizr.csstransforms3d) {
+          // create a container 
+          document.writeln('<div id="container" style="width:600px;height:400px;"></div>');
+          // create the panorama player with the container
+          pano=new pano2vrPlayer("container");
+          // load the configuration
+          pano.readConfigString('<%= panorama.xml.gsub(/\r\n|\n/, '').html_safe %>');
+          // hide the URL bar on the iPhone
+          //hideUrlBar();
+          embedded = true;
+    		}
+		  <% end %>
+  
+      if(!embedded){
+        document.writeln('<div id="container" style="width:600px;height:400px;"></div>');
+        // default to a static image
+        /*var img = document.createElement('img');
+        img.src = '<%#= panorama.photo.url(:large) %>';
+        document.getElementById('container').appendChild(img);*/
+      }
+		</script>
+	</body>
+</html>

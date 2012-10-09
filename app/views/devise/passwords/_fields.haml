@@ -1,0 +1,7 @@
+= f.hidden_field :reset_password_token
+.input
+  = f.label :password, t("users.registration.enter_your_new_password")
+  = f.password_field :password, :class => "validate[required,custom[onlyLetterNumber],minSize[6]]"
+.input
+  = f.label :password, t(:confirm_reset_password)
+  = f.password_field :password_confirmation, :class => "validate[required,minSize[6],equals[user_password]]"

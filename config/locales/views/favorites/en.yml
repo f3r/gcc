@@ -1,0 +1,11 @@
+####################################################################################
+# Favorites
+####################################################################################
+en:
+  favorites:
+    add_favorite: Add to favorites
+    remove_favorite: Remove from favorites
+    share_this_place_with_your_friends: Share this favorite with your friends      
+    no_thanks: No thanks      
+    messages:
+      successfully_added_to_your_favorites: The place was successfully added to your favorites
