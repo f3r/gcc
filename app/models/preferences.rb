@@ -14,7 +14,24 @@ class Preferences < ActiveRecord::Base
     current_city = current_user.prefered_city if current_user.present? && current_user.prefered_city.present?
     current_city = self.get_city_from_cookie(cookies) if not current_city.present?
     current_city = City.active.first if not current_city.present?
+    return City.new({:name => "WorldWide", :slug => "worldwide"}) if !current_city.present?
     current_city
+  end
+
+  def self.set_current_city(current_user, cookies, city_name)
+
+    if city_name == 'WWW'
+      cookies[:pref_city_id] = "-1"
+      return
+    end
+
+    city = City.find city_name
+    return if !city.present?
+
+    if current_user
+      current_user.change_preference(:city, city)
+    end
+    cookies[:pref_city_id] = city.id
   end
 
   def self.current_language(current_user, cookies)
@@ -53,7 +70,10 @@ class Preferences < ActiveRecord::Base
   end
 
   def self.get_city_from_cookie(cookies)
-    City.find(cookies[:pref_city_id]) if cookies[:pref_city_id].present?
+    if cookies[:pref_city_id].present?
+      return City.new({:name => "WorldWide", :slug => "worldwide"}) if cookies[:pref_city_id] == "-1"
+      City.find(cookies[:pref_city_id])
+    end
   end
 
   def self.get_currency_from_cookie(cookies)

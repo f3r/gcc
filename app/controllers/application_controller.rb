@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :instantiate_controller_and_action_names
   before_filter :set_locale
-  before_filter :change_preferences
+  before_filter :change_preferences, :change_city
   before_filter :set_current_user
   before_filter :set_subject_for_exception_notification
   before_filter :log_request
@@ -53,6 +53,12 @@ class ApplicationController < ActionController::Base
       else
         redirect_to params.merge(:trigger_signup => true)
       end
+    end
+  end
+
+  def change_city
+    if params.key?("__city_name")
+      Preferences.set_current_city current_user, cookies, params["__city_name"]
     end
   end
 
