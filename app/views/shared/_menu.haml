@@ -13,11 +13,11 @@
                 - City.active_and_have_a_listing.each do |city|
                   %li{:class => (@city && @city.id == city.id)? "active" : ""}= link_to city.name, "/?__city_name=#{city.slug}"
 
-            %li
+            %li.led
               %a{:href => "/#{current_city.slug}"}
                 = "DJ Rankings"
 
-            %li
+            %li.led
               %a{:href => '/dj_clubs/list'}
                 = "Club Rankings"
 
@@ -38,7 +38,7 @@
               = main_menu_user  if current_user && current_user.consumer?
               = main_menu_agent if current_user && current_user.agent?
 
-          %ul.nav.pull-right
+          %ul.nav.pull-right.led
             = main_menu
 
           %ul.nav.pull-right
