@@ -64,6 +64,9 @@ namespace :dj_club do
       website = ""
       email = ""
       image = club_page.css('meta[property="og:image"]').attr("content")
+      if club_page.css("#slide-img-1").present?
+        image = club_page.css("#slide-img-1").attr('src')
+      end
       details.each do |detail|
         d_t = ""
         detail.children.each do |item|
