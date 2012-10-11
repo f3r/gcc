@@ -1,13 +1,12 @@
-%footer#footer
-  .secure.center
-    = image_tag 'paypal-verified-logo.png'
-    = image_tag 'godaddy_verified.jpg'
-  .seo.center
-    = footer_menu
-
-  - if SiteConfig.before_body_tag_end.present?
+%footer
+  #footer
+    .secure.center
+      = image_tag 'paypal-verified-logo.png'
+      = image_tag 'godaddy_verified.jpg'
+  - if false
     .seo.center
-      = raw(SiteConfig.before_body_tag_end)
+      = footer_menu
 
-- if SiteConfig.show_powered?
-  = render 'shared/powered'
+    - if SiteConfig.before_body_tag_end.present?
+      .seo.center
+        = raw(SiteConfig.before_body_tag_end)

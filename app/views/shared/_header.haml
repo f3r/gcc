@@ -8,29 +8,30 @@
 .head_notification
   = head_notification_agent
 
-%header.header
-  .container
-    .row
-      .span5
-        .logo
-          = link_to root_path, :title => SiteConfig.site_name do
-            = image_tag static_asset('logo.png'), :alt => SiteConfig.site_name
-      - if user_signed_in?
-        .user_box.logged-in
-          .row
-            .thumb
-              = link_to avatar_image(current_user), profile_path
-            .user_name
-              .small
-                = link_to t("users.sign_out"), destroy_user_session_path
-      - else
-        .user_box.not-logged-in
-          .row
-            .links
-              .are='Are you a DJ?'
-              = link_to 'Request an invite', new_dj_registration_path, :class => 'btn btn-primary'
-              =# link_to user_omniauth_authorize_path(:facebook) do
-              =# image_tag 'signin_facebook.png', :alt => t("users.registration.sign_in_with", :provider => "Facebook")
+%header
+  .header
+    .container
+      .row
+        .span5
+          .logo
+            = link_to root_path, :title => SiteConfig.site_name do
+              = image_tag static_asset('logo.png'), :alt => SiteConfig.site_name
+        - if user_signed_in?
+          .user_box.logged-in
+            .row
+              .thumb
+                = link_to avatar_image(current_user), profile_path
+              .user_name
+                .small
+                  = link_to t("users.sign_out"), destroy_user_session_path
+        - else
+          .user_box.not-logged-in
+            .row
+              .links
+                .are='Are you a DJ?'
+                = link_to 'Request an invite', new_dj_registration_path, :class => 'btn btn-primary'
+                =# link_to user_omniauth_authorize_path(:facebook) do
+                =# image_tag 'signin_facebook.png', :alt => t("users.registration.sign_in_with", :provider => "Facebook")
 
-      = render 'shared/preferences'
-  = render 'shared/menu'
+        = render 'shared/preferences'
+    = render 'shared/menu'

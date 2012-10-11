@@ -6,7 +6,7 @@ a {
   color: @linkColor;
 }
 
-.site_wrapper {
+body {
   background-color: #E8E8E8;
    background: image-url("background.png") no-repeat center center fixed;
    -webkit-background-size: cover;
@@ -25,15 +25,38 @@ body {
 }
 
 .site_wrapper {
+  display: table;
+  width: 940px;
+  margin: 0 auto;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+}
+
+header {
+  display: table-row;
+
+  .header {
+    display: table-cell;
+  }
+}
+
+.container.main {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -150px;
+  background: rgba(0,0,0,0.8);
 }
 
-#push,
-#footer {
-  height: 150px;
+/* The white background content wrapper */
+.content {
+  //background-color: @content_background_color;
+  padding: 20px 0;
+  display: table-row;
+  height: 100%;
+}
+
+.content > div {
+  display: table-cell;
 }
 
 #home_page {
@@ -133,12 +156,6 @@ p.strong {
 
 .header .pull-right {
   float: right;
-}
-
-/* The white background content wrapper */
-.content {
-  background-color: @content_background_color;
-  padding: 20px 0;
 }
 
 /* Give a quick and non-cross-browser friendly divider */
