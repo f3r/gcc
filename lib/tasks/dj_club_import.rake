@@ -5,9 +5,10 @@ namespace :dj_club do
     cities = [
         ["Hong Kong", "http://hk.asia-city.com"],
         ["Bangkok", "http://bk.asia-city.com"],
-        ["Kaula Lumpur", "http://kl.asia-city.com"]
+        ["Kaula Lumpur", "http://kl.asia-city.com"],
+        ["Shanghai", "http://sh.asia-city.com"],
+        ["Singapore", "http://is.asia-city.com"]
     ]
-
 
     cities.each do |city|
       city_name = city[0]
@@ -20,6 +21,13 @@ namespace :dj_club do
       city_model.active = true
       city_model.save
     end
+  end
+
+  desc "Clears the dj club table"
+  task :delete_clubs => :environment do
+    puts "Deleting #{DjClub.count} clubs"
+    DjClub.destroy_all
+    puts "Finished deleting"
   end
 
   #####
