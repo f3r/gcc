@@ -1,5 +1,5 @@
 class PasswordsController < Devise::PasswordsController
-  layout 'application'
+  layout 'plain'
 
   def create
     self.resource = User.find_or_initialize_with_errors(Devise.reset_password_keys, resource_params, :not_found)

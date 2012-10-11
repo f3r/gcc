@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  layout 'application'
+  layout 'plain'
 
   def new_dj
     @role = :agent

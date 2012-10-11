@@ -1,16 +1,12 @@
-!!!
-%html{:lang => "en"}
-  %head
-    = render 'shared/meta'
-
-  %body
-    .site_wrapper
-      = render 'shared/header'
-      = render 'shared/contact'
-      .container.flash_pre
+- content_for :page_content do
+  .site_wrapper
+    = render 'shared/header'
+    =# render 'shared/contact'
+    .main_wrapper
+      .main
         = flash_messages
-        .content
-          = yield
+        = yield
 
-      #push
     = render 'shared/footer'
+
+= render :file => 'layouts/application'

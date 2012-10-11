@@ -1,5 +1,5 @@
 class SearchController < ApplicationController
-  layout 'plain'
+#  layout 'plain'
   before_filter :authenticate_user!, :only => [:favorites, :alert]
 
   def index

@@ -3,22 +3,5 @@
   %head
     = render 'shared/meta'
 
-  %body
-    .site_wrapper
-      = render 'shared/header'
-      = render 'shared/contact'
-      .container
-        .content
-          .row.flash_pre
-            - if content_for?(:aside)
-              %section.span9
-                = flash_messages
-                = yield
-              %aside.span3
-                = yield :aside
-            - else
-              %section.span10.offset1
-                = flash_messages
-                = yield
-      #push
-    = render 'shared/footer'
+  %body{:id => @body_id}
+    = yield :page_content

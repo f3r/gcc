@@ -1,5 +1,5 @@
 class SessionsController < Devise::SessionsController
-  layout 'single'
+  layout 'plain'
 
   append_after_filter :link_social_account, :only => :create
 

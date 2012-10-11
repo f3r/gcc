@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  layout 'plain'
+
   protect_from_forgery
   include AuthenticationHelper
   include LookupsHelper
@@ -119,7 +121,7 @@ class ApplicationController < ActionController::Base
     }
 
     entry[:ip_address] = request.remote_ip
-    
+
     if request.get?
       filtered_params = params.except(:controller, :action)
       entry[:params] = filtered_params if filtered_params.present?
