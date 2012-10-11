@@ -85,3 +85,7 @@ group :development, :test do
   gem 'debugger'
   #gem 'jazz_hands'
 end
+
+group :production do
+  gem 'crashlog'
+end
