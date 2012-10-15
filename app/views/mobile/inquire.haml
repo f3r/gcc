@@ -11,16 +11,15 @@
   = f.label :email, t("users.email")
   = text_field_tag :email, nil, :placeholder => t("users.email_example")
 
-  - if show_inquiry_length_fields?
-    = f.label :date_start_label, t("inquiries.arriving")
-    %input{:id => "inquiry_date_start_label", :name => :i, :placeholder => t("date_select")}
-    = f.hidden_field :date_start
+  = f.label :date_start_label, t("inquiries.arriving")
+  %input{:id => "inquiry_date_start_label", :name => :i, :placeholder => t("date_select")}
+  = f.hidden_field :date_start
 
-    = f.label :length_stay, t("inquiries.staying")
-    %select{:name=> :length_stay, "data-mini" => "true"}
-      - 8.times do |i|
-        = "<option value=\"#{i+1}\"> #{i+1} </option>".html_safe
-    = f.select :length_stay_type, transaction_length_options
+  = f.label :length_stay, t("inquiries.staying")
+  %select{:name=> :length_stay, "data-mini" => "true"}
+    - 8.times do |i|
+      = "<option value=\"#{i+1}\"> #{i+1} </option>".html_safe
+  = f.select :length_stay_type, transaction_length_options
 
   = f.label :message, t("inquiries.comments_questions")
   = f.text_area :message, :style => "height:70px", :placeholder => t("inquiries.inquiry_questions")

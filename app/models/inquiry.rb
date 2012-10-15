@@ -19,6 +19,7 @@ class Inquiry < ActiveRecord::Base
     )
     inquiry.check_in = params[:check_in]
     inquiry.budget   = params[:budget]
+    inquiry.location = params[:location]
 
     return inquiry unless inquiry.save
 

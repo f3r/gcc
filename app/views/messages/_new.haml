@@ -1,4 +1,4 @@
 = form_for 'message', :url => message_path(@conversation.id), :html => {:method => :put} do |f|
-  = f.text_area :body, :rows => 4, :class => "span5", :placeholder => t("messages.question_new_placeholder")
+  = f.text_area :body, :rows => 4, :class => "span4", :placeholder => t("messages.question_new_placeholder")
   .reply.pull-right
     = f.button t("messages.button_send_a_message"), :class => "btn  btn-primary respond-btn", :id => "send_message_btn"

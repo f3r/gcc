@@ -9,3 +9,7 @@
     .input-prepend
       %span.add-on.currency-sign= Currency.default.label
       = f.text_field :budget, :class => "validate[custom[number],min[1],required] input-small"
+.control-group
+  = f.label :location, t("inquiries.location"), {:class => 'control-label'}
+  .controls
+    = f.text_field :location, :class => "input-medium", :placeholder => t("inquiries.location_hint")

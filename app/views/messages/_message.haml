@@ -1,17 +1,16 @@
 - if m.system?
   .row.system-message
-    .span12
-      .well
-        =# image_tag('SquareStays_square_75x75.png')
+    .well
+      .body
         = image_tag 'icons/circle_info.png'
         = system_message_body(m.system_msg_id)
-      %span.time.pull-right= t("time_ago", :time => time_ago_in_words(m.created_at))
+    %span.time.pull-right= t("time_ago", :time => time_ago_in_words(m.created_at))
 - else
   .row.message
     .span1.from
       = avatar_image(m.from)
       = m.from.anonymized_name
-    .span11
+    .span9
       .body
         = simple_format h(mask_or_dontmask_msg(m)).html_safe
       %span.time.pull-right= t("time_ago", :time => time_ago_in_words(m.created_at))

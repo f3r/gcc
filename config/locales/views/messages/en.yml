@@ -29,9 +29,11 @@ en:
     arriving: Event Date
     arriving_on: Arriving on
     staying: Staying
+    location: Location
     budget: Budget
     comments_questions: Comments / Questions
     inquiry_questions: "Please add any other questions to the DJ here"
+    location_hint: "Club/Venue name"
     re_captcha: Humans only
     inquiry_sent: Inquiry sent
     inquiry_success_title: "Your inquiry has been sent!"

@@ -1,4 +1,4 @@
-.conversation
+.conversation.span10.offset1
   = breadcrumb [[t("inquiries.inquiries_title"), messages_path]], breadcrumb_conversation_title do
     .actions.pull-right
       = link_to t("messages.mark_unread"), mark_as_unread_message_path(@conversation.id), :method => :put
@@ -20,7 +20,7 @@
       .from.center
         = avatar_image(current_user)
         = current_user.anonymized_name
-    .span5
+    .span4
       = render 'new'
     - if @conversation.target
       #inquiry_workflow

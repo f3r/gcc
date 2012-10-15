@@ -10,7 +10,7 @@
   %a{:href => "#", :style => "float:right;", :class => "btn btn-large btn-primary", :id => "close_modal", :data => { :dismiss => "modal"}} Ok
 
 :javascript
-  
+
   $(document).ready(function() {
     just_created = "#{@just_created}";
     if( "true" == just_created ) {
@@ -20,7 +20,7 @@
       $('#inquiry_sent .close').attr('data-dismiss', 'false');
     }
     $('#inquire_place_link').attr('data-toggle', 'false');
-    $('#inquire_place_link').attr('conversation', "#{@inquiry.conversation.id}");
+    $('#inquire_place_link').attr('conversation', "#{@inquiry.conversation.id if @inquiry.conversation}");
   });
 
   $('#close_modal').click(function() {
@@ -28,4 +28,3 @@
     location.reload();
   });
 
-  

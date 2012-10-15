@@ -13,8 +13,7 @@
           = f.label :email, t("users.email"), {:class => 'control-label'}
           .controls
             = text_field_tag :email, nil, :placeholder => t("users.email_example"), :class => 'validate[required]'
-      - if show_inquiry_length_fields?
-        = render 'length_fields', :f => f
+      = render 'fields', :f => f
 
       .control-group
         = f.label :message, t("inquiries.comments_questions"), {:class => 'control-label'}

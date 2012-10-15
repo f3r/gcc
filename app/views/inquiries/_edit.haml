@@ -5,8 +5,7 @@
     %h3= t("inquiries.update_inquiry_title")
   .modal-body
     .form-horizontal
-      - if show_inquiry_length_fields?
-        = render 'length_fields', :f => f
+      = render 'fields', :f => f
     .clearfix
     .modal-footer
       .inquiry-actions
