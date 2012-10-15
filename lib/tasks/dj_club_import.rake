@@ -1,19 +1,59 @@
 namespace :dj_club do
-  desc "Imports the club data from http://is.asia-city.com/nightlife/bars/browse"
-  task :import => :environment do
-    base_url = "http://is.asia-city.com"
-    url =  "http://is.asia-city.com/nightlife/bars/browse"
+
+  desc "Imports the club data from http://*.asia-city.com/nightlife/bars/browse"
+  task :full_import => :environment do
+    cities = [
+        ["Hong Kong", "http://hk.asia-city.com"],
+        ["Bangkok", "http://bk.asia-city.com"],
+        ["Kaula Lumpur", "http://kl.asia-city.com"],
+        ["Shanghai", "http://sh.asia-city.com"],
+        ["Singapore", "http://is.asia-city.com"]
+    ]
+
+    cities.each do |city|
+      city_name = city[0]
+      city_base_url = city[1]
+
+      city_model = City.find_or_create_by_name(city_name)
+
+      import_clubs(city_model, city_base_url)
+
+      city_model.active = true
+      city_model.save
+    end
+  end
+
+  desc "Clears the dj club table"
+  task :delete_clubs => :environment do
+    puts "Deleting #{DjClub.count} clubs"
     DjClub.destroy_all
+    puts "Finished deleting"
+  end
+
+  #####
+  #desc "Imports the club data from http://is.asia-city.com/nightlife/bars/browse"
+  #task :import => :environment do
+  #
+  #end
+
+  private
+  def import_clubs(city, base_url)
+
+    url = "#{base_url}/nightlife/bars/browse"
+
+    puts "#### IMPORT FROM #{url} ######"
+
+    #DjClub.destroy_all
     fd = open(url)
     doc = Nokogiri::HTML(fd)
     club_links = []
     doc.css(".item_container").each do |container|
-        container.css(".list_items li a").each do |item|
-          club_links << item[:href]
-        end
+      container.css(".list_items li a").each do |item|
+        club_links << item[:href]
+      end
     end
     fd.close
-    count =  club_links.count
+    count = club_links.count
     puts "There are #{count} links to scrap!!!"
 
     i = 1
@@ -32,6 +72,9 @@ namespace :dj_club do
       website = ""
       email = ""
       image = club_page.css('meta[property="og:image"]').attr("content")
+      if club_page.css("#slide-img-1").present?
+        image = club_page.css("#slide-img-1").attr('src')
+      end
       details.each do |detail|
         d_t = ""
         detail.children.each do |item|
@@ -65,12 +108,18 @@ namespace :dj_club do
       dj_club.photo1 = open(image.text.gsub(" ", "%20"))
       dj_club.phone = phone.strip
       dj_club.website = website.strip
+      dj_club.city = city
       dj_club.save
 
       fd.close
 
       i = i + 1
+
+      # Only for dev - just import 10 clubs
+      #break if i > 5
     end
+
+    puts "DONE scraping #{url}"
 
   end
 end

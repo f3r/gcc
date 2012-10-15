@@ -1,5 +1,4 @@
 HeyPalFrontEnd::Application.routes.draw do
-  get "dj_clubs/list"
 
   get 'sitemap.xml' => 'cached_sitemaps#sitemap'
 
@@ -95,6 +94,10 @@ HeyPalFrontEnd::Application.routes.draw do
   match '/:city'           => 'search#index', :city => City.routes_regexp
   match '/:city/:id'       => 'search#show',  :city => City.routes_regexp, :as => :city_product
   match '/worldwide'       => 'search#index', :global => 'all', :as => :global_results
+
+  get '/clubs/worldwide'   =>   'dj_clubs#list', :global => true
+  get '/clubs/:city'       =>   'dj_clubs#list', :city => City.routes_regexp
+
 
 
   ###########################################################################################

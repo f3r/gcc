@@ -10,7 +10,7 @@
                 %b.caret
               %ul.dropdown-menu{:style => 'width:200px'}
                 %li{:class => (@global.present?)? "active" : ""}= link_to "Worldwide", "/?__city_name=WWW"
-                - City.active_and_have_a_listing.each do |city|
+                - City.active.each do |city|
                   %li{:class => (@city && @city.id == city.id)? "active" : ""}= link_to city.name, "/?__city_name=#{city.slug}"
 
             %li.led
@@ -18,7 +18,7 @@
                 = "DJ Rankings"
 
             %li.led
-              %a{:href => '/dj_clubs/list'}
+              %a{:href => "/clubs/#{current_city.slug}"}
                 = "Club Rankings"
 
               / - if user_signed_in?

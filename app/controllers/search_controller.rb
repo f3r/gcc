@@ -12,6 +12,8 @@ class SearchController < ApplicationController
       end
     end
 
+    Preferences.set_current_city current_user, cookies, @city.slug if @city
+
     @search = searcher.new(params[:search])
 
     @search.currency ||= current_currency

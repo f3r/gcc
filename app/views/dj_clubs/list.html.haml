@@ -5,7 +5,14 @@
         .search-bar-container
           .search-bar
             .float-left
-              %h2{:style => "padding-bottom:9px"} Best Clubs
+              %h2{:style => "padding-bottom:9px"}
+
+                - if @global
+                  World's
+                - else
+                  = "#{@city.name}'s"
+
+                Best clubs
 
       .results{:style => "padding-top: 10px;"}
         #search_results
