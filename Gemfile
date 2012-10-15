@@ -69,6 +69,7 @@ group :development do
   gem 'translate-rails3', :require => 'translate'
   gem 'colorize'
   gem 'curb'
+  gem 'sqlite3' #this one is require for heroku db:pull (taps)
   #gem 'pry'
 end
 
@@ -82,7 +83,7 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'debugger'
+  gem 'debugger', "~> 1.2.0"
   #gem 'jazz_hands'
 end
 
