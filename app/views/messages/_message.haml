@@ -3,6 +3,7 @@
     .span12
       .well
         =# image_tag('SquareStays_square_75x75.png')
+        = image_tag 'icons/circle_info.png'
         = system_message_body(m.system_msg_id)
       %span.time.pull-right= t("time_ago", :time => time_ago_in_words(m.created_at))
 - else

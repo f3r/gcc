@@ -4,7 +4,7 @@ ActiveAdmin.register Translation do
   config.sort_order = 'key_asc'
 
   controller do
-    #actions :all, :except => [:new, :create]
+    actions :all, :except => [:show]
     helper 'admin/translations'
     def scoped_collection
       Translation.where(:locale => "en")

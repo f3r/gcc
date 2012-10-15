@@ -165,7 +165,12 @@ class User < ActiveRecord::Base
   # Overrides active_for_authentication? from Devise::Models::Activatable for disabling from admin
   # by verifying whether a user is disabled
   def active_for_authentication?
-    super && !disabled? && approved?
+    super && !disabled? && is_approved?
+  end
+
+  def is_approved?
+    return true if !self.agent?
+    self.approved?
   end
 
   # Overwrites invalid_message from Devise::Models::Authenticatable to define

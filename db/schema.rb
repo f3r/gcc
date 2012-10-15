@@ -152,9 +152,6 @@ ActiveRecord::Schema.define(:version => 20121010055932) do
     t.integer "position"
     t.string  "slug"
     t.integer "geoname_id"
-    t.text    "meta_description"
-    t.text    "meta_keywords"
-    t.text    "footer_seo_text"
   end
 
   add_index "cities", ["country"], :name => "index_cities_on_country"
@@ -596,7 +593,6 @@ ActiveRecord::Schema.define(:version => 20121010055932) do
     t.integer  "city_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.string   "price_unit"
   end
 
   create_table "product_amenities", :force => true do |t|
