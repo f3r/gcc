@@ -14,7 +14,7 @@ class Service < ActiveRecord::Base
   def self.searcher
     Search::Service
   end
-
+  
   def self.published
     self.where('products.published' => true)
   end
@@ -33,6 +33,55 @@ class Service < ActiveRecord::Base
 
   def self.user_reached_limit?(user)
     self.manageable_by(user).count >= 1
+  end
+  
+  def profile_completeness
+    
+    #current calculation policy
+    
+    #total = 100
+    #has photos, 25+
+    #has amenities, 25+
+    #has any of the social_urls, 20+
+    #has more than 3 social_urls, 10+ (as bonus points)
+    #has biography, 20+
+    
+    profile_completeness_status = 0
+    
+    # Adding points, if DJ has photos
+    if self.photos.present?
+      profile_completeness_status += 25
+    end
+    
+    # Adding points, if DJ has genres
+    if  self.amenities.present?
+     profile_completeness_status += 25
+    end
+    
+    social_points = 0
+    
+    self.custom_fields.each_pair do |key, value|
+      unless ["label", "bio", "website", "sex"].include?(key)
+        social_points += 1 if value.present? 
+      end
+    end
+   
+    # Adding points, if DJ has any social urls
+    if social_points > 0   
+      profile_completeness_status += 20
+    end
+    
+    # Adding bonus points, if DJ has more than 3 social urls
+    if social_points > 3
+      profile_completeness_status += 10
+    end
+    
+    # Adding points, if DJ added his biography
+    if self.custom_fields["bio"].present?
+      profile_completeness_status += 20
+    end
+    
+    profile_completeness_status
   end
 
   def price_unit
