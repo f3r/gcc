@@ -13,6 +13,7 @@ class Product < ActiveRecord::Base
   has_many   :reviews,           :dependent => :destroy
   has_many   :q_and_a,           :dependent => :destroy, :class_name => 'Comment'
   has_many   :amenities,         :through => :product_amenities
+  has_many   :dj_point_history,  :dependent => :destroy
 
   serialize :custom_values
 
