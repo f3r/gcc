@@ -7,14 +7,13 @@
 - require_google_apis
 
 - if @my_products
-  .span7
-    = breadcrumb [[t('products.my_listings'), listings_path]], @resource.title
-  .span3.listing-actions
-    = render 'listings/actions'
+  .row
+    .span3.offset7.listing-actions
+      = render 'listings/actions'
 - else
   = breadcrumb [['Search Results', seo_city_path(@resource.city)]],  @resource.title
 
-.product_info{:id => dom_id(@resource)}
+.row.product_info{:id => dom_id(@resource)}
   /******************************************************************************************
   / Name, Price, Inquire Button
   /******************************************************************************************

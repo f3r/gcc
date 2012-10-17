@@ -218,7 +218,11 @@ class User < ActiveRecord::Base
 private
 
   def send_on_create_welcome_instructions
-    RegistrationMailer.welcome_instructions(self).deliver unless skip_welcome || !self.approved
+    if self.approved
+      RegistrationMailer.welcome_instructions(self).deliver unless skip_welcome
+    else
+      SystemMailer.user_approval(self).deliver
+    end
   end
 
   # checks if avatar_url is set and updates the avatar if avatar_url is an image

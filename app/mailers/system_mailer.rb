@@ -12,6 +12,11 @@ class SystemMailer < BaseMailer
     mail(:subject => "User Feedback (#{type})")
   end
 
+  def user_approval(user)
+    @user = user
+    mail(:subject => "New user waiting for approval")
+  end
+
   # ==Description
   # Email sent when a user sends a suggestion
   def user_contact(contact)

@@ -1,2 +1,9 @@
 = render 'photos/profile'
 = render 'photos/upload'
+
+= form_for @resource, :as => :listing, :url => listing_path(@resource), :class => 'form-stacked', :html => {:id => "wizard_form", :method => :put} do |f|
+  = f.hidden_field :wizard_step, :value => tab_number
+  - if @resource.published?
+    = f.submit t(:save).html_safe, :class => 'btn btn-primary pull-right', :id => "wizard_submit"
+  - else
+    = f.submit t(:save_and_continue).html_safe, :class => 'btn btn-primary pull-right', :id => "wizard_submit"

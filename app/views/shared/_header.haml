@@ -28,8 +28,10 @@
           .user_box.not-logged-in
             .row
               .links
-                .are='Are you a DJ?'
-                = link_to 'Request an invite', new_dj_registration_path, :class => 'btn btn-primary'
+                = link_to 'Login', login_path_with_ref
+                .dj
+                  %span='Are you a DJ?'
+                  = link_to 'Request an invite', new_dj_registration_path, :class => 'btn btn-primary'
                 =# link_to user_omniauth_authorize_path(:facebook) do
                 =# image_tag 'signin_facebook.png', :alt => t("users.registration.sign_in_with", :provider => "Facebook")
 

@@ -19,9 +19,8 @@
       .primary_marker
         = t("places.wizard.photos.primary")
       .row
-        .span8
-          %ul.gallery#photos_list
-            = render 'photos/list'
+        %ul.gallery#photos_list
+          = render 'photos/list'
 
 :javascript
   /* TODO: Finish moving this to wizard.js */

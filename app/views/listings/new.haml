@@ -1,24 +1,23 @@
 = coded_errors_for @resource
-.row.wizard-wrapper
-  .span10.offset1
-    = form_for @resource, :as => :listing, :url => listings_path, :html => {:id => 'wizard_form', :class => 'new-place'} do |f|
-      %h2.title
-        Create a new DJ Profile
-      %fieldset.well.form-horizontal
-        .control-group.required
-          = f.label :city_id, 'Choose a city', :class => 'control-label'
-          .controls
-            = f.select :city_id, cities_options, :class => "validate[required] span4"
-            %span= link_to t("pages.front_page.other_cities"), new_feedback_path, :remote => true
+.wizard-wrapper
+  = form_for @resource, :as => :listing, :url => listings_path, :html => {:id => 'wizard_form', :class => 'new-place'} do |f|
+    %h2.title
+      Create a new DJ Profile
+    %fieldset.well.form-horizontal
+      .control-group.required
+        = f.label :city_id, 'Choose a city', :class => 'control-label'
+        .controls
+          = f.select :city_id, cities_options, :class => "validate[required] span4"
+          %span= link_to t("pages.front_page.other_cities"), new_feedback_path, :remote => true
 
-        .control-group.required
-          = f.label :title, 'DJ Name', :class => 'control-label'
-          .controls
-            = f.text_field :title, :class => "validate[required] span6", :placeholder => t('products.wizard.step1_title')
+      .control-group.required
+        = f.label :title, 'DJ Name', :class => 'control-label'
+        .controls
+          = f.text_field :title, :class => "validate[required] span6", :placeholder => t('products.wizard.step1_title')
 
-        = render_overridable_partial('new_fields', :resource => @resource, :f => f)
-      %br
-        %button.btn.btn-primary.offset7{:type => "submit", :id => "submit_button", :style => "width:200px;"}=raw t("places.wizard.save_and_continue")
+      = render_overridable_partial('new_fields', :resource => @resource, :f => f)
+    %br
+      %button.btn.btn-primary.offset7{:type => "submit", :id => "submit_button", :style => "width:200px;"}=raw t("places.wizard.save_and_continue")
 
 :javascript
   $(document).ready(function() {

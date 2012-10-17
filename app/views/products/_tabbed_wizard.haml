@@ -1,5 +1,5 @@
 - if @wizard.current_step_name == :photos
-  = render "products/#{SiteConfig.product_class.to_s.tableize}/wizard_tabs/step_photos"
+  = render "products/#{SiteConfig.product_class.to_s.tableize}/wizard_tabs/step_photos", :tab_name => @wizard.current_step_name, :tab_number => @wizard.current_step
 - else
   = render "products/properties/wizard_tabs/step", :tab_name => @wizard.current_step_name, :tab_number => @wizard.current_step
 
