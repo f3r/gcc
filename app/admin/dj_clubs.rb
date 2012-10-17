@@ -1,13 +1,14 @@
 ActiveAdmin.register DjClub do
   menu :parent => 'CMS'
   filter :name
+  filter :city
   index do
     id_column
     column :name
     column("description") { |club| truncate(club.description) }
     column 'Photo1', :sortable => false do
     |club|
-      image_tag(club.photo1.url(:medium))
+      image_tag(club.primary_photo.photo.url(:medium))
     end
     column :created_at
     default_actions
@@ -23,8 +24,12 @@ ActiveAdmin.register DjClub do
       f.input :phone
       f.input :website
       f.input :points
-      f.input :photo1, :hint => (f.template.image_tag(f.object.photo1.url(:medium)))
     end
     f.buttons
   end
+
+  action_item :except => [:show, :index] do
+    link_to "Add/Edit Photos", admin_dj_club_club_photos_path(params[:id])
+  end
+
 end

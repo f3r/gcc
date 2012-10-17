@@ -105,7 +105,7 @@ namespace :dj_club do
       dj_club.description = description.strip
       dj_club.location = location.strip
       dj_club.address = address.strip
-      dj_club.photo1 = open(image.text.gsub(" ", "%20"))
+      dj_club.club_photos.new.photo = open(image.text.gsub(" ", "%20"))
       dj_club.phone = phone.strip
       dj_club.website = website.strip
       dj_club.city = city

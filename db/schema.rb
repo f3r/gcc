@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010065452) do
+ActiveRecord::Schema.define(:version => 20121017050631) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -159,6 +159,16 @@ ActiveRecord::Schema.define(:version => 20121010065452) do
   add_index "cities", ["slug"], :name => "index_cities_on_slug", :unique => true
   add_index "cities", ["state"], :name => "index_cities_on_state"
 
+  create_table "club_photos", :force => true do |t|
+    t.integer  "dj_club_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
   create_table "cmspage_images", :force => true do |t|
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -171,9 +181,9 @@ ActiveRecord::Schema.define(:version => 20121010065452) do
   create_table "cmspage_menu_sections", :force => true do |t|
     t.integer  "cmspage_id"
     t.integer  "menu_section_id"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
-    t.integer  "position",        :limit => 2, :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "position",        :default => 0
   end
 
   create_table "cmspage_versions", :force => true do |t|
@@ -199,9 +209,9 @@ ActiveRecord::Schema.define(:version => 20121010065452) do
   create_table "cmspages_menu_sections", :id => false, :force => true do |t|
     t.integer  "cmspage_id"
     t.integer  "menu_section_id"
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
-    t.integer  "position",        :limit => 2, :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "position",        :default => 0
   end
 
   create_table "comments", :force => true do |t|
@@ -375,6 +385,7 @@ ActiveRecord::Schema.define(:version => 20121010065452) do
     t.string   "target_type"
     t.integer  "product_id"
     t.integer  "budget"
+    t.string   "location"
   end
 
   add_index "inquiries", ["place_id"], :name => "index_inquiries_on_place_id"

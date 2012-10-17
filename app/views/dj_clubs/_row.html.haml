@@ -3,7 +3,7 @@
 %li{:id => dom_id(club), "data-url" => url, :class => 'search-item-clickable'}
   .thumb.data-block{:class => "club_photo"}
     = link_to url do
-      = image_tag(club.photo1(:thumb))
+      = image_tag(club.primary_photo.photo(:thumb))
   .info
     .title
       %h3
