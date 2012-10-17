@@ -97,6 +97,7 @@ HeyPalFrontEnd::Application.routes.draw do
 
   get '/clubs/worldwide'   =>   'dj_clubs#list', :global => true
   get '/clubs/:city'       =>   'dj_clubs#list', :city => City.routes_regexp
+  get '/clubs/:city/:id'   =>   'dj_clubs#show', :city => City.routes_regexp, :as => :city_club
 
 
 

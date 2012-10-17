@@ -1,0 +1,27 @@
+- content_for(:title) do
+  - "#{@club.name} - #{@club.city.name}"
+
+.row.product_info{:id => dom_id(@club)}
+  .span10.offset1
+    .accomodation-wrapper
+      .header
+        .title
+          %h1
+            = @club.name
+          .meta
+            %p= "#{@club.city.name}, #{@club.city.country}"
+            %p= "#{@club.address}"
+            %p= "#{@club.phone}"
+            %p= "#{@club.email}"
+            %p= "#{@club.website}"
+
+      .well
+        .row-fluid.about
+          .span12{:style => "text-align: center;"}
+            = image_tag(@club.primary_photo.photo(:medium))
+
+      .well
+        .row-fluid.about
+          .span12
+            %p= @club.description
+

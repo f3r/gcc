@@ -12,4 +12,8 @@ class DjClubsController < ApplicationController
     @clubs = DjClub.with_points @city
   end
 
+  def show
+    @club = DjClub.find(params[:id])
+  end
+
 end
