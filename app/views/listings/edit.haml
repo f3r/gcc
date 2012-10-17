@@ -21,14 +21,6 @@
         = render_overridable_partial('edit_sidebar')
         &nbsp;
       .span9
-        .profile_progress_bar
-          %span.profile_bar_header="#{@resource.profile_completeness}% profile completeness"
-          - if @resource.profile_completeness < 100
-            %span.profile_bar_link
-              =link_to "Complete your profile", edit_listing_path(@resource)
-          .progress
-            .bar{:style => "width: #{@resource.profile_completeness}%;" }
-            
         .wizard-wrapper
           %h2.title.section_title= t("products.wizard.#{@wizard.current_step_name}_title")
           .tab-content

@@ -183,6 +183,16 @@ module ApplicationHelper
     end
     nil
   end
-
+  
+  def get_wizard_step(wizard, selected_tab_name)
+    wizard.tabs.each_with_index do |tab_name, tab_idx|
+      step = tab_idx + 1
+      if tab_name.to_s == selected_tab_name.to_s
+        return step
+      end
+    end
+    nil
+  end
+   
   module_function :static_asset
 end

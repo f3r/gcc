@@ -46,16 +46,26 @@ class Service < ActiveRecord::Base
     #has more than 3 social_urls, 10+ (as bonus points)
     #has biography, 20+
     
-    profile_completeness_status = 0
+    profile_completeness_score = 0
+    profile_completeness_status = Array.new
     
     # Adding points, if DJ has photos
     if self.photos.present?
-      profile_completeness_status += 25
+      if self.photos.count == 1
+        profile_completeness_score += 15
+        profile_completeness_status << [10,'Add more photos', "photos"]
+      else
+        profile_completeness_score += 25
+      end
+    else
+      profile_completeness_status << [25,'Add photos', "photos"]  
     end
     
     # Adding points, if DJ has genres
     if  self.amenities.present?
-     profile_completeness_status += 25
+     profile_completeness_score += 25
+    else
+     profile_completeness_status << [25,'Add Amenities', "traits"]   
     end
     
     social_points = 0
@@ -68,20 +78,25 @@ class Service < ActiveRecord::Base
    
     # Adding points, if DJ has any social urls
     if social_points > 0   
-      profile_completeness_status += 20
+      profile_completeness_score += 20
+    else
+      profile_completeness_status << [20, 'Add Social Urls', "custom_fields"]   
     end
     
     # Adding bonus points, if DJ has more than 3 social urls
     if social_points > 3
-      profile_completeness_status += 10
+      profile_completeness_score += 10
+    else
+      profile_completeness_status << [10, 'Add more Social Urls', "custom_fields"]   
     end
     
     # Adding points, if DJ added his biography
     if self.custom_fields["bio"].present?
-      profile_completeness_status += 20
+      profile_completeness_score += 20
+    else
+      profile_completeness_status << [20, 'Add Biography', "custom_fields"]   
     end
-    
-    profile_completeness_status
+    return profile_completeness_score, profile_completeness_status
   end
 
   def price_unit

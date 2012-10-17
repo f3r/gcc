@@ -1,4 +1,19 @@
 .wizard-aside-wrapper
+  - score, status = @resource.profile_completeness
+  .profile_progress_bar
+    %span.profile_bar_header="#{score}% profile completeness"
+    .progress
+      .bar{:style => "width: #{score}%;" }
+    .completion_tips
+      - if status.present?
+        %span.tips_header="Profile Completion Tips"
+        %ul.tips_list
+          - status.each do|value|
+            - step_id = get_wizard_step(@wizard, value[2])
+            - if step_id.present?
+              %li.tips
+                = link_to value[1], {:s => step_id}, {:title => value[1]}
+                %span="( +#{value[0]}% )"
   .wizard-aside
     %ul.nav.nav-tabs.nav-stacked#wizard_tabs
       - @wizard.tabs.each_with_index do |tab_name, tab_idx|

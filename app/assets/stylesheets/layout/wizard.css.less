@@ -135,14 +135,36 @@ ul#wizard_tabs {
 }
 
 .profile_progress_bar{
-   .profile_bar_header {
-     text-align:left;
-     font-size:12px;
-     font-weight:bold;
-     letter-spacing: 1px;
-   }
-   .profile_bar_link{
-     float: right;
-     text-align:right;
-   }
+  padding: 5px;
+  background-color: rgba(245, 245, 245, 0.3);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  .profile_bar_header {
+    text-align:left;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing: 1px;
+  }
+  .completion_tips {
+    .tips_header{
+      font-size: 12px;
+      font-weight: bold;
+      color: #30B1F2;
+    }
+    .tips_list{
+      list-style-type: none;
+      padding: 0px;
+      margin: 0px;
+      .tips{
+        background: image-url("plus.png") no-repeat;
+        background-position: 0px 5px;
+        padding-left:14px;
+        a{
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
 }
