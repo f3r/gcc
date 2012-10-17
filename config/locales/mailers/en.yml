@@ -128,3 +128,6 @@ en:
       P.S.  Do you want to publish on %{site_name}? Please contact us at %{support_email} and become an approved property owner on %{site_name}!
     new_alert:
       subject: "Your %{product_plural} search alert"
+    ranking_changes_notification:
+      subject: "Your ranking has been changed"
+      intro: "Your DJ ranking has been changed, please review your latest & previous rankings."

@@ -52,4 +52,13 @@ class UserMailer < BaseMailer
     subject    = t('mailers.reset_password_reminder_instructions.subject')
     mail(:to => recipients, :subject => subject)
   end
+ 
+  def ranking_changes_notification(user, current_rank, previous_rank)
+    @user      = user
+    @current_rank = current_rank
+    @previous_rank = previous_rank
+    recipients = "#{user.full_name} <#{user.email}>"
+    subject    = t('mailers.ranking_changes_notification.subject')
+    mail(:to => recipients, :subject => subject)
+  end
 end

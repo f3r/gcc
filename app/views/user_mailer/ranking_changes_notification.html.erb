@@ -1,0 +1,8 @@
+<h2><%= t("mailers.salutation", :name => @user.first_name) %></h2>
+<p><%= t('mailers.ranking_changes_notification.intro') %></p>
+<p>&nbsp;</p>
+<p>Current DJ Rank : <b>#<%= @current_rank %></b></p>
+<p>Previous DJ Rank : <b>#<%= @previous_rank %></b></p>
+<% content_for(:footer_ps) do %>
+  <p></p>
+<% end %>

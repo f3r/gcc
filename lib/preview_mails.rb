@@ -53,6 +53,11 @@ class PreviewMails < MailView
     user = getUser()
     UserMailer.new_message_reply(user, getMessage())
   end
+ 
+  def ranking_changes_notification
+    user = getUser()
+    UserMailer.ranking_changes_notification(user, 2, 7)
+  end
 
   ###############################################################
   # INQUIRY_MAILER

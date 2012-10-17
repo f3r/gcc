@@ -33,6 +33,12 @@
       .price
         .figure
           %span= "##{ranking}"
+        - history = resource.product.dj_point_history.last
+        - rank = history.rank if history.present?
+        - if rank.present?
+          .micro
+            %span= "Previous Rank : "
+            %span{:class => "last_rank" }= "##{resource.product.dj_point_history.last.rank}" 
         .micro= "#{resource.points} DJ Points"
         /FB likes count
         - fb_cf_url = facebook_url_custom_field(resource)

@@ -9,7 +9,9 @@ namespace :calculate_dj_points do
   task :assign_points => :environment do
     require 'declarative_authorization/maintenance'
     Authorization::Maintenance.without_access_control do
-      Product.all.each do |dj|
+      
+      products = Product.where(:published => true).order("points DESC")
+      products.each_with_index do |dj, rank|
         points = 0;
         dj_point = 1;
         
@@ -22,6 +24,7 @@ namespace :calculate_dj_points do
         
         dj_point_history = dj.dj_point_history.new
         dj_point_history.points = current_point
+        dj_point_history.rank = rank + 1 
         dj_point_history.date = Time.now
         dj_point_history.save
       end
