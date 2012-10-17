@@ -1,22 +1,20 @@
 %section.clearfix
-  .row
-    .span10.offset1
-      .search-bar-wrapper
-        .search-bar-container
-          .search-bar
-            .float-left
-              %h2{:style => "padding-bottom:9px"}
+  .search-bar-wrapper
+    .search-bar-container
+      .search-bar
+        .float-left
+          %h2{:style => "padding-bottom:9px"}
 
-                - if @global
-                  World's
-                - else
-                  = "#{@city.name}'s"
+            - if @global
+              World's
+            - else
+              = "#{@city.name}'s"
 
-                Best clubs
+            Best clubs
 
-      .results{:style => "padding-top: 10px;"}
-        #search_results
-          %ul.list-display
-            #search_result_list
-              - @clubs.each_with_index do |club, idx|
-                = render 'row', :club => club, :ranking => (idx + 1)
+  .results{:style => "padding-top: 10px;"}
+    #search_results
+      %ul.list-display
+        #search_result_list
+          - @clubs.each_with_index do |club, idx|
+            = render 'row', :club => club, :ranking => (idx + 1)

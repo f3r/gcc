@@ -1,4 +1,4 @@
-.conversation.span10.offset1
+.conversation
   = breadcrumb [[t("inquiries.inquiries_title"), messages_path]], breadcrumb_conversation_title do
     .actions.pull-right
       = link_to t("messages.mark_unread"), mark_as_unread_message_path(@conversation.id), :method => :put

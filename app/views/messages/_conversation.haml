@@ -1,5 +1,5 @@
 = link_to message_path(conversation) do
-  .span12.entry{:class => (conversation.read?)? "read" : "unread" }
+  .span10.entry{:class => (conversation.read?)? "read" : "unread" }
     - if conversation.target
       = render_target(conversation.target, :photo)
     .span1.from

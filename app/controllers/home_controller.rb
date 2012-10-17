@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-
+  layout 'home'
   skip_before_filter :log_request, :only => :alive
 
   def index
