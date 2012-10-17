@@ -5,14 +5,6 @@ GIT
     mail_view (1.0.1)
       tilt
 
-GIT
-  remote: git://github.com/svenfuchs/i18n-active_record.git
-  revision: 4628202f676aecfbc00d404342e61f75078d9439
-  branch: rails-3.2
-  specs:
-    i18n-active_record (0.0.2)
-      i18n (>= 0.6.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -188,8 +180,6 @@ GEM
     jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
-    jquery_mobile_rails (1.1.1.1)
-      rails (>= 3.1.0)
     json (1.7.5)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
@@ -229,7 +219,7 @@ GEM
     mysql2 (0.3.11)
     netrc (0.7.4)
     newrelic_rpm (3.4.0.1)
-    nokogiri (1.5.3)
+    nokogiri (1.5.5)
     oauth (0.4.6)
     oauth2 (0.6.1)
       faraday (~> 0.7)
@@ -391,10 +381,8 @@ DEPENDENCIES
   google_currency
   haml (>= 3.0.0)
   haml-rails
-  heroku_san (~> 2.1.4)
-  i18n-active_record!
+  heroku_san
   jquery-rails (~> 1.0.18)
-  jquery_mobile_rails
   launchy
   less-rails-bootstrap
   localized_country_select
@@ -404,7 +392,7 @@ DEPENDENCIES
   money
   mysql2
   newrelic_rpm
-  nokogiri
+  nokogiri (~> 1.5.5)
   omniauth
   omniauth-facebook
   omniauth-twitter
