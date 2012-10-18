@@ -15,23 +15,14 @@ class Wizard
     end
   end
 
-  def wizard_step_defined?(tab_name)
-    views_path = ::Rails.root.to_s + "/app/views"
-    plural_product = SiteConfig.product_class.to_s.tableize
-    specific_path = "products/#{plural_product}"
-
-    File.exists?("#{views_path}/#{specific_path}/wizard_tabs/_step_#{tab_name}.haml")
-  end
-
   def tabs
     unless @wizard_tabs
       @wizard_tabs = []
       @wizard_tabs << :general
       @wizard_tabs << :custom_fields if CustomField.any?
-      @wizard_tabs << :pricing   if wizard_step_defined?(:pricing)
-      @wizard_tabs << :photos    if wizard_step_defined?(:photos)    && SiteConfig.photos?
-      @wizard_tabs << :panoramas if wizard_step_defined?(:panoramas) && SiteConfig.panoramas?
-      @wizard_tabs << :traits    if wizard_step_defined?(:traits)    && AmenityGroup.any?
+      @wizard_tabs << :photos if SiteConfig.photos?
+      @wizard_tabs << :panoramas if SiteConfig.panoramas?
+      @wizard_tabs << :traits    if AmenityGroup.any?
       #@wizard_tabs << :address   if wizard_step_defined?(:address)
       #tabs << :calendar if SiteConfig.calendar?
     end

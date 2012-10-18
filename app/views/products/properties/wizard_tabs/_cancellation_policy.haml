@@ -1,7 +1,0 @@
-#cancellation_policy_text.modal.hide
-  .modal-header
-    %h3= t("places.cancellation_policy")
-  .modal-body
-    = t("places.cancellation_policy_modal_content").html_safe
-    .modal-footer
-      %button.btn{:onclick => "$('#cancellation_policy_text').modal('hide'); return false;"}= t("close")

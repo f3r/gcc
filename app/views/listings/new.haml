@@ -15,7 +15,7 @@
         .controls
           = f.text_field :title, :class => "validate[required] span6", :placeholder => t('products.wizard.step1_title')
 
-      = render_overridable_partial('new_fields', :resource => @resource, :f => f)
+      = render('products/new_fields', :resource => @resource, :f => f)
     %br
       %button.btn.btn-primary.offset7{:type => "submit", :id => "submit_button", :style => "width:200px;"}=raw t("places.wizard.save_and_continue")
 

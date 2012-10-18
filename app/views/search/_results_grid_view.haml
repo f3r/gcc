@@ -1,4 +1,4 @@
 - @results.each do |resource|
   %li.items-gallery.results.search-item-clickable{:id => dom_id(resource), "data-url" => seo_product_url(resource)}
     %span{:id => "grid_property_#{resource.id}"}
-      = render_overridable_partial('grid', :resource => resource)
+      = render('products/grid', :resource => resource)

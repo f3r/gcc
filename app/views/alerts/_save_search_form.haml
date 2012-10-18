@@ -2,7 +2,7 @@
   = f.fields_for :search do |search_form|
     .modal-header
       %h3=t(@current_action == "edit" ? "alerts.edit_alert" : "alerts.create_alert")
-    .modal-body 
+    .modal-body
       %fieldset
         .column1
           .control-group
@@ -16,7 +16,6 @@
             %label{:class => "control-label"}= t("places.search.city")
             .controls
               = search_form.select(:city_id, cities_options)
-          = render_overridable_partial('save_search_fields', :search_form => search_form)
 
           .control-group
             %label{:class => "control-label"}= t("places.search.sort_by")
@@ -38,7 +37,13 @@
                 = search_form.text_field :max_price, :placeholder => t("places.search.maximum_price"), :class => 'span2', 'autocomplete' => 'off'
 
         .column2
-          = render_overridable_partial('save_search_fields_extra', :search_form => search_form)
+          .control-group
+            %label{:class => "control-label"}= t('services.search.amenity_filter_title')
+            - @alert.search.amenity_filters.each do |a,count,checked|
+              .controls
+                %label.checkbox
+                  = check_box_tag "alert[search_attributes][amenity_ids][]", a.id, checked, :id => "#{a.name.parameterize}_filter"
+                  = a.name
 
       .modal-footer
         %button.btn{:onclick => "$('.modal').modal('hide'); return false;"}=t("cancel")

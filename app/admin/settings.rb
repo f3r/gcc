@@ -43,13 +43,6 @@ ActiveAdmin.register SiteConfig, :as => 'Settings' do
       f.input :agent_need_approval, :label=>"Agent need approval for Registration"
     end
 
-    # We need to show the view selection only if the listing has both views defined
-    if overridable_partial_defined?('grid')
-      f.inputs "Search View" do
-        f.input :search_default_view_type_cd, :label=>"Default search view type", :as => "select", :collection => SiteConfig.search_default_view_types, :include_blank => false
-      end
-    end
-
     f.inputs "Message Masking" do
       f.input :enable_message_masking, :label=>"Hide emails, phone numbers, etc in messages between users"
     end

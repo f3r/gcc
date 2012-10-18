@@ -1,6 +1,6 @@
 .panel{:id => "tab_#{tab_name}"}
   = form_for @resource, :as => :listing, :url => listing_path(@resource), :class => 'form-stacked', :html => {:id => "wizard_form", :method => :put} do |f|
-    = render "products/#{SiteConfig.product_class.to_s.tableize}/wizard_tabs/step_#{tab_name}", :layout => 'wizard_step', :f => f
+    = render "products/wizard_tabs/step_#{tab_name}", :layout => 'wizard_step', :f => f
     = f.hidden_field :wizard_step, :value => tab_number
     = hidden_field_tag :s, tab_number
 

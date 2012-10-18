@@ -8,10 +8,10 @@
 
 .row
   .span3
-    = render_overridable_partial('edit_sidebar')
+    = render 'products/edit_sidebar'
     &nbsp;
   .span7
     .wizard-wrapper
       %h2.title.section_title= t("products.wizard.#{@wizard.current_step_name}_title")
       .tab-content
-        = render_overridable_partial('tabbed_wizard')
+        = render 'products/tabbed_wizard'
