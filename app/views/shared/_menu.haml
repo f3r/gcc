@@ -4,14 +4,15 @@
       .container
         .nav-collapse
           %ul.nav
-            %li.dropdown
-              %a.dropdown-toggle{'data-toggle' => "dropdown", :href => '#'}
-                = current_city.name
-                %b.caret
-              %ul.dropdown-menu{:style => 'width:200px'}
-                %li{:class => (@global.present?)? "active" : ""}= link_to "Worldwide", "/?__city_name=WWW"
-                - City.active.each do |city|
-                  %li{:class => (@city && @city.id == city.id)? "active" : ""}= link_to city.name, "/?__city_name=#{city.slug}"
+            - unless controller_name == "search" and action_name == "index"
+              %li.dropdown
+                %a.dropdown-toggle{'data-toggle' => "dropdown", :href => '#'}
+                  = current_city.name
+                  %b.caret
+                %ul.dropdown-menu{:style => 'width:200px'}
+                  %li{:class => (@global.present?)? "active" : ""}= link_to "Worldwide", "/?__city_name=WWW"
+                  - City.active.each do |city|
+                    %li{:class => (@city && @city.id == city.id)? "active" : ""}= link_to city.name, "/?__city_name=#{city.slug}"
 
             %li.led
               %a{:href => "/#{current_city.slug}"}

@@ -1,9 +1,30 @@
 .search-bar-wrapper
   .search-bar-container
     .search-bar#search_bar
-      .float-left
-        %h2{:style => 'padding-bottom: 9px'}
-          = "#{@city.present? ? @city.name : 'World'}'s Best DJs"
+      %p.lead
+        Show Djs Ranked in
+
+      .btn-group
+        %button.btn.btn-large#genre-active
+          Genre
+        %button.btn.btn-large.dropdown-toggle{'data-toggle' => "dropdown"}
+          %span.caret
+        %ul.dropdown-menu{:style => 'width:200px'}
+          - @search.amenity_filters.each do |obj, count, checked|
+            %li
+              %a.genre-link{:href => "javascript:{}", 'data-genre-id' => obj.id}
+                = obj.name
+
+      .btn-group
+        %button.btn.btn-large
+          = current_city.name
+        %button.btn.btn-large.dropdown-toggle{'data-toggle' => "dropdown"}
+          %span.caret
+        %ul.dropdown-menu{:style => 'width:200px'}
+          %li{:class => (@global.present?)? "active" : ""}= link_to "Worldwide", "/worldwide"
+          - City.active.each do |city|
+            %li{:class => (@city && @city.id == city.id)? "active" : ""}= link_to city.name, seo_city_path(city)
+
         - # --> WARNING: don't delete the '#' here --> #num_search_results= search_results_count(@results)
         - #link_to "Not going to #{@city.name}?", root_path, {:style => 'color: #ccc; display:inline; font-size: 12px'}
 

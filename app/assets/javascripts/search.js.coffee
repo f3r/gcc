@@ -7,3 +7,14 @@ $('.search-item-clickable').live('click', (e) ->
   window.location.href = resource_url
   false
 )
+
+$('.genre-link').live('click', (e) ->
+  me = $(this)
+  genre_id = me.attr("data-genre-id")
+  $('#search_amenity_ids').val(genre_id)
+  PlaceFilters.search()
+  $('#genre-active').html(me.html().trim())
+  false
+  )
+
+
