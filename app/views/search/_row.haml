@@ -12,6 +12,8 @@
     .title
       %h3
         = link_to resource.title, url
+      %p
+        = [resource.city.name, resource.city.country].join(", ")
     .dj_genres
       = render :partial => 'shared/genres', :locals => { :resource => resource }
  

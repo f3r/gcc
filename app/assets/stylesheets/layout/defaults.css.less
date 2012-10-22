@@ -1805,14 +1805,55 @@ header.header {
 /*********************************************************************************************************
 * GENRES STYLE
 *********************************************************************************************************/
-.dj_genres{
-  margin-bottom:15px;
-  overflow: hidden;
-  background-color: white;
-  .genre{
-      display: inline-block;
-      background-color: #22273D;
-      color: @search_top_filters_text_color;
+.dj_genres {
+  background: #444444;
+  display : inline-block;
+  //height: 30px;
+  width: 100%;
+  * {
+  margin: 0 !important;
+  padding: 0 !important;
+  }
+  ul {
+    list-style-type: none;
+    //height: 30px;
+    margin: 0 auto;
+    //width: 350px;
+
+    margin-left: 20px !important;
+
+    li {
+      background: #2b2b47;
+      color: #fff;
+      font-weight: bold;
+      float: left;
+      padding: 7px 15px;
+      transform: skew(-45deg);
+      -ms-transform: skew(-45deg);
+      -webkit-transform: skew(-45deg);
+      -o-transform: skew(-45deg);
+      -moz-transform: skew(-45deg);
+      border-left: 1px solid #000;
+      border-right: 1px solid #000;
+      border-bottom: 0px solid !important;
+      position: relative;
+      //margin-bottom:5px !important;
+      padding: 5px !important;
+
+
+      p {
+        float: left;
+        color: #fff;
+        text-decoration: none;
+        transform: skew(45deg);
+        transform: skew(45deg);
+        -ms-transform: skew(45deg);
+        -webkit-transform: skew(45deg);
+        -o-transform: skew(45deg);
+        -moz-transform: skew(45deg);
+        font-size: 10px;
+      }
+    }
   }
 }
 
